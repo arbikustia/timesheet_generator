@@ -57,3 +57,25 @@ Format: tanggal · keputusan · alasan.
 - Fixture tetap di `src/fixture/` (konvensi template), bukan `fixtures/` di root.
 - Font UI tetap Poppins dari Google Fonts (`src/index.css`); tidak ada data pengguna yang dikirim.
   Halaman A4 memakai stack `"Trebuchet MS", "Fira Sans", sans-serif` (Fase 2).
+
+## Fase 1 — Engine (2026-11-14)
+
+### D-009 · Tanpa date-fns
+- Semua kalkulasi tanggal memakai string ISO + `Date.UTC` (bebas zona waktu) di `src/libs/utils/date.util.ts`.
+  Kebutuhannya kecil (jumlah hari, weekend, 4 format), jadi tidak perlu dependency baru.
+
+### D-010 · Lokasi engine
+- `src/libs/utils/timesheet-engine.util.ts` (shared, dipakai render/input/validasi). Tipe baris & halaman
+  evidence di `src/types/timesheet-engine.type.ts`; konstanta label/kapasitas di `src/constants/timesheet.constant.ts`.
+- Peta nomor halaman evidence memakai `Map<string, number>` (bukan `Record` terbuka, Convention §4.3).
+
+### D-011 · Aturan baris
+- Entri selalu menang atas weekend/holiday/cuti: tanggal tsb dirender sebagai baris kerja agar data tidak
+  tersembunyi; validasi (Fase 6) akan memberi peringatan.
+- Entri di luar periode tidak dirender (validasi: error "tanggal di luar bulan").
+- Baris kerja tanpa evidence: Remark hanya `Foto / Screenshot` (nomor halaman belum bisa ditentukan);
+  validasi memberi peringatan "tanggal ber-entri tanpa evidence".
+- `remarkOverride` dipisah per `\n` menjadi baris Remark.
+- Evidence pages: semua tanggal dalam periode yang punya ≥1 gambar, urut naik; kapasitas 3 lalu 4.
+- Default tanggal form cepat: hari kerja pertama di bulan itu yang bukan weekend, tidak ditandai libur/cuti,
+  dan belum ada entri.

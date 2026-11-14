@@ -1,6 +1,5 @@
 import {
   _formatIssues,
-  _getLastWeekdayIso,
   createEmptyDoc,
   getDefaultDocFileName,
   migrateDoc,
@@ -107,17 +106,6 @@ describe("createEmptyDoc", () => {
     expect(doc.evidence).toEqual({});
     expect(doc.profile.signDate).toBe("2026-10-30");
     expect(doc.profile.signatures).toEqual({ preparedBy: null, leadProject: null, tribeLeader: null });
-  });
-});
-
-describe("_getLastWeekdayIso", () => {
-  it("should skip a trailing weekend", () => {
-    expect(_getLastWeekdayIso({ year: 2026, month: 10 })).toBe("2026-10-30");
-    expect(_getLastWeekdayIso({ year: 2026, month: 5 })).toBe("2026-05-29");
-  });
-
-  it("should handle leap-year February", () => {
-    expect(_getLastWeekdayIso({ year: 2024, month: 2 })).toBe("2024-02-29");
   });
 });
 

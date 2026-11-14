@@ -12,6 +12,8 @@ import {
   VersionedDocSchema,
 } from "@/types/timesheet.type";
 
+import { getLastWeekday } from "./date.util";
+
 /**
  * Upgrade steps keyed by the version they upgrade FROM (N → N + 1).
  * Empty while only schema version 1 exists; add `1: migrateV1ToV2` when v2 ships.
@@ -131,33 +133,6 @@ export const serializeTimesheetDoc = (doc: TimesheetDoc): string => {
 };
 
 /**
- * Format a date as ISO `YYYY-MM-DD` using local calendar fields.
- * @param {Date} date - Date to format
- * @returns {string} - ISO date string
- */
-const _toIsoDate = (date: Date): string => {
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-
-  return `${date.getFullYear()}-${month}-${day}`;
-};
-
-/**
- * Find the last Monday–Friday of a period (default signature date).
- * @param {Period} period - Year and 1-based month
- * @returns {string} - ISO date of the last weekday
- */
-export const _getLastWeekdayIso = (period: Period): string => {
-  const date = new Date(period.year, period.month, 0);
-
-  while (date.getDay() === 0 || date.getDay() === 6) {
-    date.setDate(date.getDate() - 1);
-  }
-
-  return _toIsoDate(date);
-};
-
-/**
  * Create a blank document for a period; every other field comes from schema defaults.
  * @param {Period} period - Year and 1-based month
  * @returns {TimesheetDoc} - New empty document
@@ -165,7 +140,7 @@ export const _getLastWeekdayIso = (period: Period): string => {
 export const createEmptyDoc = (period: Period): TimesheetDoc => {
   return TimesheetDocSchema.parse({
     schemaVersion: CURRENT_SCHEMA_VERSION,
-    profile: { signDate: _getLastWeekdayIso(period) },
+    profile: { signDate: getLastWeekday(period) },
     period,
   });
 };

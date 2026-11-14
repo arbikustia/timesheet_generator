@@ -6,7 +6,7 @@ Sumber: `docs/PROMPT.md` §9. Setiap fase ditutup dengan `npm run lint`, `npx ts
 | Fase | Status | Isi |
 |---|---|---|
 | 0 — Setup | ✅ | Bersihkan template, dependency, `DECISIONS.md`, Zod schema dokumen + parse/migrate/serialize |
-| 1 — Engine | ⏳ | Generator tanggal & baris tabel, weekend/holiday, paginasi evidence (3 lalu 4), numbering `Evidence Page N` |
+| 1 — Engine | ✅ | Generator tanggal & baris tabel, weekend/holiday, paginasi evidence (3 lalu 4), numbering `Evidence Page N` |
 | 2 — Render | ⏳ | `<Page>` A4 untuk Timesheet, Signature, Evidence cover, Evidence pages; golden test Oktober |
 | 3 — Input | ⏳ | Split view, panel periode/aktivitas/daftar/hari khusus/settings, live preview |
 | 4 — File | ⏳ | New/Open/Save/Save As (File System Access + fallback), autosave, draft IndexedDB, buka terakhir |
@@ -17,10 +17,10 @@ Sumber: `docs/PROMPT.md` §9. Setiap fase ditutup dengan `npm run lint`, `npx ts
 
 ## Rancangan per fase
 
-**Fase 1 — Engine** (`src/modules/timesheet-engine/` atau `src/libs/utils/`, murni + ter-test)
-- `getMonthDays(period)`, `isWeekend(iso)`, `buildTimesheetRows(doc)` → baris kerja / weekend / holiday / kosong.
+**Fase 1 — Engine** (`src/libs/utils/date.util.ts`, `timesheet-engine.util.ts`, murni + ter-test)
+- `getMonthDates(period)`, `isWeekend(iso)`, `buildTimesheetRows(doc)` → baris kerja / weekend / holiday / kosong.
 - `paginateEvidence(doc)` → halaman `[3, 4, 4, …]` per tanggal unik ber-evidence.
-- `getEvidencePageByDate()` → nomor untuk Remark (override per baris tetap menang).
+- `getEvidencePageMap(pages)` → nomor untuk Remark (override per baris tetap menang).
 - Formatter: `DD/MM/YYYY`, `DD-MM-YYYY`, `MMMM YYYY` (Inggris), `D MMMM YYYY`.
 
 **Fase 2 — Render** (`src/modules/timesheet-document/`)

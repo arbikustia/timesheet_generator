@@ -147,6 +147,7 @@ export default defineConfig([
       "src/modules/**/*.{ts,tsx}",
       "src/libs/utils/**/*.{ts,tsx}",
       "src/types/**/*.{ts,tsx}",
+      "src/constants/**/*.{ts,tsx}",
     ],
     rules: {
       semi: ["error", "always"],

@@ -47,7 +47,9 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/App.tsx` | Single-screen app root |
 | `src/modules/<feature>/` | Feature logic using the module file pattern (below) |
 | `src/components/<Name>/` | Shared UI primitives (Button, Input, Select, Modal, ConfirmModal, Tabs, …) |
+| `src/constants/timesheet.constant.ts` | Fixed document labels, English month names, evidence capacities |
 | `src/types/timesheet.type.ts` | Zod schemas + `z.infer` types for the document file (`schemaVersion`) |
+| `src/libs/utils/date.util.ts`, `timesheet-engine.util.ts` | Pure engine: month dates, weekend, formatters, table rows, evidence pagination (3 then 4) and `Evidence Page N` numbering |
 | `src/libs/utils/timesheet-document.util.ts` | `parseTimesheetDoc` (the single upstream fallback), `migrateDoc`, `serializeTimesheetDoc`, `createEmptyDoc`, `getDefaultDocFileName` |
 | `src/libs/unit-test.ts` | The only allowed test import: re-exports RTL + `test.assertSnapshots` |
 | `src/store/` | `configureStore` (theme slice), typed hooks, `ThemeProvider` |
@@ -77,7 +79,7 @@ index.ts          # exports the entry (wrapper or container)
   Indonesian, document language English; never send data or images to any server; original (unblurred)
   `code` evidence must never be written to the `.json` file.
 - One `<Page>` implementation serves both preview and PDF export; never fork the layout.
-- ESLint strict rules apply to `src/App.tsx`, `src/modules/**`, `src/libs/utils/**`, `src/types/**`.
+- ESLint strict rules apply to `src/App.tsx`, `src/modules/**`, `src/libs/utils/**`, `src/types/**`, `src/constants/**`.
 - Jest only matches `*.test.ts(x)` and `*.snap.ts(x)` under `src/`. Coverage excludes `*.type`,
   `*.config`, `index`, `*.wrapper`, `*.style` and `src/types`. JSON imports work in Jest (`resolveJsonModule`).
 - Git: work on a feature branch; PRs target `development`. Commit format
