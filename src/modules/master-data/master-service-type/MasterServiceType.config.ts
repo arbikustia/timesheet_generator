@@ -1,3 +1,0 @@
-export const MASTER_SERVICE_TYPE_CONFIG = {
-  DEFAULT_PAGE_SIZE: 10,
-};

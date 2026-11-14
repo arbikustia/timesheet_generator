@@ -1,5 +1,5 @@
-import type { ReactElement } from "react";
 import { Select as AntSelect } from "antd";
+import type { ReactElement } from "react";
 
 import type { SelectOption, SelectProps } from "./Select.type";
 
@@ -41,12 +41,13 @@ export const Select = (props: SelectProps): ReactElement => {
         aria-describedby={isError ? errorId : undefined}
         value={value === "" ? undefined : value}
         options={_getOptions(options)}
-        showSearch
-        optionFilterProp="label"
-        filterOption={isRemoteSearch ? false : (input, option): boolean => String(option?.label ?? "").toLowerCase().includes(input.toLowerCase())}
+        showSearch={{
+          optionFilterProp: "label",
+          filterOption: isRemoteSearch ? false : (input, option): boolean => String(option?.label ?? "").toLowerCase().includes(input.toLowerCase()),
+          onSearch,
+        }}
         placeholder={placeholder}
         onChange={handleChange}
-        onSearch={onSearch}
         onPopupScroll={onPopupScroll}
         notFoundContent={isLoadingOptions ? "Loading…" : undefined}
         disabled={disabled}

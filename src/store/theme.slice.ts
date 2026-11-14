@@ -2,7 +2,7 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import type { Theme, ThemeState } from "./theme.type";
 
-const STORAGE_KEY = "quoteflow.theme";
+const STORAGE_KEY = "timesheet-builder.theme";
 
 export const getInitialTheme = (): Theme => {
   if (typeof window === "undefined") {

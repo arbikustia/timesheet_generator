@@ -1,5 +1,5 @@
-import type { ReactElement } from "react";
 import { Skeleton as AntSkeleton } from "antd";
+import type { ReactElement } from "react";
 
 import type { CardSkeletonProps, SkeletonProps } from "./Skeleton.type";
 

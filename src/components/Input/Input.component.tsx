@@ -1,5 +1,5 @@
-import type { ReactElement } from "react";
 import { Input, InputNumber, Select } from "antd";
+import type { ReactElement } from "react";
 
 import type { InputComponentProps, SelectInputProps } from "./Input.type";
 

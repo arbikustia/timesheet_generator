@@ -1,5 +1,5 @@
-import type { ReactElement } from "react";
 import { Switch as AntSwitch } from "antd";
+import type { ReactElement } from "react";
 
 import type { SwitchProps } from "./Switch.type";
 

@@ -1,5 +1,5 @@
-import * as React from "react";
 import { Button } from "antd";
+import * as React from "react";
 
 import {
   BUTTON_BASE_CLASS,

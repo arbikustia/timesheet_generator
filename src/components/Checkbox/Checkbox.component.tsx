@@ -1,6 +1,6 @@
-import type { ReactElement } from "react";
 import { Checkbox as AntCheckbox } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
+import type { ReactElement } from "react";
 
 import type { CheckboxProps } from "./Checkbox.type";
 

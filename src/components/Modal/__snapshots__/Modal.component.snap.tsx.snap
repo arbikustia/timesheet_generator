@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`ModalComponent snapshots should match open modal snapshot 1`] = `
-<DocumentFragment>
+<body>
+  <div />
   <div
-    class="fixed inset-0 z-50 flex items-center justify-center bg-overlay p-4 sm:p-6"
+    class="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 p-4 sm:p-6"
   >
     <button
       aria-label="Close modal backdrop"
@@ -13,18 +14,18 @@ exports[`ModalComponent snapshots should match open modal snapshot 1`] = `
     <div
       aria-labelledby="modal-title"
       aria-modal="true"
-      class="relative flex w-full max-w-2xl flex-col overflow-hidden rounded-xl border border-border-default bg-background-surface shadow-medium"
+      class="relative flex h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl border border-border-default bg-background-surface shadow-medium"
       role="dialog"
     >
       <div
         class="flex shrink-0 items-center justify-between border-b border-border-default px-6 py-4"
       >
-        <h2
+        <div
           class="text-lg font-bold text-text-primary"
           id="modal-title"
         >
           Modal title
-        </h2>
+        </div>
         <button
           aria-label="Close modal"
           class="rounded-lg p-2 text-text-secondary transition-colors hover:bg-background-subtle hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring"
@@ -47,7 +48,7 @@ exports[`ModalComponent snapshots should match open modal snapshot 1`] = `
         </button>
       </div>
       <div
-        class="max-h-[80vh] overflow-y-auto p-6"
+        class="max-h-[80vh] overflow-y-auto p-6 "
       >
         <p>
           Modal content
@@ -55,5 +56,5 @@ exports[`ModalComponent snapshots should match open modal snapshot 1`] = `
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>
 `;

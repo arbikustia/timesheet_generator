@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "profile": {
+    "vendorName": "PT Negeri Emas Perkasa",
+    "platform": "Legacy Platform",
+    "consultantName": "Arbi Kustia",
+    "leadProject": "Fahly Faraby",
+    "consultantRole": "Front End Developer",
+    "tribeLeader": "Rio Hermanto",
+    "squad": "Epics Asum",
+    "signDate": "2026-10-30",
+    "signatures": {
+      "preparedBy": null,
+      "leadProject": null,
+      "tribeLeader": null
+    }
+  },
+  "period": {
+    "year": 2026,
+    "month": 10
+  },
+  "entries": [
+    {
+      "id": "e1",
+      "date": "2026-10-01",
+      "task": "Tech debt case admin list",
+      "start": "08:04",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e2",
+      "date": "2026-10-02",
+      "task": "Tech debt case admin list",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e3",
+      "date": "2026-10-05",
+      "task": "Tech debt case admin list",
+      "start": "08:00",
+      "end": "17:04",
+      "remarkOverride": null
+    },
+    {
+      "id": "e4",
+      "date": "2026-10-06",
+      "task": "Tech debt case admin detail",
+      "start": "08:00",
+      "end": "17:04",
+      "remarkOverride": null
+    },
+    {
+      "id": "e5",
+      "date": "2026-10-07",
+      "task": "Tech debt case admin detail",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e6",
+      "date": "2026-10-07",
+      "task": "Tech debt case admin detail",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e7",
+      "date": "2026-10-08",
+      "task": "Tech debt case admin list",
+      "start": "08:04",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e8",
+      "date": "2026-10-09",
+      "task": "Fixing flow case admin case transfer",
+      "start": "08:04",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e9",
+      "date": "2026-10-12",
+      "task": "Fixing flow case admin case transfer",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e10",
+      "date": "2026-10-13",
+      "task": "Tech debt work basket list",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e11",
+      "date": "2026-10-14",
+      "task": "Tech debt work basket list",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e12",
+      "date": "2026-10-15",
+      "task": "Tech debt work basket list",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e13",
+      "date": "2026-10-16",
+      "task": "Tech debt work basket list case transfer",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e14",
+      "date": "2026-10-19",
+      "task": "Tech debt work basket list case transfer",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e15",
+      "date": "2026-10-20",
+      "task": "Tech debt work basket detail case transfer",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e16",
+      "date": "2026-10-21",
+      "task": "Tech debt work basket detail case transfer",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e17",
+      "date": "2026-10-22",
+      "task": "Integration reassign case",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e18",
+      "date": "2026-10-23",
+      "task": "Integrate api notes in case admin",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e19",
+      "date": "2026-10-26",
+      "task": "Integrate api notes in work basket",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e20",
+      "date": "2026-10-27",
+      "task": "Slicing note component in case admin",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e21",
+      "date": "2026-10-28",
+      "task": "Fixing code new business for deployment",
+      "start": "08:04",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e22",
+      "date": "2026-10-29",
+      "task": "Fixing code new business for deployment",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    },
+    {
+      "id": "e23",
+      "date": "2026-10-30",
+      "task": "Fixing code new business for deployment",
+      "start": "08:00",
+      "end": "17:00",
+      "remarkOverride": null
+    }
+  ],
+  "dayOverrides": {},
+  "evidence": {}
+}

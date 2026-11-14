@@ -63,7 +63,7 @@ describe("theme slice", () => {
       } as unknown as Window & typeof globalThis;
 
       expect(getInitialTheme()).toBe("dark");
-      expect(mockLocalStorage.getItem).toHaveBeenCalledWith("quoteflow.theme");
+      expect(mockLocalStorage.getItem).toHaveBeenCalledWith("timesheet-builder.theme");
 
       globalThis.window = originalWindow;
     });

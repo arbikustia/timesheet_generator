@@ -17,9 +17,7 @@ export default defineConfig([
     ".worktrees",
     "__generated__/**",
     "**/*.test.*",
-    "src/libs/utils/**",
     "src/libs/unit-test/**",
-    "src/libs/utils.ts",
   ]),
 
   // Base config for all ts/tsx files
@@ -142,39 +140,13 @@ export default defineConfig([
     },
   },
 
-  // Strict rules for specific modules
+  // Strict rules (Section 4) for all app code written for Timesheet Builder
   {
     files: [
-      "src/modules/master-data/master-customer/**/*.{ts,tsx}",
-      "src/modules/master-data/master-category/**/*.{ts,tsx}",
-      "src/modules/master-data/master-item/**/*.{ts,tsx}",
-      "src/modules/master-data/master-project/**/*.{ts,tsx}",
-      "src/modules/master-data/master-payment-method/**/*.{ts,tsx}",
-      "src/modules/master-data/master-voucher/**/*.{ts,tsx}",
-      "src/modules/master-data/master-role/**/*.{ts,tsx}",
-      "src/modules/master-data/master-user/**/*.{ts,tsx}",
-      "src/modules/master-data/master-pic/**/*.{ts,tsx}",
-      "src/modules/master-data/master-order-type/**/*.{ts,tsx}",
-      "src/modules/master-data/master-email-sender/**/*.{ts,tsx}",
-      "src/modules/master-data/master-main/**/*.{ts,tsx}",
-      "src/modules/quotation/**/*.{ts,tsx}",
-      "src/modules/invoice/**/*.{ts,tsx}",
-      "src/modules/payment/**/*.{ts,tsx}",
-      "src/modules/note/**/*.{ts,tsx}",
-      "src/modules/calendar/**/*.{ts,tsx}",
-      "src/modules/activity-log/**/*.{ts,tsx}",
-      "src/modules/order/**/*.{ts,tsx}",
-      "src/modules/dashboard/**/*.{ts,tsx}",
-      "src/modules/item-checklist/**/*.{ts,tsx}",
-      "src/modules/item-return/**/*.{ts,tsx}",
-      "src/modules/mail/**/*.{ts,tsx}",
-      "src/modules/permission/**/*.{ts,tsx}",
-      "src/modules/report/**/*.{ts,tsx}",
-      "src/services/**/*.{ts,tsx}",
-      // "src/modules/master-service-type/**/*.{ts,tsx}",
-      // "src/modules/master-payment-type/**/*.{ts,tsx}",
-      // "src/modules/order/**/*.{ts,tsx}",
-      // "src/components/**/*.{ts,tsx}",
+      "src/App.tsx",
+      "src/modules/**/*.{ts,tsx}",
+      "src/libs/utils/**/*.{ts,tsx}",
+      "src/types/**/*.{ts,tsx}",
     ],
     rules: {
       semi: ["error", "always"],
@@ -350,30 +322,6 @@ export default defineConfig([
       ],
       "max-depth": ["error", 4],
       "max-params": ["error", 4],
-    },
-  },
-
-  // Services: JSDoc only on named functions (Section 4.3); inline RTK callbacks exempt.
-  // max-lines-per-function off: injectEndpoints({ endpoints }) is a declarative list.
-  {
-    files: ["src/services/**/*.{ts,tsx}"],
-    rules: {
-      "max-lines-per-function": "off",
-      "jsdoc/require-jsdoc": [
-        "error",
-        {
-          require: {
-            FunctionDeclaration: true,
-            MethodDefinition: true,
-            ClassDeclaration: true,
-            ArrowFunctionExpression: false,
-            FunctionExpression: false,
-          },
-          contexts: [
-            "VariableDeclaration:has(> VariableDeclarator > ArrowFunctionExpression)",
-          ],
-        },
-      ],
     },
   },
 

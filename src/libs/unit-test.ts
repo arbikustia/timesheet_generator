@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import { MemoryRouter } from "react-router-dom";
 
 export { act, fireEvent, render, renderHook, screen, waitFor } from "@testing-library/react";
 
@@ -20,13 +19,7 @@ const assertSnapshots = <T extends object>(
   configs: SnapshotConfig<T>[],
 ): void => {
   const snapshot = (config: SnapshotConfig<T>): void => {
-    const { asFragment } = render(
-      React.createElement(
-        MemoryRouter,
-        null,
-        React.createElement(Component, config.props),
-      ),
-    );
+    const { asFragment } = render(React.createElement(Component, config.props));
 
     expect(asFragment()).toMatchSnapshot();
   };

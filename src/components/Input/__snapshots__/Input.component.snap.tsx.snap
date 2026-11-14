@@ -6,7 +6,7 @@ exports[`should render a labelled Ant Design input 1`] = `
     class="mb-4 "
   >
     <label
-      class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-text-secondary"
+      class="mb-1.5 block text-sm font-semibold text-text-secondary"
       for="name"
     >
       Name

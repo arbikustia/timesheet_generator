@@ -1,5 +1,5 @@
-import type { ReactElement } from "react";
 import { Alert as AntAlert } from "antd";
+import type { ReactElement } from "react";
 
 import { useAlertToast } from "./Alert.hook";
 import type { AlertProps } from "./Alert.type";
