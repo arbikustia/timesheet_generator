@@ -79,3 +79,34 @@ Format: tanggal · keputusan · alasan.
 - Evidence pages: semua tanggal dalam periode yang punya ≥1 gambar, urut naik; kapasitas 3 lalu 4.
 - Default tanggal form cepat: hari kerja pertama di bulan itu yang bukan weekend, tidak ditandai libur/cuti,
   dan belum ada entri.
+
+## Fase 2 — Render (2026-11-14)
+
+### D-012 · Geometri diukur dari PDF contoh
+- Posisi & ukuran (pt) diambil dari `BHN II - Timesheet October.pdf` (teks + kotak via pdf.js) dan disimpan
+  di `TimesheetDocument.config.ts`: logo (20, 8, 93×46), judul y≈76, blok info y=119 (baris 14.5pt), tabel
+  x=36 lebar 517 (66/246/42/43/120), header 29pt, tabel tanda tangan (169.5/183.7/162.9; baris 14.6 & 117.3),
+  blok merah cover (atas y=54.7 h=112; bawah y=373.7 h=410.6, lebar 524.2), slot evidence (gambar kiri x=43
+  w=268, kanan x=342 w=216, tinggi 140, jarak antar-slot 178pt).
+- Halaman memakai posisi absolut dalam `pt` di dalam bingkai `210mm × 297mm`: satu implementasi untuk
+  preview dan print (PROMPT §6).
+
+### D-013 · Paginasi tabel deterministik
+- Tinggi baris dihitung, bukan diukur dari DOM: Weekend/Libur 22pt, baris kerja min. 39pt dan bertambah
+  13pt per baris teks (estimasi wrap dengan lebar glyph konservatif 5.6pt @11pt). Tinggi yang sama dipasang
+  sebagai `height` baris, jadi preview = PDF dan bisa di-test di jsdom.
+- Batas bawah halaman 822pt, halaman lanjutan mulai di y=9pt tanpa header tabel. Baris tidak pernah dipotong.
+- Akibatnya halaman 1 Oktober berakhir di 16/10 (di contoh 17/10) karena contoh Word memakai tinggi baris
+  campuran 30.8/38.8pt, sedangkan spesifikasi menetapkan ≈39pt. Isi dan urutan tetap sama.
+
+### D-014 · Font halaman tanda tangan
+- PROMPT §2.B menyebut Times New Roman, tetapi PDF contoh memakai font yang sama dengan judul `TIMESHEET`
+  (Trebuchet MS Bold, dicek dari lebar glyph). Mengikuti contoh karena tujuan utamanya "identik dengan contoh";
+  cukup ubah `fontFamily` di `signatureTable` (`TimesheetDocument.style.ts`) bila ingin Times.
+
+### D-015 · Detail kecil
+- Baris 31/10 di contoh menampilkan jam `08:00 08:00` pada baris Weekend — dianggap artefak; kolom
+  Task/Start/End baris merah selalu kosong (PROMPT §2.A).
+- Preview sementara di `App` merender fixture Oktober sampai panel input selesai (Fase 3).
+- Visual regression Playwright belum jalan: Chromium headless di WSL butuh library sistem
+  (`sudo npx playwright install-deps chromium`).

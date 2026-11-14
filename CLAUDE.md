@@ -46,6 +46,7 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/main.tsx` | Root: Redux `Provider` → `ThemeProvider` → `App` |
 | `src/App.tsx` | Single-screen app root |
 | `src/modules/<feature>/` | Feature logic using the module file pattern (below) |
+| `src/modules/timesheet-document/` | The A4 output (timesheet, signature, evidence cover, evidence pages). One tree for preview and PDF; geometry in pt in `TimesheetDocument.config.ts`, measured from the reference PDF |
 | `src/components/<Name>/` | Shared UI primitives (Button, Input, Select, Modal, ConfirmModal, Tabs, …) |
 | `src/constants/timesheet.constant.ts` | Fixed document labels, English month names, evidence capacities |
 | `src/types/timesheet.type.ts` | Zod schemas + `z.infer` types for the document file (`schemaVersion`) |
@@ -54,6 +55,7 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/libs/unit-test.ts` | The only allowed test import: re-exports RTL + `test.assertSnapshots` |
 | `src/store/` | `configureStore` (theme slice), typed hooks, `ThemeProvider` |
 | `src/fixture/timesheet-2026-10.sample.json` | October 2026 real data for seed & golden test |
+| `src/fixture/timesheet.fixture.ts` | `loadOctoberDoc()`, `loadOctoberDocWithEvidence()`, `SAMPLE_IMAGE` for tests |
 | `src/assets/` | `ifg-logo.png`, reference PDF |
 | `docs/design-system/` | UI foundations for the app chrome (not the A4 pages) |
 

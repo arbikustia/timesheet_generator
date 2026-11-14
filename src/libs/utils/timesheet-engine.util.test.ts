@@ -1,4 +1,3 @@
-import { parseTimesheetDoc } from "@/libs/utils/timesheet-document.util";
 import {
   _buildDateRow,
   buildTimesheetRows,
@@ -9,48 +8,11 @@ import {
   paginateEvidence,
 } from "@/libs/utils/timesheet-engine.util";
 
-import type { Evidence, TimesheetDoc } from "@/types/timesheet.type";
-
-import octoberFixture from "@/fixture/timesheet-2026-10.sample.json";
-
-const IMAGE: Evidence = {
-  id: "img",
-  name: "shot.png",
-  mime: "image/png",
-  dataUrl: "data:image/png;base64,AA",
-  w: 10,
-  h: 10,
-  sensitivity: "plain",
-  blurred: false,
-};
-
-/**
- * Load the October 2026 fixture as a parsed document.
- * @returns {TimesheetDoc} - Parsed fixture
- */
-const loadOctober = (): TimesheetDoc => {
-  const result = parseTimesheetDoc(JSON.stringify(octoberFixture));
-
-  if (!result.isOk) {
-    throw new Error(result.message);
-  }
-
-  return result.doc;
-};
-
-/**
- * Load the fixture with one evidence image on every entry date.
- * @returns {TimesheetDoc} - Fixture with evidence
- */
-const loadOctoberWithEvidence = (): TimesheetDoc => {
-  const doc = loadOctober();
-
-  doc.entries.forEach((entry) => {
-    doc.evidence[entry.date] = [IMAGE, IMAGE];
-  });
-
-  return doc;
-};
+import {
+  loadOctoberDoc as loadOctober,
+  loadOctoberDocWithEvidence as loadOctoberWithEvidence,
+  SAMPLE_IMAGE as IMAGE,
+} from "@/fixture/timesheet.fixture";
 
 describe("paginateEvidence", () => {
   it("should put 3 dates on the first page and 4 on each following page", () => {

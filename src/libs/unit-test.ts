@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import React from "react";
 
-export { act, fireEvent, render, renderHook, screen, waitFor } from "@testing-library/react";
+export { act, fireEvent, render, renderHook, screen, waitFor, within } from "@testing-library/react";
 
 export type SnapshotConfig<T> = {
   desc?: string;

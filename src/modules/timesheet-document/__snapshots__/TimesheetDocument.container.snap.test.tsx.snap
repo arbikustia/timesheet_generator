@@ -1,0 +1,1417 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TimesheetDocumentContainer Snapshot Test TimesheetDocumentContainer Snapshots should render the October 2026 fixture without evidence 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="timesheet-document"
+    style="display: flex; flex-direction: column; align-items: center; gap: 16px;"
+  >
+    <section
+      data-page-kind="sheet"
+      style="position: relative; width: 210mm; height: 297mm; overflow: hidden; box-sizing: border-box; background: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: "Trebuchet MS", "Fira Sans", sans-serif; break-after: page; print-color-adjust: exact;"
+    >
+      <img
+        alt="IFG"
+        src="/src/assets/ifg-logo.png"
+        style="position: absolute; left: 20pt; top: 8pt; width: 93pt; height: 46pt; object-fit: contain;"
+      />
+      <h1
+        style="position: absolute; top: 76pt; left: 0px; width: 595.28pt; margin: 0px; text-align: center; font-size: 18pt; font-weight: 700; line-height: 1.2;"
+      >
+        TIMESHEET
+      </h1>
+      <table
+        data-testid="sheet-info"
+        style="position: absolute; top: 119pt; left: 42pt; border-collapse: collapse; table-layout: fixed; font-size: 12pt;"
+      >
+        <colgroup>
+          <col
+            style="width: 106pt;"
+          />
+          <col
+            style="width: 6.5pt;"
+          />
+          <col
+            style="width: 157pt;"
+          />
+          <col
+            style="width: 99pt;"
+          />
+          <col
+            style="width: 6.5pt;"
+          />
+          <col
+            style="width: 136pt;"
+          />
+        </colgroup>
+        <tbody>
+          <tr>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 106pt;"
+            >
+              Vendor Name
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              :
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              PT Negeri Emas Perkasa
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 99pt;"
+            >
+              Legacy Platform
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            />
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            />
+          </tr>
+          <tr>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 106pt;"
+            >
+              Consultant Name
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              :
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              Arbi Kustia
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 99pt;"
+            >
+              Lead Project/PO
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              :
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              Fahly Faraby
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 106pt;"
+            >
+              Consultan Role
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              :
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              Front End Developer
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 99pt;"
+            >
+              Tribe Leader
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              :
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              Rio Hermanto
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 106pt;"
+            >
+              Month
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              :
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              October 2026
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 99pt;"
+            >
+              Squad
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              :
+            </td>
+            <td
+              style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+            >
+              Epics Asum
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table
+        data-testid="sheet-table"
+        style="position: absolute; left: 36pt; width: 517pt; border-collapse: collapse; table-layout: fixed; top: 194pt;"
+      >
+        <colgroup>
+          <col
+            data-column="date"
+            style="width: 66pt;"
+          />
+          <col
+            data-column="task"
+            style="width: 246pt;"
+          />
+          <col
+            data-column="start"
+            style="width: 42pt;"
+          />
+          <col
+            data-column="end"
+            style="width: 43pt;"
+          />
+          <col
+            data-column="remark"
+            style="width: 120pt;"
+          />
+        </colgroup>
+        <thead>
+          <tr
+            style="height: 29pt; background: rgb(192, 0, 0); color: rgb(255, 255, 255);"
+          >
+            <th
+              scope="col"
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+            >
+              Date
+            </th>
+            <th
+              scope="col"
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+            >
+              Task /Activities/ Project Name/ Ticket Number
+            </th>
+            <th
+              scope="col"
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+            >
+              Start Time
+            </th>
+            <th
+              scope="col"
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+            >
+              End Time
+            </th>
+            <th
+              scope="col"
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+            >
+              Remark
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              01/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt case admin list
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:04
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              02/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt case admin list
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="off"
+            style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              03/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Weekend
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="off"
+            style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              04/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Weekend
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              05/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt case admin list
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:04
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              06/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt case admin detail
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:04
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              07/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt case admin detail
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              07/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt case admin detail
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              08/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt case admin list
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:04
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              09/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Fixing flow case admin case transfer
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:04
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="off"
+            style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              10/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Weekend
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="off"
+            style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              11/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Weekend
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              12/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Fixing flow case admin case transfer
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              13/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt work basket list
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              14/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt work basket list
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              15/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt work basket list
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              16/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt work basket list case transfer
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section
+      data-page-kind="sheet"
+      style="position: relative; width: 210mm; height: 297mm; overflow: hidden; box-sizing: border-box; background: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: "Trebuchet MS", "Fira Sans", sans-serif; break-after: page; print-color-adjust: exact;"
+    >
+      <table
+        data-testid="sheet-table"
+        style="position: absolute; left: 36pt; width: 517pt; border-collapse: collapse; table-layout: fixed; top: 9pt;"
+      >
+        <colgroup>
+          <col
+            data-column="date"
+            style="width: 66pt;"
+          />
+          <col
+            data-column="task"
+            style="width: 246pt;"
+          />
+          <col
+            data-column="start"
+            style="width: 42pt;"
+          />
+          <col
+            data-column="end"
+            style="width: 43pt;"
+          />
+          <col
+            data-column="remark"
+            style="width: 120pt;"
+          />
+        </colgroup>
+        <tbody>
+          <tr
+            data-row-kind="off"
+            style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              17/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Weekend
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="off"
+            style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              18/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Weekend
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              19/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt work basket list case transfer
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              20/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt work basket detail case transfer
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              21/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Tech debt work basket detail case transfer
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              22/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Integration reassign case
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              23/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Integrate api notes in case admin
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="off"
+            style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              24/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Weekend
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="off"
+            style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              25/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Weekend
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              26/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Integrate api notes in work basket
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              27/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Slicing note component in case admin
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              28/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Fixing code new business for deployment
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:04
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              29/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Fixing code new business for deployment
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="work"
+            style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              30/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              Fixing code new business for deployment
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              08:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            >
+              17:00
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Foto / Screenshot
+              </span>
+            </td>
+          </tr>
+          <tr
+            data-row-kind="off"
+            style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+          >
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+            >
+              31/10/2026
+            </td>
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+            />
+            <td
+              style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+            >
+              <span
+                style="display: block;"
+              >
+                Weekend
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section
+      data-page-kind="signature"
+      style="position: relative; width: 210mm; height: 297mm; overflow: hidden; box-sizing: border-box; background: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: "Trebuchet MS", "Fira Sans", sans-serif; break-after: page; print-color-adjust: exact;"
+    >
+      <table
+        data-testid="signature-table"
+        style="position: absolute; top: 143.5pt; left: 36.8pt; border-collapse: collapse; table-layout: fixed; font-size: 12pt; font-weight: 700;"
+      >
+        <colgroup>
+          <col
+            style="width: 169.5pt;"
+          />
+          <col
+            style="width: 183.7pt;"
+          />
+          <col
+            style="width: 162.9pt;"
+          />
+        </colgroup>
+        <tbody>
+          <tr>
+            <td
+              style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+            >
+              Prepared by,
+            </td>
+            <td
+              colspan="2"
+              style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+            >
+              Approved by,
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+            >
+              Name : Arbi Kustia
+            </td>
+            <td
+              style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+            >
+              Name: Fahly Faraby
+            </td>
+            <td
+              style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+            >
+              Name: Rio Hermanto
+            </td>
+          </tr>
+          <tr>
+            <td
+              style="height: 117.3pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px; text-align: center; vertical-align: middle;"
+            />
+            <td
+              style="height: 117.3pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px; text-align: center; vertical-align: middle;"
+            />
+            <td
+              style="height: 117.3pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px; text-align: center; vertical-align: middle;"
+            />
+          </tr>
+          <tr>
+            <td
+              style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+            >
+              Date: 30 October 2026
+            </td>
+            <td
+              style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+            >
+              Date: 30 October 2026
+            </td>
+            <td
+              style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+            >
+              Date: 30 October 2026
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section
+      data-page-kind="cover"
+      style="position: relative; width: 210mm; height: 297mm; overflow: hidden; box-sizing: border-box; background: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: "Trebuchet MS", "Fira Sans", sans-serif; break-after: page; print-color-adjust: exact;"
+    >
+      <div
+        style="position: absolute; left: 36pt; top: 54.7pt; width: 524.2pt; height: 112pt; background: rgb(192, 0, 0);"
+      />
+      <p
+        style="position: absolute; left: 36pt; top: 166.7pt; width: 524.2pt; height: 207pt; margin: 0px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11pt; font-weight: 700;"
+      >
+        EVIDENCE OCTOBER 2026 – ARBI KUSTIA – FRONT END DEVELOPER – EPICS ASUM
+      </p>
+      <div
+        style="position: absolute; left: 36pt; top: 373.7pt; width: 524.2pt; height: 410.6pt; background: rgb(192, 0, 0);"
+      />
+      <p
+        style="position: absolute; left: 36pt; top: 714pt; width: 524.2pt; margin: 0px; color: rgb(255, 255, 255); text-align: center; font-size: 11pt; font-weight: 700; line-height: 1.75;"
+      >
+        <span
+          style="display: block;"
+        />
+        <span
+          style="display: block;"
+        />
+      </p>
+    </section>
+  </div>
+</DocumentFragment>
+`;

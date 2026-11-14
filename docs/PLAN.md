@@ -7,7 +7,7 @@ Sumber: `docs/PROMPT.md` §9. Setiap fase ditutup dengan `npm run lint`, `npx ts
 |---|---|---|
 | 0 — Setup | ✅ | Bersihkan template, dependency, `DECISIONS.md`, Zod schema dokumen + parse/migrate/serialize |
 | 1 — Engine | ✅ | Generator tanggal & baris tabel, weekend/holiday, paginasi evidence (3 lalu 4), numbering `Evidence Page N` |
-| 2 — Render | ⏳ | `<Page>` A4 untuk Timesheet, Signature, Evidence cover, Evidence pages; golden test Oktober |
+| 2 — Render | ✅ | `<Page>` A4 untuk Timesheet, Signature, Evidence cover, Evidence pages; golden test Oktober |
 | 3 — Input | ⏳ | Split view, panel periode/aktivitas/daftar/hari khusus/settings, live preview |
 | 4 — File | ⏳ | New/Open/Save/Save As (File System Access + fallback), autosave, draft IndexedDB, buka terakhir |
 | 5 — Evidence | ⏳ | Dropzone + paste, kompresi canvas, layout evidence |
