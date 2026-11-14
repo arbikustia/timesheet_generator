@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`AutomationSettingsContainer Snapshot Test AutomationSettingsContainer Snapshots should render empty editors 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col gap-4 border-t border-border-default pt-3"
+  >
+    <section
+      aria-labelledby="ticket-map-title"
+      class="flex flex-col gap-2"
+    >
+      <h4
+        class="m-0 text-sm font-semibold"
+        id="ticket-map-title"
+      >
+        Nama task per ticket
+      </h4>
+      <p
+        class="m-0 text-xs text-text-secondary"
+      >
+        Dipakai CLI saat impor. Nama yang diubah lalu diterima di review otomatis tersimpan di sini.
+      </p>
+      <form
+        aria-label="Tambah ticket"
+        class="flex flex-wrap items-center gap-2"
+      >
+        <input
+          aria-label="Ticket baru"
+          class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined !w-28 css-var-root ant-input-css-var"
+          placeholder="BIT-123"
+          type="text"
+          value=""
+        />
+        <input
+          aria-label="Nama task baru"
+          class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined !w-60 flex-1 css-var-root ant-input-css-var"
+          placeholder="Fixing flow case transfer"
+          type="text"
+          value=""
+        />
+        <button
+          class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm"
+          type="submit"
+        >
+          <span
+            class="ant-btn-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+          </span>
+          <span>
+            Tambah
+          </span>
+        </button>
+      </form>
+    </section>
+    <section
+      aria-labelledby="repos-title"
+      class="flex flex-col gap-2"
+    >
+      <h4
+        class="m-0 text-sm font-semibold"
+        id="repos-title"
+      >
+        Repo yang dipantau
+      </h4>
+      <p
+        class="m-0 text-xs text-text-secondary"
+      >
+        Path lokal di laptop ini (dibaca read-only oleh 
+        <code>
+          timesheet snapshot --doc
+        </code>
+        ). CLI juga membaca 
+        <code>
+          ~/.timesheet/config.json
+        </code>
+        .
+      </p>
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm self-start"
+        type="button"
+      >
+        <span
+          class="ant-btn-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="12"
+              x2="12"
+              y1="5"
+              y2="19"
+            />
+            <line
+              x1="5"
+              x2="19"
+              y1="12"
+              y2="12"
+            />
+          </svg>
+        </span>
+        <span>
+          Tambah repo
+        </span>
+      </button>
+    </section>
+  </div>
+</DocumentFragment>
+`;

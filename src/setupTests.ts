@@ -22,6 +22,20 @@ if (typeof Element !== 'undefined') {
   Object.defineProperty(Element.prototype, 'scrollIntoView', { configurable: true, writable: true, value: jest.fn() });
 }
 
+// jsdom has no PointerEvent (blur editor draws regions with pointer events): use MouseEvent + pointerId.
+if (typeof MouseEvent !== 'undefined' && typeof globalThis.PointerEvent === 'undefined') {
+  class PointerEventPolyfill extends MouseEvent {
+    pointerId: number;
+
+    constructor(type: string, init: PointerEventInit = {}) {
+      super(type, init);
+      this.pointerId = init.pointerId ?? 0;
+    }
+  }
+
+  Object.defineProperty(globalThis, 'PointerEvent', { configurable: true, writable: true, value: PointerEventPolyfill });
+}
+
 jest.mock('./store/theme.hook', () => ({
   useTheme: () => ({
     theme: 'light',

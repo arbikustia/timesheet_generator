@@ -1,0 +1,603 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ImportReviewContainer Snapshot Test ImportReviewContainer Snapshots should render two pending entries 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="import-review-title"
+    class="flex flex-col gap-3"
+  >
+    <h3
+      class="m-0 text-sm font-semibold"
+      id="import-review-title"
+    >
+      Import & Review
+    </h3>
+    <div
+      class="ant-alert ant-alert-warning ant-alert-outlined css-var-root css-dev-only-do-not-override-eofgey"
+      data-show="true"
+      role="alert"
+    >
+      <span
+        class="ant-alert-icon"
+      >
+        <span
+          aria-label="exclamation-circle"
+          class="anticon anticon-exclamation-circle"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="exclamation-circle"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm-32 232c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V296zm32 440a48.01 48.01 0 010-96 48.01 48.01 0 010 96z"
+            />
+          </svg>
+        </span>
+      </span>
+      <div
+        class="ant-alert-section"
+      >
+        <div
+          class="ant-alert-title"
+        >
+          2 entri otomatis belum direview — export diblokir sampai semuanya direview.
+        </div>
+      </div>
+    </div>
+    <details
+      class="rounded-lg border border-border-default p-2 text-sm"
+    >
+      <summary
+        class="cursor-pointer font-medium"
+      >
+        Cara impor dari worklog
+      </summary>
+      <ol
+        class="mt-2 flex list-decimal flex-col gap-1 pl-5"
+      >
+        <li>
+          Simpan dokumen ke file, lalu di terminal jalankan 
+          <code>
+            timesheet snapshot
+          </code>
+           (otomatis tiap sore bila scheduler terpasang).
+        </li>
+        <li
+          class="flex flex-col gap-1"
+        >
+          <span>
+            Impor worklog ke file dokumen (dari folder tempat file berada):
+          </span>
+          <span
+            class="flex flex-wrap items-center gap-2"
+          >
+            <code
+              class="break-all rounded bg-background-subtle px-1.5 py-0.5"
+              data-testid="import-command"
+            >
+              timesheet import --doc "Timesheet-YYYY-MM-Nama.json" --month 2026-11
+            </code>
+            <button
+              class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm"
+              type="button"
+            >
+              <span
+                class="ant-btn-icon"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="13"
+                    rx="2"
+                    ry="2"
+                    width="13"
+                    x="9"
+                    y="9"
+                  />
+                  <path
+                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                  />
+                </svg>
+              </span>
+              <span>
+                Salin perintah
+              </span>
+            </button>
+          </span>
+        </li>
+        <li>
+          Klik 
+          <strong>
+            Muat ulang
+          </strong>
+           di top bar. Entri otomatis muncul di bawah sebagai usulan dan memblokir export sampai direview.
+        </li>
+      </ol>
+    </details>
+    <section
+      aria-label="Minggu 02/11/2026 – 08/11/2026"
+      class="flex flex-col gap-2"
+    >
+      <div
+        class="flex flex-wrap items-center gap-2"
+      >
+        <h4
+          class="m-0 text-sm font-semibold"
+        >
+          Minggu 02/11/2026 – 08/11/2026
+        </h4>
+        <button
+          class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm ml-auto"
+          data-week="2026-11-02"
+          type="button"
+        >
+          <span
+            class="ant-btn-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline
+                points="20 6 9 17 4 12"
+              />
+            </svg>
+          </span>
+          <span>
+            Terima semua minggu ini (1)
+          </span>
+        </button>
+      </div>
+      <div
+        class="flex flex-col gap-1"
+      >
+        <h5
+          class="m-0 text-sm font-medium"
+        >
+          Sen, 02/11/2026
+        </h5>
+        <ul
+          class="m-0 flex list-none flex-col gap-2 p-0"
+        >
+          <li
+            aria-label="Usulan BIT-231 – case transfer"
+            class="flex flex-col gap-2 rounded-lg border border-border-default p-2"
+            id="review-git-1"
+            tabindex="-1"
+          >
+            <div
+              class="flex flex-col gap-1 text-xs text-text-secondary"
+            >
+              <div
+                class="flex flex-wrap items-center gap-2"
+              >
+                <span
+                  class="ant-tag ant-tag-filled !m-0 inline-flex items-center gap-1 css-dev-only-do-not-override-eofgey css-var-root"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="6"
+                      x2="6"
+                      y1="3"
+                      y2="15"
+                    />
+                    <circle
+                      cx="18"
+                      cy="6"
+                      r="3"
+                    />
+                    <circle
+                      cx="6"
+                      cy="18"
+                      r="3"
+                    />
+                    <path
+                      d="M18 9a9 9 0 0 1-9 9"
+                    />
+                  </svg>
+                  <span>
+                    Git snapshot
+                  </span>
+                </span>
+                <span>
+                  BIT-231 · BIT-231-case-transfer · BANTUIT FE
+                </span>
+                <span
+                  class="ant-tag ant-tag-filled ant-tag-warning !m-0 css-dev-only-do-not-override-eofgey css-var-root"
+                >
+                  perlu nama
+                </span>
+              </div>
+              <span>
+                Aktivitas terdeteksi 08:12–17:40
+              </span>
+              <details>
+                <summary
+                  class="cursor-pointer"
+                >
+                  1 file tersentuh
+                </summary>
+                <ul
+                  class="m-0 list-disc pl-5"
+                >
+                  <li
+                    class="break-all"
+                  >
+                    src/a.ts
+                  </li>
+                </ul>
+              </details>
+            </div>
+            <input
+              aria-label="Nama task"
+              class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+              data-entry-id="git-1"
+              type="text"
+              value="BIT-231 – case transfer"
+            />
+            <div
+              class="flex flex-wrap items-center gap-2"
+            >
+              <button
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ant-btn-sm"
+                data-entry-id="git-1"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polyline
+                      points="20 6 9 17 4 12"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  Terima
+                </span>
+              </button>
+              <button
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-sm"
+                data-entry-id="git-1"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="18"
+                      x2="6"
+                      y1="6"
+                      y2="18"
+                    />
+                    <line
+                      x1="6"
+                      x2="18"
+                      y1="6"
+                      y2="18"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  Tolak
+                </span>
+              </button>
+              <select
+                aria-label="Gabung dengan baris lain"
+                class="rounded border border-border-default bg-background-surface px-1 py-0.5 text-sm"
+                data-entry-id="git-1"
+              >
+                <option
+                  value=""
+                >
+                  Gabung dengan…
+                </option>
+                <option
+                  value="manual"
+                >
+                  Daily standup
+                </option>
+              </select>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section
+      aria-label="Minggu 09/11/2026 – 15/11/2026"
+      class="flex flex-col gap-2"
+    >
+      <div
+        class="flex flex-wrap items-center gap-2"
+      >
+        <h4
+          class="m-0 text-sm font-semibold"
+        >
+          Minggu 09/11/2026 – 15/11/2026
+        </h4>
+        <button
+          class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm ml-auto"
+          data-week="2026-11-09"
+          type="button"
+        >
+          <span
+            class="ant-btn-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline
+                points="20 6 9 17 4 12"
+              />
+            </svg>
+          </span>
+          <span>
+            Terima semua minggu ini (1)
+          </span>
+        </button>
+      </div>
+      <div
+        class="flex flex-col gap-1"
+      >
+        <h5
+          class="m-0 text-sm font-medium"
+        >
+          Sel, 10/11/2026
+        </h5>
+        <ul
+          class="m-0 flex list-none flex-col gap-2 p-0"
+        >
+          <li
+            aria-label="Usulan Integrate api notes"
+            class="flex flex-col gap-2 rounded-lg border border-border-default p-2"
+            id="review-claude-1"
+            tabindex="-1"
+          >
+            <div
+              class="flex flex-col gap-1 text-xs text-text-secondary"
+            >
+              <div
+                class="flex flex-wrap items-center gap-2"
+              >
+                <span
+                  class="ant-tag ant-tag-filled !m-0 inline-flex items-center gap-1 css-dev-only-do-not-override-eofgey css-var-root"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      height="16"
+                      rx="2"
+                      ry="2"
+                      width="16"
+                      x="4"
+                      y="4"
+                    />
+                    <rect
+                      height="6"
+                      width="6"
+                      x="9"
+                      y="9"
+                    />
+                    <line
+                      x1="9"
+                      x2="9"
+                      y1="1"
+                      y2="4"
+                    />
+                    <line
+                      x1="15"
+                      x2="15"
+                      y1="1"
+                      y2="4"
+                    />
+                    <line
+                      x1="9"
+                      x2="9"
+                      y1="20"
+                      y2="23"
+                    />
+                    <line
+                      x1="15"
+                      x2="15"
+                      y1="20"
+                      y2="23"
+                    />
+                    <line
+                      x1="20"
+                      x2="23"
+                      y1="9"
+                      y2="9"
+                    />
+                    <line
+                      x1="20"
+                      x2="23"
+                      y1="14"
+                      y2="14"
+                    />
+                    <line
+                      x1="1"
+                      x2="4"
+                      y1="9"
+                      y2="9"
+                    />
+                    <line
+                      x1="1"
+                      x2="4"
+                      y1="14"
+                      y2="14"
+                    />
+                  </svg>
+                  <span>
+                    Claude Code
+                  </span>
+                </span>
+                <span>
+                  BANTUIT FE
+                </span>
+              </div>
+              <span>
+                Claude Code: refactor notes api
+              </span>
+            </div>
+            <input
+              aria-label="Nama task"
+              class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+              data-entry-id="claude-1"
+              type="text"
+              value="Integrate api notes"
+            />
+            <div
+              class="flex flex-wrap items-center gap-2"
+            >
+              <button
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ant-btn-sm"
+                data-entry-id="claude-1"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polyline
+                      points="20 6 9 17 4 12"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  Terima
+                </span>
+              </button>
+              <button
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-sm"
+                data-entry-id="claude-1"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="18"
+                      x2="6"
+                      y1="6"
+                      y2="18"
+                    />
+                    <line
+                      x1="6"
+                      x2="18"
+                      y1="6"
+                      y2="18"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  Tolak
+                </span>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </section>
+</DocumentFragment>
+`;

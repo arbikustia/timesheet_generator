@@ -8,6 +8,7 @@ export const CONFIRM_TITLES: Record<ConfirmableAction, string> = {
   new: "Buat dokumen baru?",
   open: "Buka dokumen lain?",
   "open-last": "Buka dokumen terakhir?",
+  reload: "Muat ulang dari disk?",
 };
 
 export const ACCEPTED_DOCUMENT_TYPES = ".json,application/json";

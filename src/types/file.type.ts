@@ -5,6 +5,8 @@ export type OpenedFile = {
   name: string;
   text: string;
   handle: DocumentFileHandle | null;
+  /** `File.lastModified` when read through a handle; used to detect changes made outside the app. */
+  lastModified: number | null;
 };
 
 /** A recovery draft kept in IndexedDB until the document is saved to a file. */
@@ -52,8 +54,38 @@ export type ProcessedImage = {
   h: number;
 };
 
+/** How censored pixels are rendered: pixelate + Gaussian blur, or blocks only. */
+export type BlurEffect = "blur" | "pixelate";
+
+/** Whether the effect covers the whole image or only drawn regions. */
+export type BlurScope = "full" | "area";
+
+/** A region in fractions (0–1) of the image width/height, so it is independent of the display size. */
+export type BlurRegion = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
+/** What the blur editor asks to apply. `regions` is used only for the `area` scope. */
+export type BlurSpec = {
+  scope: BlurScope;
+  effect: BlurEffect;
+  regions: BlurRegion[];
+};
+
+/** A region in whole pixels of a concrete canvas. */
+export type PixelRect = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
+
 export type ProcessImageOptions = {
-  shouldBlur: boolean;
+  /** Censoring to apply on canvas pixels before compression; null keeps the image as is. */
+  blur: BlurSpec | null;
 };
 
 /** Anything that carries files: `DataTransfer` (clipboard, drop) or a file input. */

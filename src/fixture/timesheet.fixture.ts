@@ -68,3 +68,37 @@ export const makeDocStore = (doc: TimesheetDoc = loadOctoberDoc()): AppStore => 
 export const makeEmptyOctoberStore = (): AppStore => {
   return makeDocStore(createEmptyDoc({ year: 2026, month: 10 }));
 };
+
+/**
+ * November 2026 document with two automatic entries waiting for review (week of 2 Nov) and one manual row.
+ * @returns {TimesheetDoc} - Document
+ */
+export const loadReviewDoc = (): TimesheetDoc => {
+  const doc = createEmptyDoc({ year: 2026, month: 11 });
+  const base = { start: "08:00", end: "17:00", remarkOverride: null };
+
+  doc.profile.consultantName = "Arbi Kustia";
+  doc.entries = [
+    { ...base, id: "manual", date: "2026-11-02", task: "Daily standup", source: "manual", reviewed: true },
+    {
+      ...base,
+      id: "git-1",
+      date: "2026-11-02",
+      task: "BIT-231 – case transfer",
+      source: "git",
+      reviewed: false,
+      refs: { repo: "BANTUIT FE", branch: "BIT-231-case-transfer", ticket: "BIT-231", hint: { first: "08:12", last: "17:40" }, files: ["src/a.ts"], needsName: true },
+    },
+    {
+      ...base,
+      id: "claude-1",
+      date: "2026-11-10",
+      task: "Integrate api notes",
+      source: "claude-code",
+      reviewed: false,
+      refs: { repo: "BANTUIT FE", summary: "refactor notes api" },
+    },
+  ];
+
+  return doc;
+};

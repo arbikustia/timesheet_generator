@@ -7,6 +7,12 @@ export const EVIDENCE_JPEG_QUALITY = 0.8;
 /** Pixelate block size of the full blur, in px of the final image. */
 export const BLUR_BLOCK_PX = 14;
 
+/** Block size of the "Pixelate" effect, in px of the final image (PROMPT §5.1: ≈ 10–14px). */
+export const PIXELATE_BLOCK_PX = 12;
+
+/** Regions smaller than this fraction of the image side are ignored (accidental clicks). */
+export const MIN_REGION_FRACTION = 0.01;
+
 /** Gaussian blur radius layered on top of the pixelation, in px. */
 export const BLUR_RADIUS_PX = 6;
 

@@ -3,8 +3,19 @@ import {
   BLUR_RADIUS_PX,
   EVIDENCE_JPEG_QUALITY,
   EVIDENCE_MAX_SIDE_PX,
+  PIXELATE_BLOCK_PX,
 } from "@/constants/image.constant";
-import type { FileCarrier, ImageSize, LoadedImage, ProcessedImage, ProcessImageOptions } from "@/types/file.type";
+import type {
+  BlurEffect,
+  BlurRegion,
+  BlurSpec,
+  FileCarrier,
+  ImageSize,
+  LoadedImage,
+  PixelRect,
+  ProcessedImage,
+  ProcessImageOptions,
+} from "@/types/file.type";
 
 /**
  * Fit a size inside a square bound, keeping the aspect ratio and never upscaling.
@@ -101,10 +112,94 @@ export const applyFullBlur = (canvas: HTMLCanvasElement, context: CanvasRenderin
 };
 
 /**
- * Resize, optionally blur, and compress an image to JPEG.
+ * Irreversibly pixelate a canvas in place (hard blocks, no smoothing).
+ * @param {HTMLCanvasElement} canvas - Canvas to pixelate
+ * @param {CanvasRenderingContext2D} context - Its 2D context
+ * @returns {void}
+ */
+export const applyPixelate = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D): void => {
+  const size = { width: canvas.width, height: canvas.height };
+  const small = createCanvas(getPixelatedSize(size, PIXELATE_BLOCK_PX));
+
+  small.context.imageSmoothingEnabled = true;
+  small.context.drawImage(canvas, 0, 0, small.canvas.width, small.canvas.height);
+  context.clearRect(0, 0, size.width, size.height);
+  context.imageSmoothingEnabled = false;
+  context.drawImage(small.canvas, 0, 0, size.width, size.height);
+  context.imageSmoothingEnabled = true;
+};
+
+/**
+ * Apply one censoring effect to a whole canvas.
+ * @param {HTMLCanvasElement} canvas - Canvas
+ * @param {CanvasRenderingContext2D} context - Its 2D context
+ * @param {BlurEffect} effect - Effect
+ * @returns {void}
+ */
+export const applyEffect = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, effect: BlurEffect): void => {
+  if (effect === "pixelate") {
+    applyPixelate(canvas, context);
+
+    return;
+  }
+
+  applyFullBlur(canvas, context);
+};
+
+/**
+ * Convert a fractional region to whole pixels, clamped to the canvas.
+ * @param {BlurRegion} region - Region in fractions
+ * @param {ImageSize} size - Canvas size
+ * @returns {PixelRect} - Pixel rectangle (at least 1×1)
+ */
+export const toPixelRect = (region: BlurRegion, size: ImageSize): PixelRect => {
+  const x = Math.min(size.width - 1, Math.max(0, Math.floor(region.x * size.width)));
+  const y = Math.min(size.height - 1, Math.max(0, Math.floor(region.y * size.height)));
+  const right = Math.min(size.width, Math.ceil((region.x + region.width) * size.width));
+  const bottom = Math.min(size.height, Math.ceil((region.y + region.height) * size.height));
+
+  return { x, y, width: Math.max(1, right - x), height: Math.max(1, bottom - y) };
+};
+
+/**
+ * Apply an effect to one region only: the region is cut out, censored on its own canvas and drawn back.
+ * @param {HTMLCanvasElement} canvas - Canvas
+ * @param {CanvasRenderingContext2D} context - Its 2D context
+ * @param {BlurRegion} region - Region in fractions
+ * @param {BlurEffect} effect - Effect
+ * @returns {void}
+ */
+export const applyRegionEffect = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, region: BlurRegion, effect: BlurEffect): void => {
+  const rect = toPixelRect(region, { width: canvas.width, height: canvas.height });
+  const part = createCanvas({ width: rect.width, height: rect.height });
+
+  part.context.drawImage(canvas, rect.x, rect.y, rect.width, rect.height, 0, 0, rect.width, rect.height);
+  applyEffect(part.canvas, part.context, effect);
+  context.drawImage(part.canvas, rect.x, rect.y);
+};
+
+/**
+ * Apply a blur spec: the whole image, or each region in turn.
+ * @param {HTMLCanvasElement} canvas - Canvas
+ * @param {CanvasRenderingContext2D} context - Its 2D context
+ * @param {BlurSpec} spec - What to censor
+ * @returns {void}
+ */
+export const applyBlurSpec = (canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, spec: BlurSpec): void => {
+  if (spec.scope === "full") {
+    applyEffect(canvas, context, spec.effect);
+
+    return;
+  }
+
+  spec.regions.forEach((region) => applyRegionEffect(canvas, context, region, spec.effect));
+};
+
+/**
+ * Resize, optionally censor (on pixels, before compression), and compress an image to JPEG.
  * Transparent areas become white because JPEG has no alpha.
  * @param {Blob} blob - Source image
- * @param {ProcessImageOptions} options - Whether to apply the full blur
+ * @param {ProcessImageOptions} options - Censoring to apply
  * @returns {Promise<ProcessedImage>} - Stored image data
  */
 export const processEvidenceImage = async (blob: Blob, options: ProcessImageOptions): Promise<ProcessedImage> => {
@@ -117,8 +212,8 @@ export const processEvidenceImage = async (blob: Blob, options: ProcessImageOpti
   context.drawImage(image.source, 0, 0, size.width, size.height);
   image.release();
 
-  if (options.shouldBlur) {
-    applyFullBlur(canvas, context);
+  if (options.blur) {
+    applyBlurSpec(canvas, context, options.blur);
   }
 
   return { dataUrl: canvas.toDataURL("image/jpeg", EVIDENCE_JPEG_QUALITY), mime: "image/jpeg", w: size.width, h: size.height };

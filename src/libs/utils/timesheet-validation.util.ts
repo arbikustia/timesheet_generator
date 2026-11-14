@@ -110,7 +110,7 @@ export const _checkEntry = (entry: Entry, doc: TimesheetDoc): ValidationIssue[] 
   }
 
   if (!entry.reviewed) {
-    issues.push(_issue(`entry-review:${entry.id}`, "error", `Aktivitas otomatis ${label} belum direview.`, target));
+    issues.push(_issue(`entry-review:${entry.id}`, "error", `Aktivitas otomatis ${label} belum direview.`, { kind: "review", entryId: entry.id }));
   }
 
   return issues;

@@ -41,7 +41,7 @@ export const runPicker = async <T>(picker: () => Promise<T>): Promise<T | null> 
 export const readHandle = async (handle: DocumentFileHandle): Promise<OpenedFile> => {
   const file = await handle.getFile();
 
-  return { name: file.name, text: await readFileAsText(file), handle };
+  return { name: file.name, text: await readFileAsText(file), handle, lastModified: file.lastModified };
 };
 
 /**
@@ -113,7 +113,7 @@ export const ensureHandlePermission = async (handle: PermissionTarget, mode: Fil
  * @returns {Promise<OpenedFile>} - Name and text without a handle
  */
 export const readInputFile = async (file: File): Promise<OpenedFile> => {
-  return { name: file.name, text: await readFileAsText(file), handle: null };
+  return { name: file.name, text: await readFileAsText(file), handle: null, lastModified: null };
 };
 
 /**
@@ -130,4 +130,27 @@ export const downloadTextFile = (text: string, fileName: string): void => {
   link.download = fileName;
   link.click();
   URL.revokeObjectURL(url);
+};
+
+/** Message when the open file was changed by another program (e.g. `timesheet import`). */
+export const EXTERNAL_CHANGE_MESSAGE =
+  "file berubah di disk sejak dibuka (mis. hasil `timesheet import`). Klik \"Muat ulang\" untuk memuat versi disk, atau Simpan Sebagai.";
+
+/**
+ * Refuse to overwrite a file that changed on disk since the app last read or wrote it, so a CLI import
+ * is never lost to an autosave. Unknown timestamps (new file, fallback input) are not checked.
+ * @param {Pick<DocumentFileHandle, "getFile">} handle - File handle
+ * @param {number | null} knownModified - Timestamp the app last saw
+ * @returns {Promise<void>} - Resolves when safe to write; rejects with `EXTERNAL_CHANGE_MESSAGE` otherwise
+ */
+export const assertUnchangedOnDisk = async (handle: Pick<DocumentFileHandle, "getFile">, knownModified: number | null): Promise<void> => {
+  if (knownModified === null) {
+    return;
+  }
+
+  const file = await handle.getFile();
+
+  if (file.lastModified !== knownModified) {
+    throw new Error(EXTERNAL_CHANGE_MESSAGE);
+  }
 };

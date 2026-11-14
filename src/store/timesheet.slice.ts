@@ -1,6 +1,7 @@
 import { createSelector, createSlice, isAnyOf, type PayloadAction, type UnknownAction } from "@reduxjs/toolkit";
 
 import { getCurrentPeriod } from "@/libs/utils/date.util";
+import { getLearnedTicketName, mergeEntryRefs, normalizeTicket } from "@/libs/utils/review.util";
 import { createEmptyDoc } from "@/libs/utils/timesheet-document.util";
 import {
   createId,
@@ -21,12 +22,16 @@ import type {
   DefaultHoursChanges,
   EntryChanges,
   EvidenceRefPayload,
+  MergeEntryPayload,
   MoveEntryPayload,
   NewEntryInput,
   ProfileChanges,
   ReplaceEvidencePayload,
+  RepoChanges,
   SignaturePayload,
+  TicketNamePayload,
   UpdateEntryPayload,
+  UpdateRepoPayload,
 } from "@/types/timesheet-edit.type";
 import type { ValidationReport } from "@/types/timesheet-validation.type";
 
@@ -163,6 +168,75 @@ const timesheetSlice = createSlice({
 
       delete state.doc.evidence[date];
     },
+    acceptEntries: (state, action: PayloadAction<string[]>): void => {
+      const ids = new Set(action.payload);
+
+      state.doc.entries
+        .filter((entry) => ids.has(entry.id) && !entry.reviewed)
+        .forEach((entry) => {
+          const learned = getLearnedTicketName(entry);
+
+          if (learned) {
+            state.doc.automation.ticketMap[learned.ticket] = learned.name;
+          }
+
+          if (entry.refs?.needsName) {
+            entry.refs.needsName = false;
+          }
+
+          entry.reviewed = true;
+        });
+    },
+    mergeEntry: (state, action: PayloadAction<MergeEntryPayload>): void => {
+      const { sourceId, targetId } = action.payload;
+      const source = state.doc.entries.find((entry) => entry.id === sourceId);
+      const target = state.doc.entries.find((entry) => entry.id === targetId);
+
+      if (!source || !target || source === target || source.date !== target.date) {
+        return;
+      }
+
+      target.refs = mergeEntryRefs(target.refs, source.refs);
+      state.doc.entries = state.doc.entries.filter((entry) => entry.id !== sourceId);
+    },
+    setTicketName: (state, action: PayloadAction<TicketNamePayload>): void => {
+      const ticket = normalizeTicket(action.payload.ticket);
+      const name = action.payload.name.trim();
+
+      if (!ticket) {
+        return;
+      }
+
+      state.doc.automation.ticketMap[ticket] = action.payload.name;
+
+      if (!name) {
+        return;
+      }
+
+      state.doc.entries
+        .filter((entry) => !entry.reviewed && entry.refs?.needsName && entry.refs.ticket === ticket)
+        .forEach((entry) => {
+          entry.task = name;
+        });
+    },
+    removeTicketName: (state, action: PayloadAction<string>): void => {
+      delete state.doc.automation.ticketMap[normalizeTicket(action.payload)];
+    },
+    addRepo: (state): void => {
+      state.doc.automation.repos.push({ path: "", label: "" });
+    },
+    updateRepo: (state, action: PayloadAction<UpdateRepoPayload>): void => {
+      const repo = state.doc.automation.repos[action.payload.index];
+
+      if (repo) {
+        Object.assign(repo, action.payload.changes);
+      }
+    },
+    removeRepo: (state, action: PayloadAction<number>): void => {
+      if (state.doc.automation.repos[action.payload]) {
+        state.doc.automation.repos.splice(action.payload, 1);
+      }
+    },
     swapEvidence: (state, action: PayloadAction<string>): void => {
       const images = state.doc.evidence[action.payload];
 
@@ -194,6 +268,13 @@ export const {
   replaceEvidence,
   removeEvidence,
   swapEvidence,
+  acceptEntries,
+  mergeEntry,
+  setTicketName,
+  removeTicketName,
+  addRepo,
+  updateRepo,
+  removeRepo,
 } = timesheetSlice.actions;
 
 /**
@@ -225,6 +306,14 @@ export const selectCanUndo = (state: { timesheet: TimesheetState }): boolean => 
  */
 export const selectCanRedo = (state: { timesheet: TimesheetState }): boolean => state.timesheet.future.length > 0;
 
+/**
+ * Number of automatic entries waiting for review.
+ * @param {{ timesheet: TimesheetState }} state - Root state
+ * @returns {number} - Entries with `reviewed: false`
+ */
+export const selectPendingReviewCount = (state: { timesheet: TimesheetState }): number =>
+  state.timesheet.doc.entries.filter((entry) => !entry.reviewed).length;
+
 /** Validation report and month summary of the current document, recomputed only when it changes. */
 export const selectValidationReport: (state: { timesheet: TimesheetState }) => ValidationReport = createSelector(
   [selectDoc],
@@ -248,6 +337,13 @@ const isUndoableAction = isAnyOf(
   replaceEvidence,
   removeEvidence,
   swapEvidence,
+  acceptEntries,
+  mergeEntry,
+  setTicketName,
+  removeTicketName,
+  addRepo,
+  updateRepo,
+  removeRepo,
 );
 
 /**
@@ -255,7 +351,7 @@ const isUndoableAction = isAnyOf(
  * @param {object} changes - Changed fields
  * @returns {string} - Key list
  */
-const _joinKeys = (changes: ProfileChanges | EntryChanges | DefaultHoursChanges): string => {
+const _joinKeys = (changes: ProfileChanges | EntryChanges | DefaultHoursChanges | RepoChanges): string => {
   return Object.keys(changes)
     .sort((a, b) => a.localeCompare(b))
     .join(",");
@@ -277,6 +373,14 @@ export const getHistoryMergeKey = (action: UnknownAction): string | null => {
 
   if (updateDefaultHours.match(action)) {
     return `defaults:${_joinKeys(action.payload)}`;
+  }
+
+  if (updateRepo.match(action)) {
+    return `repo:${action.payload.index}:${_joinKeys(action.payload.changes)}`;
+  }
+
+  if (setTicketName.match(action)) {
+    return `ticket:${normalizeTicket(action.payload.ticket)}`;
   }
 
   return null;

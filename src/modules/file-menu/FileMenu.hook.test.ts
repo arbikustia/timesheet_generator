@@ -16,7 +16,7 @@ afterEach(() => {
 
 describe("usePendingConfirm", () => {
   it("should run immediately when clean and ask first when dirty", () => {
-    const actions = { new: jest.fn(), open: jest.fn(), "open-last": jest.fn() };
+    const actions = { new: jest.fn(), open: jest.fn(), "open-last": jest.fn(), reload: jest.fn() };
     const { result, rerender } = renderHook(({ isDirty }) => usePendingConfirm(isDirty, actions), { initialProps: { isDirty: false } });
 
     act(() => result.current.request("new"));

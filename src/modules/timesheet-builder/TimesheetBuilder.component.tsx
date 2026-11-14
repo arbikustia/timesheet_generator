@@ -2,9 +2,10 @@ import * as React from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { Button, Divider, Tabs, type TabsProps } from "antd";
 
-import { BUILDER_TAB_LABELS } from "./TimesheetBuilder.config";
-import type { TimesheetBuilderProps } from "./TimesheetBuilder.type";
+import { BUILDER_TAB_LABELS, COUNT_TONE_CLASSES } from "./TimesheetBuilder.config";
+import type { CountTone, TimesheetBuilderProps } from "./TimesheetBuilder.type";
 
+import AutomationSettings from "@/modules/automation-settings";
 import DayOverrides from "@/modules/day-overrides";
 import DocumentPreview from "@/modules/document-preview";
 import EditHistory from "@/modules/edit-history";
@@ -14,31 +15,43 @@ import EvidencePanel from "@/modules/evidence-panel";
 import ExportCheck from "@/modules/export-check";
 import ExportPdf from "@/modules/export-pdf";
 import FileMenu from "@/modules/file-menu";
+import ImportReview from "@/modules/import-review";
 import PeriodPanel from "@/modules/period-panel";
 import ProfileSettings from "@/modules/profile-settings";
 
 /**
- * Label of the export check tab with the number of errors (or warnings when there is no error).
+ * Tab label with a count pill (hidden when zero) and a screen-reader text.
+ * @param {string} label - Tab name
+ * @param {number} count - Count to show
+ * @param {CountTone} tone - Pill colour
+ * @param {string} noun - What is counted, e.g. `error`
+ * @returns {React.ReactElement} - Tab label
+ */
+const _renderCountLabel = (label: string, count: number, tone: CountTone, noun: string): React.ReactElement => (
+  <span className="inline-flex items-center gap-1.5">
+    {label}
+    {count > 0 && (
+      <>
+        <span aria-hidden className={`rounded-full px-1.5 text-xs font-semibold ${COUNT_TONE_CLASSES[tone]}`}>
+          {count}
+        </span>
+        <span className="sr-only">{`${count} ${noun}`}</span>
+      </>
+    )}
+  </span>
+);
+
+/**
+ * Label of the export check tab: the number of errors, or of warnings when there is no error.
  * @param {TimesheetBuilderProps} props - Shell props
  * @returns {React.ReactElement} - Tab label
  */
 const _renderCheckTabLabel = (props: TimesheetBuilderProps): React.ReactElement => {
-  const hasErrors = props.errorCount > 0;
-  const count = hasErrors ? props.errorCount : props.warningCount;
+  if (props.errorCount > 0) {
+    return _renderCountLabel(BUILDER_TAB_LABELS.check, props.errorCount, "danger", "error");
+  }
 
-  return (
-    <span className="inline-flex items-center gap-1.5">
-      {BUILDER_TAB_LABELS.check}
-      {count > 0 && (
-        <>
-          <span aria-hidden className={`rounded-full px-1.5 text-xs font-semibold ${hasErrors ? "bg-danger-strong text-white" : "bg-warning-subtle text-warning-strong"}`}>
-            {count}
-          </span>
-          <span className="sr-only">{hasErrors ? `${count} error` : `${count} peringatan`}</span>
-        </>
-      )}
-    </span>
-  );
+  return _renderCountLabel(BUILDER_TAB_LABELS.check, props.warningCount, "warning", "peringatan");
 };
 
 /**
@@ -59,6 +72,16 @@ const _buildTabItems = (props: TimesheetBuilderProps): TabsProps["items"] => [
     ),
   },
   { key: "evidence", label: BUILDER_TAB_LABELS.evidence, children: <EvidencePanel /> },
+  {
+    key: "review",
+    label: _renderCountLabel(BUILDER_TAB_LABELS.review, props.reviewCount, "warning", "usulan"),
+    children: (
+      <div className="flex flex-col gap-4">
+        <ImportReview />
+        <AutomationSettings />
+      </div>
+    ),
+  },
   { key: "days", label: BUILDER_TAB_LABELS.days, children: <DayOverrides /> },
   { key: "settings", label: BUILDER_TAB_LABELS.settings, children: <ProfileSettings /> },
   { key: "check", label: _renderCheckTabLabel(props), children: <ExportCheck onNavigate={props.onNavigate} /> },

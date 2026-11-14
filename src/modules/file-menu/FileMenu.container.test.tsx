@@ -1,6 +1,6 @@
 import { act, fireEvent, renderWithStore, screen, waitFor } from "@/libs/unit-test";
 import { loadLastFileHandle, rememberFileHandle } from "@/libs/utils/draft-storage.util";
-import { getCurrentFileHandle, setCurrentFileHandle } from "@/libs/utils/file-handle.registry";
+import { getCurrentFileHandle, setCurrentFileHandle, setKnownModified } from "@/libs/utils/file-handle.registry";
 import { serializeTimesheetDoc } from "@/libs/utils/timesheet-document.util";
 
 import { selectFile } from "@/store/file.slice";
@@ -22,6 +22,7 @@ afterEach(() => {
   delete window.showOpenFilePicker;
   delete window.showSaveFilePicker;
   setCurrentFileHandle(null);
+  setKnownModified(null);
   jest.restoreAllMocks();
 });
 
@@ -162,5 +163,52 @@ describe("FileMenuContainer — File System Access", () => {
     fireEvent.click(await screen.findByRole("button", { name: "Buka terakhir" }));
 
     expect(await screen.findByRole("alert")).toHaveTextContent("Izin akses file terakhir ditolak");
+  });
+
+  it("should refuse to overwrite a file changed on disk and reload it on request", async () => {
+    const imported = loadOctoberDoc();
+
+    imported.profile.squad = "Imported";
+    const file = makeFileHandle({ name: "doc.json", text: serializeTimesheetDoc(loadOctoberDoc()) });
+
+    window.showOpenFilePicker = jest.fn().mockResolvedValue([file.handle]);
+    window.showSaveFilePicker = jest.fn();
+    const store = renderMenu();
+
+    fireEvent.click(screen.getByRole("button", { name: "Buka" }));
+    await waitFor(() => expect(screen.getByTestId("file-status")).toHaveTextContent("doc.json"));
+
+    file.changeOnDisk(serializeTimesheetDoc(imported));
+    act(() => {
+      store.dispatch(updateProfile({ squad: "Local" }));
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Simpan" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent("file berubah di disk");
+    expect(file.written).toEqual([]);
+
+    fireEvent.click(screen.getByRole("button", { name: "Muat ulang" }));
+    fireEvent.click(screen.getByRole("button", { name: "Lanjut tanpa menyimpan" }));
+    await waitFor(() => expect(selectDoc(store.getState()).profile.squad).toBe("Imported"));
+
+    act(() => {
+      store.dispatch(updateProfile({ squad: "After reload" }));
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Simpan" }));
+    await waitFor(() => expect(file.written).toHaveLength(1));
+  });
+
+  it("should explain when there is nothing to reload", async () => {
+    window.showOpenFilePicker = jest.fn();
+    window.showSaveFilePicker = jest.fn();
+    const { store } = renderWithStore(<FileMenuContainer />, {
+      timesheet: createTimesheetState(loadOctoberDoc()),
+      file: { fileName: "x.json", hasHandle: true, lastSavedAt: null },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: "Muat ulang" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent("Tidak ada file terbuka yang bisa dimuat ulang");
+    expect(selectIsDirty(store.getState())).toBe(false);
   });
 });

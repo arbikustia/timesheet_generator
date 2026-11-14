@@ -7,6 +7,10 @@ import EvidencePanelComponent from "./EvidencePanel.component";
 const HANDLERS = {
   onToggleCodeUpload: jest.fn(),
   onDismissError: jest.fn(),
+  blurRequest: null,
+  isBlurProcessing: false,
+  onBlurApply: jest.fn(),
+  onBlurCancel: jest.fn(),
   onRemove: jest.fn(),
   onSwap: jest.fn(),
   onBlurImage: jest.fn(),

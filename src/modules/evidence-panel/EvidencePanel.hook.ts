@@ -8,13 +8,18 @@ import { createId } from "@/libs/utils/timesheet-mutation.util";
 
 import { MAX_DOCUMENT_BYTES } from "@/constants/image.constant";
 import { EVIDENCE_MAX_PER_DATE } from "@/constants/timesheet.constant";
+import type { BlurSpec } from "@/types/file.type";
 import type { Evidence } from "@/types/timesheet.type";
 
 import type {
+  BlurQueue,
+  CreateEvidenceInput,
+  DateJobs,
   EvidenceImageActions,
   EvidenceInputHandlers,
   EvidencePanelProps,
   EvidenceUpload,
+  PendingBlur,
   SetEvidenceError,
 } from "./EvidencePanel.type";
 import { buildEvidenceBlocks, getPasteTargetDate } from "./EvidencePanel.util";
@@ -23,17 +28,122 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { addEvidence, removeEvidence, replaceEvidence, selectDoc, swapEvidence } from "@/store/timesheet.slice";
 
 /**
- * Turn a file into a stored evidence image (resized, compressed, blurred when it is code).
- * @param {Blob} file - Source image
- * @param {string} name - File name to keep
- * @param {boolean} isCode - Screenshot of code (blurred before it ever reaches the document)
- * @param {string} [id=createId()] - Image id (kept when replacing)
+ * Turn a file into a stored evidence image (resized, censored on pixels when a spec is given, compressed).
+ * `code` screenshots must come with a spec so they are censored before they reach the document.
+ * @param {CreateEvidenceInput} input - Source image, name, sensitivity, blur spec and optional id
  * @returns {Promise<Evidence>} - Evidence image
  */
-export const createEvidence = async (file: Blob, name: string, isCode: boolean, id: string = createId()): Promise<Evidence> => {
-  const processed = await processEvidenceImage(file, { shouldBlur: isCode });
+export const createEvidence = async (input: CreateEvidenceInput): Promise<Evidence> => {
+  const processed = await processEvidenceImage(input.file, { blur: input.blur });
 
-  return { id, name, ...processed, sensitivity: isCode ? "code" : "plain", blurred: isCode };
+  return { id: input.id ?? createId(), name: input.name, ...processed, sensitivity: input.sensitivity, blurred: input.blur !== null };
+};
+
+/**
+ * Dates whose images are being processed, and a runner that flags a date while its job runs.
+ * @param {SetEvidenceError} setError - Error setter (job failures become a message)
+ * @returns {DateJobs} - Processing dates and runner
+ */
+export const useDateJobs = (setError: SetEvidenceError): DateJobs => {
+  const [processingDates, setProcessingDates] = useState<string[]>([]);
+
+  /**
+   * Run an image job for a date while flagging it as processing.
+   * @param {string} date - ISO date
+   * @param {() => Promise<void>} job - Work
+   * @returns {Promise<void>} - Resolves when done (errors become a message)
+   */
+  const runForDate = async (date: string, job: () => Promise<void>): Promise<void> => {
+    setProcessingDates((prev) => [...prev, date]);
+
+    try {
+      await job();
+    } catch (error) {
+      setError(`Gagal memproses gambar: ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      setProcessingDates((prev) => prev.filter((item) => item !== date));
+    }
+  };
+
+  return { processingDates, runForDate };
+};
+
+/**
+ * Images waiting in the blur editor, one at a time. Originals stay in memory only; cancelling a new
+ * code screenshot drops it, so an unblurred code image never reaches the document.
+ * @param {DateJobs} jobs - Date job runner
+ * @param {SetEvidenceError} setError - Error setter
+ * @returns {BlurQueue} - Current request, enqueue and editor callbacks
+ */
+export const useBlurQueue = (jobs: DateJobs, setError: SetEvidenceError): BlurQueue => {
+  const dispatch = useAppDispatch();
+  const [queue, setQueue] = useState<PendingBlur[]>([]);
+  const head = queue[0] ?? null;
+
+  /**
+   * Queue images for the editor.
+   * @param {PendingBlur[]} items - Images
+   * @returns {void}
+   */
+  const enqueue = (items: PendingBlur[]): void => setQueue((prev) => [...prev, ...items]);
+
+  /**
+   * Censor the current image with the editor's spec and store it.
+   * @param {BlurSpec} spec - Editor choice
+   * @returns {void}
+   */
+  const handleApply = (spec: BlurSpec): void => {
+    if (!head) {
+      return;
+    }
+
+    void jobs.runForDate(head.date, async () => {
+      const image = await createEvidence({ file: head.file, name: head.name, sensitivity: head.sensitivity, blur: spec, id: head.replaceId ?? undefined });
+
+      dispatch(head.replaceId ? replaceEvidence({ date: head.date, id: head.replaceId, image }) : addEvidence({ date: head.date, image }));
+      setQueue((prev) => prev.slice(1));
+    });
+  };
+
+  /**
+   * Skip the current image.
+   * @returns {void}
+   */
+  const handleCancel = (): void => {
+    if (head?.sensitivity === "code" && !head.replaceId) {
+      setError("Screenshot kode dibatalkan dan tidak ditambahkan (wajib diblur).");
+    }
+
+    setQueue((prev) => prev.slice(1));
+  };
+
+  return {
+    queue,
+    blurRequest: head,
+    isBlurProcessing: head ? jobs.processingDates.includes(head.date) : false,
+    enqueue,
+    onBlurApply: handleApply,
+    onBlurCancel: handleCancel,
+  };
+};
+
+/**
+ * Editor entries for code screenshots.
+ * @param {string} date - ISO date
+ * @param {File[]} files - Images
+ * @param {string | null} replaceId - Image replaced by the first file, or null to add
+ * @returns {PendingBlur[]} - Queue items
+ */
+export const toCodeBlurItems = (date: string, files: File[], replaceId: string | null): PendingBlur[] => {
+  return files.map((file) => ({
+    key: createId(),
+    date,
+    file,
+    name: file.name || `clipboard-${date}.jpg`,
+    isCode: true,
+    sensitivity: "code",
+    replaceId,
+  }));
 };
 
 /**
@@ -58,32 +168,15 @@ export const selectUploadFiles = (files: File[], freeSlots: number, setError: Se
 };
 
 /**
- * Add and replace images; processing happens in the browser only.
+ * Add and replace images; processing happens in the browser only. Code screenshots go to the blur editor.
  * @param {SetEvidenceError} setError - Error setter
- * @returns {EvidenceUpload} - Upload actions and dates being processed
+ * @param {DateJobs} jobs - Date job runner
+ * @param {BlurQueue} blur - Blur editor queue
+ * @returns {EvidenceUpload} - Upload actions
  */
-export const useEvidenceUpload = (setError: SetEvidenceError): EvidenceUpload => {
+export const useEvidenceUpload = (setError: SetEvidenceError, jobs: DateJobs, blur: BlurQueue): EvidenceUpload => {
   const dispatch = useAppDispatch();
   const doc = useAppSelector(selectDoc);
-  const [processingDates, setProcessingDates] = useState<string[]>([]);
-
-  /**
-   * Run an image job for a date while flagging it as processing.
-   * @param {string} date - ISO date
-   * @param {() => Promise<void>} job - Work
-   * @returns {Promise<void>} - Resolves when done (errors become a message)
-   */
-  const runForDate = async (date: string, job: () => Promise<void>): Promise<void> => {
-    setProcessingDates((prev) => [...prev, date]);
-
-    try {
-      await job();
-    } catch (error) {
-      setError(`Gagal memproses gambar: ${error instanceof Error ? error.message : String(error)}`);
-    } finally {
-      setProcessingDates((prev) => prev.filter((item) => item !== date));
-    }
-  };
 
   /**
    * Add images to the free slots of a date.
@@ -94,11 +187,18 @@ export const useEvidenceUpload = (setError: SetEvidenceError): EvidenceUpload =>
    */
   const addFiles = async (date: string, files: File[], isCode: boolean): Promise<void> => {
     setError(null);
-    const selected = selectUploadFiles(files, EVIDENCE_MAX_PER_DATE - (doc.evidence[date]?.length ?? 0), setError);
+    const queued = blur.queue.filter((item) => item.date === date && !item.replaceId).length;
+    const selected = selectUploadFiles(files, EVIDENCE_MAX_PER_DATE - (doc.evidence[date]?.length ?? 0) - queued, setError);
 
-    await runForDate(date, async () => {
+    if (isCode) {
+      blur.enqueue(toCodeBlurItems(date, selected, null));
+
+      return;
+    }
+
+    await jobs.runForDate(date, async () => {
       for (const file of selected) {
-        dispatch(addEvidence({ date, image: await createEvidence(file, file.name || `clipboard-${date}.jpg`, isCode) }));
+        dispatch(addEvidence({ date, image: await createEvidence({ file, name: file.name || `clipboard-${date}.jpg`, sensitivity: "plain", blur: null }) }));
       }
     });
   };
@@ -114,22 +214,30 @@ export const useEvidenceUpload = (setError: SetEvidenceError): EvidenceUpload =>
   const replaceFile = async (date: string, id: string, file: File, isCode: boolean): Promise<void> => {
     setError(isAcceptedImage(file) ? null : "Gunakan gambar PNG, JPG atau WebP.");
 
-    if (isAcceptedImage(file)) {
-      await runForDate(date, async () => {
-        dispatch(replaceEvidence({ date, id, image: await createEvidence(file, file.name, isCode, id) }));
-      });
+    if (!isAcceptedImage(file)) {
+      return;
     }
+
+    if (isCode) {
+      blur.enqueue(toCodeBlurItems(date, [file], id));
+
+      return;
+    }
+
+    await jobs.runForDate(date, async () => {
+      dispatch(replaceEvidence({ date, id, image: await createEvidence({ file, name: file.name, sensitivity: "plain", blur: null, id }) }));
+    });
   };
 
-  return { processingDates, addFiles, replaceFile };
+  return { addFiles, replaceFile };
 };
 
 /**
  * Remove, swap and blur buttons; targets come from `data-date` / `data-id`.
- * @param {SetEvidenceError} setError - Error setter
+ * @param {BlurQueue["enqueue"]} enqueueBlur - Opens the blur editor
  * @returns {EvidenceImageActions} - Handlers
  */
-export const useEvidenceImageActions = (setError: SetEvidenceError): EvidenceImageActions => {
+export const useEvidenceImageActions = (enqueueBlur: BlurQueue["enqueue"]): EvidenceImageActions => {
   const dispatch = useAppDispatch();
   const doc = useAppSelector(selectDoc);
 
@@ -160,7 +268,7 @@ export const useEvidenceImageActions = (setError: SetEvidenceError): EvidenceIma
   };
 
   /**
-   * Blur a plain image in full (the unblurred version is discarded).
+   * Open a stored plain image in the blur editor (whole image or areas such as names).
    * @param {MouseEvent<HTMLElement>} event - Click event
    * @returns {void}
    */
@@ -169,9 +277,9 @@ export const useEvidenceImageActions = (setError: SetEvidenceError): EvidenceIma
     const image = date ? doc.evidence[date]?.find((item) => item.id === id) : undefined;
 
     if (date && image) {
-      void createEvidence(dataUrlToBlob(image.dataUrl), image.name, true, image.id)
-        .then((blurred) => dispatch(replaceEvidence({ date, id: image.id, image: blurred })))
-        .catch((error: Error) => setError(`Gagal memproses gambar: ${error.message}`));
+      enqueueBlur([
+        { key: createId(), date, file: dataUrlToBlob(image.dataUrl), name: image.name, isCode: false, sensitivity: image.sensitivity, replaceId: image.id },
+      ]);
     }
   };
 
@@ -288,8 +396,10 @@ export const useEvidencePanel = (): EvidencePanelProps => {
   const [activeDate, setActiveDate] = useState<string | null>(null);
   const [isCodeUpload, setIsCodeUpload] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const upload = useEvidenceUpload(setError);
-  const blocks = useMemo(() => buildEvidenceBlocks(doc, activeDate, upload.processingDates), [doc, activeDate, upload.processingDates]);
+  const jobs = useDateJobs(setError);
+  const blur = useBlurQueue(jobs, setError);
+  const upload = useEvidenceUpload(setError, jobs, blur);
+  const blocks = useMemo(() => buildEvidenceBlocks(doc, activeDate, jobs.processingDates), [doc, activeDate, jobs.processingDates]);
   const bytes = useMemo(() => estimateDocumentBytes(doc), [doc]);
 
   /**
@@ -313,7 +423,11 @@ export const useEvidencePanel = (): EvidencePanelProps => {
     isCodeUpload,
     onToggleCodeUpload: handleToggleCodeUpload,
     onDismissError: handleDismissError,
-    ...useEvidenceImageActions(setError),
+    blurRequest: blur.blurRequest,
+    isBlurProcessing: blur.isBlurProcessing,
+    onBlurApply: blur.onBlurApply,
+    onBlurCancel: blur.onBlurCancel,
+    ...useEvidenceImageActions(blur.enqueue),
     ...useEvidenceInputs(upload, blocks, isCodeUpload, setActiveDate),
   };
 };

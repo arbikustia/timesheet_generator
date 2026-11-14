@@ -45,10 +45,23 @@ export const PeriodSchema = z.object({
   month: z.number().int().min(1).max(12),
 });
 
+/** Real working hours seen by collectors (first/last activity), shown as a hint during review. */
+export const TimeHintSchema = z.object({
+  first: z.string(),
+  last: z.string(),
+});
+
+/** Where an automatic entry came from; never rendered in the PDF. Paths only, never file contents. */
 export const EntryRefsSchema = z.object({
   repo: z.string().optional(),
   branch: z.string().optional(),
   ticket: z.string().optional(),
+  hint: TimeHintSchema.optional(),
+  files: z.array(z.string()).optional(),
+  /** Filtered Claude Code session summary (≤ 120 chars). */
+  summary: z.string().max(120).optional(),
+  /** The task text was generated from the ticket/branch; a name is still needed. */
+  needsName: z.boolean().optional(),
 });
 
 export const EntrySchema = z.object({
@@ -113,6 +126,7 @@ export type Signatures = z.infer<typeof SignaturesSchema>;
 export type WorkHours = z.infer<typeof WorkHoursSchema>;
 export type Profile = z.infer<typeof ProfileSchema>;
 export type Period = z.infer<typeof PeriodSchema>;
+export type TimeHint = z.infer<typeof TimeHintSchema>;
 export type EntryRefs = z.infer<typeof EntryRefsSchema>;
 export type Entry = z.infer<typeof EntrySchema>;
 export type DayOverride = z.infer<typeof DayOverrideSchema>;

@@ -8,6 +8,13 @@ import type { SignatureKey } from "@/types/timesheet-edit.type";
 export const getEntryAnchorId = (entryId: string): string => `entry-${entryId}`;
 
 /**
+ * DOM id of an automatic entry in the review panel.
+ * @param {string} entryId - Entry id
+ * @returns {string} - Element id
+ */
+export const getReviewAnchorId = (entryId: string): string => `review-${entryId}`;
+
+/**
  * DOM id of a date block in the evidence panel.
  * @param {string} isoDate - ISO date
  * @returns {string} - Element id

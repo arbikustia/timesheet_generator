@@ -1,9 +1,9 @@
-import { createStoreWrapper, renderHook } from "@/libs/unit-test";
+import { act, createStoreWrapper, renderHook } from "@/libs/unit-test";
 
 import { FAKE_JPEG_DATA_URL, installFakeCanvas } from "@/fixture/canvas.fixture";
 import { loadOctoberDoc, makeDocStore, SAMPLE_IMAGE } from "@/fixture/timesheet.fixture";
 
-import { createEvidence, selectUploadFiles, useEvidencePanel } from "./EvidencePanel.hook";
+import { createEvidence, selectUploadFiles, toCodeBlurItems, useEvidencePanel } from "./EvidencePanel.hook";
 
 const png = (name: string): File => new File(["x"], name, { type: "image/png" });
 
@@ -25,10 +25,11 @@ describe("selectUploadFiles", () => {
 });
 
 describe("createEvidence", () => {
-  it("should mark code screenshots as blurred and keep a given id", async () => {
+  it("should mark censored screenshots as blurred and keep a given id", async () => {
     const fake = installFakeCanvas();
+    const blur = { scope: "full" as const, effect: "blur" as const, regions: [] };
 
-    await expect(createEvidence(png("a.png"), "a.png", true, "fixed")).resolves.toEqual({
+    await expect(createEvidence({ file: png("a.png"), name: "a.png", sensitivity: "code", blur, id: "fixed" })).resolves.toEqual({
       id: "fixed",
       name: "a.png",
       dataUrl: FAKE_JPEG_DATA_URL,
@@ -38,7 +39,7 @@ describe("createEvidence", () => {
       sensitivity: "code",
       blurred: true,
     });
-    await expect(createEvidence(png("b.png"), "b.png", false)).resolves.toMatchObject({ sensitivity: "plain", blurred: false });
+    await expect(createEvidence({ file: png("b.png"), name: "b.png", sensitivity: "plain", blur: null })).resolves.toMatchObject({ sensitivity: "plain", blurred: false });
     fake.restore();
   });
 });
@@ -54,5 +55,31 @@ describe("useEvidencePanel", () => {
     expect(result.current.isTooLarge).toBe(true);
     expect(result.current.sizeLabel).toBe("16.0 MB");
     expect(result.current.blocks).toHaveLength(22);
+  });
+});
+
+describe("blur queue", () => {
+  it("should build editor items for code screenshots", () => {
+    const [item] = toCodeBlurItems("2026-10-01", [new File(["x"], "", { type: "image/png" })], "img");
+
+    expect(item).toMatchObject({ date: "2026-10-01", name: "clipboard-2026-10-01.jpg", isCode: true, sensitivity: "code", replaceId: "img" });
+  });
+
+  it("should ignore apply/cancel with an empty queue and replace via the editor", async () => {
+    const fake = installFakeCanvas();
+    const doc = loadOctoberDoc();
+
+    URL.createObjectURL = jest.fn(() => "blob:x");
+    URL.revokeObjectURL = jest.fn();
+    doc.evidence["2026-10-01"] = [SAMPLE_IMAGE];
+
+    const store = makeDocStore(doc);
+    const { result } = renderHook(() => useEvidencePanel(), { wrapper: createStoreWrapper(store) });
+
+    act(() => result.current.onBlurApply({ scope: "full", effect: "pixelate", regions: [] }));
+    act(() => result.current.onBlurCancel());
+    expect(result.current.blurRequest).toBeNull();
+    expect(result.current.error).toBeNull();
+    fake.restore();
   });
 });

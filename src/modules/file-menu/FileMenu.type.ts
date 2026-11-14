@@ -11,7 +11,7 @@ export type FileNotice = {
 };
 
 /** Actions that discard unsaved changes and therefore ask first. */
-export type ConfirmableAction = "new" | "open" | "open-last";
+export type ConfirmableAction = "new" | "open" | "open-last" | "reload";
 
 export type SetFileNotice = (notice: FileNotice | null) => void;
 
@@ -20,6 +20,7 @@ export type FileOpenActions = {
   createNew: () => void;
   openFile: () => Promise<void>;
   openLastFile: () => Promise<void>;
+  reloadFromDisk: () => Promise<void>;
   onFileInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -61,6 +62,8 @@ export type FileMenuProps = {
   statusText: string;
   isDirty: boolean;
   isSaving: boolean;
+  /** A file handle is open, so it can be read again from disk. */
+  canReload: boolean;
   lastFileName: string | null;
   notice: FileNotice | null;
   pendingConfirm: ConfirmableAction | null;
@@ -69,6 +72,7 @@ export type FileMenuProps = {
   onNew: () => void;
   onOpen: () => void;
   onOpenLast: () => void;
+  onReload: () => void;
   onSave: () => void;
   onSaveAs: () => void;
   onFileInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -80,4 +84,4 @@ export type FileMenuProps = {
 };
 
 export type FileMenuHandlers = PendingConfirm &
-  Pick<FileMenuProps, "onNew" | "onOpen" | "onOpenLast" | "onSave" | "onSaveAs" | "isSaving">;
+  Pick<FileMenuProps, "onNew" | "onOpen" | "onOpenLast" | "onReload" | "onSave" | "onSaveAs" | "isSaving">;

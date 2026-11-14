@@ -18,6 +18,7 @@ const makeProps = (overrides?: Partial<TimesheetBuilderProps>): TimesheetBuilder
   theme: "light",
   errorCount: 0,
   warningCount: 0,
+  reviewCount: 0,
   onTabChange: jest.fn(),
   onToggleTheme: jest.fn(),
   onNavigate: jest.fn(),

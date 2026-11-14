@@ -9,6 +9,7 @@ export type RequiredProfileField = "consultantName" | "leadProject" | "tribeLead
 /** What a check item points at; clicking the item scrolls/focuses it. */
 export type ValidationTarget =
   | { kind: "entry"; entryId: string }
+  | { kind: "review"; entryId: string }
   | { kind: "date"; date: string }
   | { kind: "evidence"; date: string }
   | { kind: "profile"; field: RequiredProfileField }

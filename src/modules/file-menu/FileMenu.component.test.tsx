@@ -15,6 +15,7 @@ const makeProps = (overrides?: Partial<FileMenuProps>): FileMenuProps => ({
   statusText: "Tersimpan",
   isDirty: false,
   isSaving: false,
+  canReload: false,
   lastFileName: null,
   notice: null,
   pendingConfirm: null,
@@ -23,6 +24,7 @@ const makeProps = (overrides?: Partial<FileMenuProps>): FileMenuProps => ({
   onNew: jest.fn(),
   onOpen: jest.fn(),
   onOpenLast: jest.fn(),
+  onReload: jest.fn(),
   onSave: jest.fn(),
   onSaveAs: jest.fn(),
   onFileInputChange: jest.fn(),
@@ -43,6 +45,7 @@ describe("FileMenuComponent", () => {
     ["Baru", "Buka", "Simpan", "Simpan Sebagai"].forEach((name) => fireEvent.click(screen.getByRole("button", { name })));
 
     expect(screen.queryByRole("button", { name: "Buka terakhir" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Muat ulang" })).toBeNull();
     expect(screen.getByTestId("file-status")).toHaveTextContent("Dokumen baru · Tersimpan");
     expect(props.onNew).toHaveBeenCalled();
     expect(props.onOpen).toHaveBeenCalled();
@@ -53,6 +56,7 @@ describe("FileMenuComponent", () => {
   it("should show Buka terakhir, the dirty status, a notice and the dialogs", () => {
     const props = makeProps({
       lastFileName: "Timesheet-2026-10.json",
+      canReload: true,
       isDirty: true,
       statusText: "Belum disimpan ●",
       notice: { type: "error", text: "Gagal membuka" },
@@ -62,6 +66,7 @@ describe("FileMenuComponent", () => {
 
     render(<FileMenuComponent {...props} />);
     fireEvent.click(screen.getByRole("button", { name: "Buka terakhir" }));
+    fireEvent.click(screen.getByRole("button", { name: "Muat ulang" }));
     fireEvent.click(screen.getByRole("button", { name: "Lanjut tanpa menyimpan" }));
     fireEvent.click(screen.getByRole("button", { name: "Pulihkan draft" }));
 
@@ -69,6 +74,7 @@ describe("FileMenuComponent", () => {
     expect(screen.getByText("Buat dokumen baru?")).toBeInTheDocument();
     expect(screen.getByText(/draft 09:05/)).toBeInTheDocument();
     expect(props.onOpenLast).toHaveBeenCalled();
+    expect(props.onReload).toHaveBeenCalled();
     expect(props.onConfirm).toHaveBeenCalled();
     expect(props.onRestoreDraft).toHaveBeenCalled();
   });

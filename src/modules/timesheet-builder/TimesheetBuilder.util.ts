@@ -3,6 +3,7 @@ import {
   getEvidenceAnchorId,
   getPreviewRowSelector,
   getProfileFieldAnchorId,
+  getReviewAnchorId,
   getSignatureAnchorId,
 } from "@/libs/utils/anchor.util";
 
@@ -19,6 +20,8 @@ export const getNavigationPlan = (target: ValidationTarget): NavigationPlan => {
   switch (target.kind) {
     case "entry":
       return { tab: "activities", anchorId: getEntryAnchorId(target.entryId), previewDate: null };
+    case "review":
+      return { tab: "review", anchorId: getReviewAnchorId(target.entryId), previewDate: null };
     case "date":
       return { tab: "activities", anchorId: null, previewDate: target.date };
     case "evidence":

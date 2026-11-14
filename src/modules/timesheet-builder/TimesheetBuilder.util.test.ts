@@ -3,6 +3,7 @@ import { applyNavigationPlan, getNavigationPlan } from "./TimesheetBuilder.util"
 describe("getNavigationPlan", () => {
   it("should map every target kind to a tab and anchor", () => {
     expect(getNavigationPlan({ kind: "entry", entryId: "e1" })).toEqual({ tab: "activities", anchorId: "entry-e1", previewDate: null });
+    expect(getNavigationPlan({ kind: "review", entryId: "e1" })).toEqual({ tab: "review", anchorId: "review-e1", previewDate: null });
     expect(getNavigationPlan({ kind: "date", date: "2026-10-01" })).toEqual({ tab: "activities", anchorId: null, previewDate: "2026-10-01" });
     expect(getNavigationPlan({ kind: "evidence", date: "2026-10-01" })).toEqual({ tab: "evidence", anchorId: "evidence-2026-10-01", previewDate: "2026-10-01" });
     expect(getNavigationPlan({ kind: "profile", field: "squad" as "leadProject" })).toMatchObject({ tab: "settings", anchorId: "profile-squad" });

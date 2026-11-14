@@ -1,4 +1,5 @@
 import {
+  assertUnchangedOnDisk,
   downloadTextFile,
   ensureHandlePermission,
   hasHandlePermission,
@@ -63,7 +64,7 @@ describe("pickers", () => {
 
     window.showOpenFilePicker = jest.fn(async () => [handle]);
 
-    await expect(openFileWithPicker()).resolves.toEqual({ name: "doc.json", text: "{\"a\":1}", handle });
+    await expect(openFileWithPicker()).resolves.toEqual({ name: "doc.json", text: "{\"a\":1}", handle, lastModified: expect.any(Number) });
   });
 
   it("should return null when nothing is picked or pickers are missing", async () => {
@@ -108,7 +109,7 @@ describe("handles", () => {
 
 describe("fallback", () => {
   it("should read an input file without a handle", async () => {
-    await expect(readInputFile(new File(["hi"], "x.json"))).resolves.toEqual({ name: "x.json", text: "hi", handle: null });
+    await expect(readInputFile(new File(["hi"], "x.json"))).resolves.toEqual({ name: "x.json", text: "hi", handle: null, lastModified: null });
   });
 
   it("should download text through a temporary link", () => {
@@ -122,5 +123,15 @@ describe("fallback", () => {
     expect(click).toHaveBeenCalled();
     expect(URL.revokeObjectURL).toHaveBeenCalledWith("blob:1");
     click.mockRestore();
+  });
+});
+
+describe("assertUnchangedOnDisk", () => {
+  it("should only reject when the known timestamp differs", async () => {
+    const handle = { getFile: async (): Promise<File> => new File(["x"], "doc.json", { lastModified: 5 }) };
+
+    await expect(assertUnchangedOnDisk(handle, null)).resolves.toBeUndefined();
+    await expect(assertUnchangedOnDisk(handle, 5)).resolves.toBeUndefined();
+    await expect(assertUnchangedOnDisk(handle, 4)).rejects.toThrow("file berubah di disk");
   });
 });

@@ -466,6 +466,25 @@ exports[`TimesheetBuilderContainer Snapshot Test TimesheetBuilderContainer Snaps
                 </div>
                 <div
                   class="ant-tabs-tab"
+                  data-node-key="review"
+                >
+                  <div
+                    aria-controls="rc-tabs-test-panel-review"
+                    aria-selected="false"
+                    class="ant-tabs-tab-btn"
+                    id="rc-tabs-test-tab-review"
+                    role="tab"
+                    tabindex="-1"
+                  >
+                    <span
+                      class="inline-flex items-center gap-1.5"
+                    >
+                      Review
+                    </span>
+                  </div>
+                </div>
+                <div
+                  class="ant-tabs-tab"
                   data-node-key="days"
                 >
                   <div

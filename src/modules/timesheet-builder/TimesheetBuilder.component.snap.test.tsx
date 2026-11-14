@@ -18,6 +18,7 @@ describe("TimesheetBuilderComponent Snapshot Test", () => {
           theme: "light" as const,
           errorCount: 3,
           warningCount: 20,
+          reviewCount: 2,
           onTabChange: jest.fn(),
           onToggleTheme: jest.fn(),
           onNavigate: jest.fn(),

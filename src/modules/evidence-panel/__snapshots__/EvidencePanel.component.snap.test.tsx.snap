@@ -20,7 +20,7 @@ exports[`EvidencePanelComponent Snapshot Test EvidencePanelComponent Snapshots s
         <kbd>
           Ctrl/Cmd+V
         </kbd>
-         untuk menempel screenshot — hasil tempel dianggap screenshot kode dan otomatis diblur.
+         untuk menempel screenshot — hasil tempel dianggap screenshot kode dan dibuka di editor blur sebelum disimpan.
       </p>
       <label
         class="ant-checkbox-wrapper css-var-root ant-checkbox-css-var css-dev-only-do-not-override-eofgey"
@@ -36,7 +36,7 @@ exports[`EvidencePanelComponent Snapshot Test EvidencePanelComponent Snapshots s
         <span
           class="ant-checkbox-label"
         >
-          Gambar yang diunggah/ditarik adalah screenshot kode (blur otomatis)
+          Gambar yang diunggah/ditarik adalah screenshot kode (wajib lewat editor blur)
         </span>
       </label>
       <p

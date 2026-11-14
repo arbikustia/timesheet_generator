@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`AutomationSettingsComponent Snapshot Test AutomationSettingsComponent Snapshots should render one ticket and one repository 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col gap-4 border-t border-border-default pt-3"
+  >
+    <section
+      aria-labelledby="ticket-map-title"
+      class="flex flex-col gap-2"
+    >
+      <h4
+        class="m-0 text-sm font-semibold"
+        id="ticket-map-title"
+      >
+        Nama task per ticket
+      </h4>
+      <p
+        class="m-0 text-xs text-text-secondary"
+      >
+        Dipakai CLI saat impor. Nama yang diubah lalu diterima di review otomatis tersimpan di sini.
+      </p>
+      <ul
+        class="m-0 flex list-none flex-col gap-1 p-0"
+      >
+        <li
+          class="flex items-center gap-2"
+        >
+          <code
+            class="w-24 shrink-0 text-xs"
+          >
+            BIT-1
+          </code>
+          <input
+            aria-label="Nama task BIT-1"
+            class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+            data-ticket="BIT-1"
+            type="text"
+            value="Login"
+          />
+          <button
+            aria-label="Hapus BIT-1"
+            class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+            data-ticket="BIT-1"
+            type="button"
+          >
+            <span
+              class="ant-btn-icon"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline
+                  points="3 6 5 6 21 6"
+                />
+                <path
+                  d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                />
+                <line
+                  x1="10"
+                  x2="10"
+                  y1="11"
+                  y2="17"
+                />
+                <line
+                  x1="14"
+                  x2="14"
+                  y1="11"
+                  y2="17"
+                />
+              </svg>
+            </span>
+          </button>
+        </li>
+      </ul>
+      <form
+        aria-label="Tambah ticket"
+        class="flex flex-wrap items-center gap-2"
+      >
+        <input
+          aria-label="Ticket baru"
+          class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined !w-28 css-var-root ant-input-css-var"
+          placeholder="BIT-123"
+          type="text"
+          value=""
+        />
+        <input
+          aria-label="Nama task baru"
+          class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined !w-60 flex-1 css-var-root ant-input-css-var"
+          placeholder="Fixing flow case transfer"
+          type="text"
+          value=""
+        />
+        <button
+          class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm"
+          type="submit"
+        >
+          <span
+            class="ant-btn-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="12"
+                x2="12"
+                y1="5"
+                y2="19"
+              />
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+            </svg>
+          </span>
+          <span>
+            Tambah
+          </span>
+        </button>
+      </form>
+    </section>
+    <section
+      aria-labelledby="repos-title"
+      class="flex flex-col gap-2"
+    >
+      <h4
+        class="m-0 text-sm font-semibold"
+        id="repos-title"
+      >
+        Repo yang dipantau
+      </h4>
+      <p
+        class="m-0 text-xs text-text-secondary"
+      >
+        Path lokal di laptop ini (dibaca read-only oleh 
+        <code>
+          timesheet snapshot --doc
+        </code>
+        ). CLI juga membaca 
+        <code>
+          ~/.timesheet/config.json
+        </code>
+        .
+      </p>
+      <ul
+        class="m-0 flex list-none flex-col gap-1 p-0"
+      >
+        <li
+          class="flex items-center gap-2"
+        >
+          <input
+            aria-label="Path repo 1"
+            class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+            data-field="path"
+            data-index="0"
+            placeholder="/home/saya/work/bantuit-fe"
+            type="text"
+            value="/work/fe"
+          />
+          <input
+            aria-label="Label repo 1"
+            class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined !w-40 css-var-root ant-input-css-var"
+            data-field="label"
+            data-index="0"
+            placeholder="BANTUIT FE"
+            type="text"
+            value="FE"
+          />
+          <button
+            aria-label="Hapus repo 1"
+            class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+            data-index="0"
+            type="button"
+          >
+            <span
+              class="ant-btn-icon"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline
+                  points="3 6 5 6 21 6"
+                />
+                <path
+                  d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                />
+                <line
+                  x1="10"
+                  x2="10"
+                  y1="11"
+                  y2="17"
+                />
+                <line
+                  x1="14"
+                  x2="14"
+                  y1="11"
+                  y2="17"
+                />
+              </svg>
+            </span>
+          </button>
+        </li>
+      </ul>
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm self-start"
+        type="button"
+      >
+        <span
+          class="ant-btn-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="12"
+              x2="12"
+              y1="5"
+              y2="19"
+            />
+            <line
+              x1="5"
+              x2="19"
+              y1="12"
+              y2="12"
+            />
+          </svg>
+        </span>
+        <span>
+          Tambah repo
+        </span>
+      </button>
+    </section>
+  </div>
+</DocumentFragment>
+`;

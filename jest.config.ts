@@ -2,7 +2,7 @@ import type { Config } from "jest";
 
 const config: Config = {
   rootDir: ".",
-  roots: ["<rootDir>/src"],
+  roots: ["<rootDir>/src", "<rootDir>/packages"],
   testEnvironment: "jsdom",
   setupFiles: ["<rootDir>/jest/polyfills.cjs"],
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
@@ -11,6 +11,7 @@ const config: Config = {
     "<rootDir>/src/**/*.test.tsx",
     "<rootDir>/src/**/*.snap.ts",
     "<rootDir>/src/**/*.snap.tsx",
+    "<rootDir>/packages/*/src/**/*.test.ts",
   ],
   testPathIgnorePatterns: [
     "/node_modules/",
@@ -58,6 +59,12 @@ const config: Config = {
     "!src/types/**/*.ts",
     "!src/main.tsx",
     "!src/vite-env.d.ts",
+    "packages/cli/src/**/*.ts",
+    "!packages/cli/src/**/*.test.ts",
+    "!packages/cli/src/**/*.type.ts",
+    "!packages/cli/src/**/*.config.ts",
+    // Process entry point: only wires argv/stdout to runCli.
+    "!packages/cli/src/main.ts",
   ],
   coveragePathIgnorePatterns: [
     "/node_modules/",

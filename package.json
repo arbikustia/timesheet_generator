@@ -3,9 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "bin": {
+    "timesheet": "packages/cli/dist/timesheet.mjs"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:cli": "vite build --config packages/cli/vite.config.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "jest --runInBand"

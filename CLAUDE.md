@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Timesheet Builder: a 100% client-side app that builds the monthly consultant timesheet + evidence PDF in a
+Timesheet Builder: a 100% client-side app (plus a local Node CLI in `packages/cli` for automation) that builds the monthly consultant timesheet + evidence PDF in a
 fixed format (reference: `src/assets/BHN II - Timesheet October.pdf`). No backend, no database: one document =
 one `.json` file (Word-like New / Open / Save / Save As). Built on the former QuoteFlow template.
 
@@ -24,6 +24,8 @@ npm test               # jest --runInBand; coverage threshold 70% global
 npx jest path/to/file.test.tsx            # single test
 npx jest -u path/to/X.component.snap.tsx  # update a snapshot
 npx playwright test    # e2e (e2e/tests)
+npm run build:cli      # bundle the `timesheet` CLI → packages/cli/dist/timesheet.mjs
+npx tsc -p tsconfig.cli.json --noEmit     # type-check the CLI
 ```
 
 ## Code convention (mandatory)
@@ -51,8 +53,12 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/modules/evidence-panel/` | Evidence tab: per-date left/right slots, upload / drag & drop / paste (auto-blur), replace, swap, blur, remove, document size warning |
 | `src/modules/export-check/` | "Cek export" tab: month summary + clickable errors/warnings from `selectValidationReport` |
 | `src/modules/export-pdf/` | Export PDF button (+ Ctrl/Cmd+P), blocked-by-errors dialog, print-only `.print-root` portal of the same `<TimesheetDocument>`; print CSS in `src/index.css` |
+| `src/modules/blur-editor/` | Blur editor modal: whole image or drawn areas, blur or pixelate; original only in memory |
+| `src/modules/import-review/` | "Review" tab: automatic `reviewed: false` entries per week/date — accept, edit, merge, reject, accept week; import command to copy |
+| `src/modules/automation-settings/` | Ticket → task name map and watched repositories (stored in `doc.automation`) |
+| `packages/cli/src/` | `timesheet snapshot / import / doctor` (Node). Read-only git allow-list, worklog `~/.timesheet/worklog.jsonl`, atomic doc write + `.lock`; reuses `src/` parser via `@/` |
 | `src/modules/edit-history/` | Undo/redo buttons + Ctrl/Cmd+Z, Ctrl/Cmd+Shift+Z, Ctrl/Cmd+Y |
-| `src/modules/file-menu/` | Word-like New / Open / Open last / Save / Save As, status indicator, autosave (file or IndexedDB draft), draft recovery, Ctrl/Cmd+S/O shortcuts, beforeunload |
+| `src/modules/file-menu/` | Word-like New / Open / Open last / Reload from disk / Save / Save As (refuses to overwrite a file changed on disk), status indicator, autosave (file or IndexedDB draft), draft recovery, Ctrl/Cmd+S/O shortcuts, beforeunload |
 | `src/modules/timesheet-document/` | The A4 output (timesheet, signature, evidence cover, evidence pages). One tree for preview and PDF; geometry in pt in `TimesheetDocument.config.ts`, measured from the reference PDF |
 | `src/components/<Name>/` | Shared UI primitives (Button, Input, Select, Modal, ConfirmModal, Tabs, …) |
 | `src/constants/timesheet.constant.ts` | Fixed document labels, English month names, evidence capacities |
@@ -96,13 +102,15 @@ index.ts          # exports the entry (wrapper or container)
   second mount of the same component, so whole-page tests find two `timesheet-document`s — scope queries with
   `within(region "Pratinjau dokumen")` or `within(getByTestId("print-root"))`.
 - New edit actions in `timesheet.slice.ts` must be added to `isUndoableAction`, or they bypass undo history.
+- CLI tests start with `/** @jest-environment node */`; Node core errors fail `instanceof Error` inside Jest, so
+  check `error.code` by duck typing. The CLI must never run a git write command or read file contents.
 - Do not run plain `eslint --fix` on strict files: `jsdoc/require-jsdoc` auto-inserts empty JSDoc stubs. Use
   `npx eslint --fix --rule '{"jsdoc/require-jsdoc":"off"}' <path>` to sort imports, then `npx eslint <path>`.
 - Per-row handlers read `data-*` attributes (`data-entry-id`, `data-field`, …) instead of inline arrows (§4.4).
 - ESLint strict rules apply to `src/App.tsx`, `src/modules/**`, `src/libs/utils/**`, `src/types/**`, `src/constants/**`, `src/hooks/**`, `src/store/timesheet.*`, `src/store/file.*`. Ambient `*.d.ts` files may use `interface` (declaration merging).
 - Jest setup mocks `idb-keyval` with an in-memory map cleared before each test (jsdom has no IndexedDB).
   Await async file work in tests before they end, or remembered handles leak into the next test.
-- Jest only matches `*.test.ts(x)` and `*.snap.ts(x)` under `src/`. Coverage excludes `*.type`,
+- Jest matches `*.test.ts(x)` / `*.snap.ts(x)` under `src/` and `*.test.ts` under `packages/*/src`. Coverage excludes `*.type`,
   `*.config`, `index`, `*.wrapper`, `*.style` and `src/types`. JSON imports work in Jest (`resolveJsonModule`).
 - Git: work on a feature branch; PRs target `development`. Commit format
   `<type>(<scope>): [BIT-<n>] <summary>` (see convention Section 10).

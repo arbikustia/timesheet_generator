@@ -41,7 +41,7 @@ export default defineConfig([
         JSX: true,
       },
       parserOptions: {
-        project: ["./tsconfig.app.json", "./tsconfig.node.json"],
+        project: ["./tsconfig.app.json", "./tsconfig.node.json", "./tsconfig.cli.json"],
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -151,6 +151,7 @@ export default defineConfig([
       "src/hooks/**/*.{ts,tsx}",
       "src/store/timesheet.*",
       "src/store/file.*",
+      "packages/cli/src/**/*.ts",
     ],
     rules: {
       semi: ["error", "always"],

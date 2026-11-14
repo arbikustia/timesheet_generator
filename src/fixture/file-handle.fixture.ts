@@ -9,6 +9,8 @@ export type FakeHandleOptions = {
 export type FakeFileHandle = {
   handle: DocumentFileHandle;
   written: string[];
+  /** Simulate another program rewriting the file (new contents and a newer `lastModified`). */
+  changeOnDisk: (text: string) => void;
 };
 
 /**
@@ -18,18 +20,33 @@ export type FakeFileHandle = {
  */
 export const makeFileHandle = (options?: FakeHandleOptions): FakeFileHandle => {
   const written: string[] = [];
+  let text = options?.text ?? "";
+  let lastModified = 1;
   const handle: DocumentFileHandle = {
     name: options?.name ?? "Timesheet-2026-10-Arbi-Kustia.json",
-    getFile: async (): Promise<File> => new File([options?.text ?? ""], options?.name ?? "doc.json"),
+    getFile: async (): Promise<File> => new File([text], options?.name ?? "doc.json", { lastModified }),
     createWritable: async () => ({
-      write: async (text: FileSystemWriteChunkType): Promise<void> => {
-        written.push(String(text));
+      write: async (chunk: FileSystemWriteChunkType): Promise<void> => {
+        written.push(String(chunk));
       },
-      close: async (): Promise<void> => undefined,
+      close: async (): Promise<void> => {
+        text = written.at(-1) ?? text;
+        lastModified += 1;
+      },
     }),
     queryPermission: async (): Promise<PermissionState> => options?.permission ?? "granted",
     requestPermission: async (): Promise<PermissionState> => options?.permission ?? "granted",
   };
 
-  return { handle, written };
+  /**
+   * Rewrite the file as another program would.
+   * @param {string} next - New contents
+   * @returns {void}
+   */
+  const changeOnDisk = (next: string): void => {
+    text = next;
+    lastModified += 1;
+  };
+
+  return { handle, written, changeOnDisk };
 };

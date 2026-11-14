@@ -1,4 +1,4 @@
-import type { DayOverride, Entry, Evidence, Period, Profile, Signatures, WorkHours } from "./timesheet.type";
+import type { AutomationRepo, DayOverride, Entry, Evidence, Period, Profile, Signatures, WorkHours } from "./timesheet.type";
 
 /** Fields the user types when adding an activity. */
 export type NewEntryInput = Pick<Entry, "date" | "task" | "start" | "end">;
@@ -62,4 +62,23 @@ export type EvidenceRefPayload = {
 
 export type ReplaceEvidencePayload = EvidenceRefPayload & {
   image: Evidence;
+};
+
+/** Merge an automatic entry into another row of the same date (the source row is removed). */
+export type MergeEntryPayload = {
+  sourceId: string;
+  targetId: string;
+};
+
+export type TicketNamePayload = {
+  ticket: string;
+  /** Stored as typed (may be empty while editing); collectors ignore empty names. */
+  name: string;
+};
+
+export type RepoChanges = Partial<AutomationRepo>;
+
+export type UpdateRepoPayload = {
+  index: number;
+  changes: RepoChanges;
 };

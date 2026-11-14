@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FiClock, FiFilePlus, FiFolder, FiSave } from "react-icons/fi";
+import { FiClock, FiFilePlus, FiFolder, FiRefreshCw, FiSave } from "react-icons/fi";
 import { Button, Space, Tooltip } from "antd";
 
 import { ACCEPTED_DOCUMENT_TYPES } from "./FileMenu.config";
@@ -26,6 +26,13 @@ const _renderButtons = (props: FileMenuProps, lastFileName: string | null): Reac
       <Tooltip title={lastFileName}>
         <Button icon={<FiClock aria-hidden />} onClick={props.onOpenLast}>
           Buka terakhir
+        </Button>
+      </Tooltip>
+    )}
+    {props.canReload && (
+      <Tooltip title="Baca ulang file dari disk, mis. setelah timesheet import">
+        <Button icon={<FiRefreshCw aria-hidden />} onClick={props.onReload}>
+          Muat ulang
         </Button>
       </Tooltip>
     )}

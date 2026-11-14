@@ -2,8 +2,9 @@ import { type ChangeEvent, useCallback, useEffect, useRef, useState } from "reac
 
 import { getCurrentPeriod } from "@/libs/utils/date.util";
 import { clearDraft, loadDraft, loadLastFileHandle, rememberFileHandle, saveDraft } from "@/libs/utils/draft-storage.util";
-import { getCurrentFileHandle, setCurrentFileHandle } from "@/libs/utils/file-handle.registry";
+import { getCurrentFileHandle, getKnownModified, setCurrentFileHandle, setKnownModified } from "@/libs/utils/file-handle.registry";
 import {
+  assertUnchangedOnDisk,
   downloadTextFile,
   ensureHandlePermission,
   hasHandlePermission,
@@ -81,6 +82,7 @@ export const useApplyOpenedFile = (setNotice: SetFileNotice, setLastFileName: La
 
       dispatch(loadDoc(result.doc));
       setCurrentFileHandle(opened.handle);
+      setKnownModified(opened.lastModified);
       dispatch(setFileInfo({ fileName: opened.name, hasHandle: opened.handle !== null }));
       setNotice({ type: "success", text: `Dibuka: ${opened.name}` });
       void clearDraft();
@@ -126,6 +128,7 @@ export const useFileOpen = (applyOpened: ApplyOpenedFile, setNotice: SetFileNoti
   const createNew = (): void => {
     dispatch(loadDoc(createEmptyDoc(getCurrentPeriod())));
     setCurrentFileHandle(null);
+    setKnownModified(null);
     dispatch(resetFile());
     setNotice(null);
     void clearDraft();
@@ -159,6 +162,7 @@ export const useFileOpen = (applyOpened: ApplyOpenedFile, setNotice: SetFileNoti
     createNew,
     openFile,
     openLastFile: useOpenLastFile(applyOpened, setNotice),
+    reloadFromDisk: useReloadFromDisk(applyOpened, setNotice),
     onFileInputChange: useFileInputChange(applyOpened, setNotice),
   };
 };
@@ -185,6 +189,31 @@ export const useOpenLastFile = (applyOpened: ApplyOpenedFile, setNotice: SetFile
       },
       setNotice,
       "Gagal membuka file terakhir",
+    );
+};
+
+/**
+ * "Muat ulang": read the open file again, e.g. after `timesheet import` wrote to it.
+ * @param {ApplyOpenedFile} applyOpened - Loader of an opened file
+ * @param {SetFileNotice} setNotice - Feedback setter
+ * @returns {() => Promise<void>} - Action
+ */
+export const useReloadFromDisk = (applyOpened: ApplyOpenedFile, setNotice: SetFileNotice): (() => Promise<void>) => {
+  return (): Promise<void> =>
+    runFileAction(
+      async () => {
+        const handle = getCurrentFileHandle();
+
+        if (!handle || !(await ensureHandlePermission(handle, "readwrite"))) {
+          setNotice({ type: "error", text: "Tidak ada file terbuka yang bisa dimuat ulang, atau izin ditolak." });
+
+          return;
+        }
+
+        applyOpened(await readHandle(handle));
+      },
+      setNotice,
+      "Gagal memuat ulang",
     );
 };
 
@@ -222,7 +251,9 @@ export const writeDocToHandle = async (
   doc: TimesheetDoc,
   dispatch: ReturnType<typeof useAppDispatch>,
 ): Promise<void> => {
+  await assertUnchangedOnDisk(handle, getKnownModified());
   await writeTextToHandle(handle, serializeTimesheetDoc(doc));
+  setKnownModified((await handle.getFile()).lastModified);
   dispatch(markSaved(doc));
   dispatch(setLastSavedAt(new Date().toISOString()));
   await clearDraft();
@@ -258,6 +289,7 @@ export const saveDocAs = async (
     return null;
   }
 
+  setKnownModified(null);
   await writeDocToHandle(handle, doc, dispatch);
   setCurrentFileHandle(handle);
   dispatch(setFileInfo({ fileName: handle.name, hasHandle: true }));
@@ -481,7 +513,13 @@ export const useFileMenuHandlers = (opener: FileOpenActions, saver: FileSaveActi
    */
   const handleOpenLastNow = (): void => void opener.openLastFile();
 
-  const confirm = usePendingConfirm(isDirty, { new: opener.createNew, open: handleOpenNow, "open-last": handleOpenLastNow });
+  /**
+   * Reload the open file from disk.
+   * @returns {void}
+   */
+  const handleReloadNow = (): void => void opener.reloadFromDisk();
+
+  const confirm = usePendingConfirm(isDirty, { new: opener.createNew, open: handleOpenNow, "open-last": handleOpenLastNow, reload: handleReloadNow });
 
   /**
    * Save in place.
@@ -513,12 +551,19 @@ export const useFileMenuHandlers = (opener: FileOpenActions, saver: FileSaveActi
    */
   const handleOpenLast = (): void => confirm.request("open-last");
 
+  /**
+   * "Muat ulang" button.
+   * @returns {void}
+   */
+  const handleReload = (): void => confirm.request("reload");
+
   return {
     ...confirm,
     isSaving: saver.isSaving,
     onNew: handleNew,
     onOpen: handleOpen,
     onOpenLast: handleOpenLast,
+    onReload: handleReload,
     onSave: handleSave,
     onSaveAs: handleSaveAs,
   };
@@ -551,6 +596,7 @@ export const useFileMenu = (): FileMenuProps => {
     fileLabel: file.fileName ?? "Dokumen baru",
     statusText: getFileStatusText({ fileName: file.fileName, isDirty, lastSavedAt: file.lastSavedAt, lastDraftAt }),
     isDirty,
+    canReload: file.hasHandle,
     lastFileName,
     notice,
     fileInputRef: opener.fileInputRef,

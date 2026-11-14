@@ -33,7 +33,17 @@ let fake: ReturnType<typeof installFakeCanvas>;
 
 beforeEach(() => {
   fake = installFakeCanvas();
+  URL.createObjectURL = jest.fn(() => "blob:edit");
+  URL.revokeObjectURL = jest.fn();
 });
+
+/**
+ * Apply the blur editor with its default (whole image, blur).
+ * @returns {Promise<void>} - Resolves once the editor is open and applied
+ */
+const applyEditor = async (): Promise<void> => {
+  fireEvent.click(await screen.findByRole("button", { name: "Terapkan blur" }));
+};
 
 afterEach(() => fake.restore());
 
@@ -63,7 +73,7 @@ describe("EvidencePanelContainer", () => {
     expect(fake.filters).not.toContain("blur(6px)");
   });
 
-  it("should blur uploads when they are marked as code and keep at most two images", async () => {
+  it("should send code uploads through the blur editor and keep at most two images", async () => {
     const store = renderPanel();
 
     fireEvent.click(screen.getByRole("checkbox"));
@@ -71,6 +81,10 @@ describe("EvidencePanelContainer", () => {
       dataTransfer: { files: [PNG(), PNG(), PNG()] },
     });
 
+    expect(imagesOf(store, "2026-10-01")).toEqual([]);
+    await applyEditor();
+    await waitFor(() => expect(imagesOf(store, "2026-10-01")).toHaveLength(1));
+    await applyEditor();
     await waitFor(() => expect(imagesOf(store, "2026-10-01")).toHaveLength(2));
     expect(imagesOf(store, "2026-10-01").every((image) => image.sensitivity === "code" && image.blurred)).toBe(true);
     expect(fake.filters).toContain("blur(6px)");
@@ -83,10 +97,25 @@ describe("EvidencePanelContainer", () => {
 
     fireEvent.click(block);
     fireEvent.paste(block, { clipboardData: { files: [new File(["x"], "", { type: "image/png" })] } });
+    expect(await screen.findByText("Blur gambar — clipboard-2026-10-02.jpg")).toBeInTheDocument();
+    await applyEditor();
 
     await waitFor(() => expect(imagesOf(store, "2026-10-02")).toHaveLength(1));
     expect(imagesOf(store, "2026-10-02")[0]).toMatchObject({ name: "clipboard-2026-10-02.jpg", sensitivity: "code", blurred: true });
     expect(block).toHaveAttribute("aria-current", "true");
+  });
+
+  it("should drop a cancelled code screenshot instead of storing it unblurred", async () => {
+    const store = renderPanel();
+    const block = screen.getByRole("listitem", { name: "Evidence Jum, 02/10/2026" });
+
+    fireEvent.click(block);
+    fireEvent.paste(block, { clipboardData: { files: [PNG()] } });
+    fireEvent.click(await screen.findByRole("button", { name: "Batal" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent("Screenshot kode dibatalkan dan tidak ditambahkan");
+    expect(imagesOf(store, "2026-10-02")).toEqual([]);
+    expect(fake.contexts).toHaveLength(0);
   });
 
   it("should ignore a paste without images", () => {
@@ -149,7 +178,8 @@ describe("EvidencePanelContainer — existing images", () => {
     expect(ids()).toEqual(["b", "a"]);
 
     fireEvent.click(screen.getByRole("button", { name: "Blur gambar kanan Kam, 01/10/2026" }));
-    await waitFor(() => expect(imagesOf(store, "2026-10-01")[1]).toMatchObject({ id: "a", sensitivity: "code", blurred: true }));
+    await applyEditor();
+    await waitFor(() => expect(imagesOf(store, "2026-10-01")[1]).toMatchObject({ id: "a", sensitivity: "plain", blurred: true }));
     expect(screen.getByText("Diblur")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Hapus gambar kiri Kam, 01/10/2026" }));

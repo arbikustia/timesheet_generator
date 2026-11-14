@@ -10,7 +10,7 @@ import { applyNavigationPlan, getNavigationPlan } from "./TimesheetBuilder.util"
 
 import { useAppSelector } from "@/store/hooks";
 import { useTheme } from "@/store/theme.hook";
-import { selectDoc, selectValidationReport } from "@/store/timesheet.slice";
+import { selectDoc, selectPendingReviewCount, selectValidationReport } from "@/store/timesheet.slice";
 
 /**
  * Whether a tab key is a known builder tab.
@@ -58,6 +58,7 @@ export const useCheckNavigation = (setActiveTab: (tab: BuilderTab) => void): ((t
 export const useTimesheetBuilder = (): TimesheetBuilderProps => {
   const { period, profile } = useAppSelector(selectDoc);
   const { errorCount, warningCount } = useAppSelector(selectValidationReport);
+  const reviewCount = useAppSelector(selectPendingReviewCount);
   const { theme, toggleTheme } = useTheme();
   const [activeTab, setActiveTab] = useState<BuilderTab>("activities");
   const handleNavigate = useCheckNavigation(setActiveTab);
@@ -88,6 +89,7 @@ export const useTimesheetBuilder = (): TimesheetBuilderProps => {
     theme,
     errorCount,
     warningCount,
+    reviewCount,
     onTabChange: handleTabChange,
     onToggleTheme: toggleTheme,
     onNavigate: handleNavigate,

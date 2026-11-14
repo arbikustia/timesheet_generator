@@ -276,3 +276,73 @@ Format: tanggal · keputusan · alasan.
   dekoratif `aria-hidden`; tombol ikon (Urungkan/Ulangi) punya `aria-label` dan `aria-keyshortcuts`.
 - Teks peringatan memakai `text-warning-strong` (kontras ≥ 4.5:1) menggantikan `text-warning` (≈3.2:1).
 - jsdom tidak punya `scrollIntoView`; `src/setupTests.ts` memasang stub `jest.fn()`.
+
+## Fase 7 — Blur & Import (2026-11-14)
+
+Dikerjakan atas permintaan langsung meski PROMPT §9 menyarankan Fase 0–6 dipakai sebulan dulu.
+
+### D-032 · Editor blur (PROMPT §5.1)
+- `modules/blur-editor` (modal): cakupan **Seluruh gambar** (default, satu klik "Terapkan blur") atau **Area
+  tertentu** (seret untuk menggambar kotak, banyak kotak, "Urungkan area" / "Hapus semua area"); efek **Blur**
+  (pixelate 14px + Gaussian 6px, seperti D-024) atau **Pixelate** (blok 12px, tanpa smoothing).
+- Pratinjau memakai CSS (`filter`/`backdrop-filter`) hanya untuk tampilan; hasil yang disimpan diproses pada
+  piksel canvas di `image.util.ts` (`applyBlurSpec`, area dipotong → disensor → digambar kembali) sebelum
+  kompresi JPEG. Koordinat kotak disimpan sebagai pecahan 0–1 sehingga tidak bergantung ukuran tampilan.
+- Gambar `code` (paste, atau upload dengan centang "screenshot kode") tidak lagi diblur otomatis: masuk antrean
+  editor, aslinya hanya ada di memori (Blob + object URL yang di-revoke). **Batal** pada screenshot kode baru =
+  gambar dibuang dengan pesan, sehingga versi tanpa blur tetap tidak pernah masuk dokumen.
+- Tombol **Blur** pada gambar `plain` membuka editor dengan gambar tersimpan (mis. menutup nama saja);
+  `sensitivity` tetap `plain`, `blurred: true`.
+- Area dipilih dengan pointer saja; belum ada cara keyboard untuk menggambar kotak (mode "Seluruh gambar" tetap
+  bisa dipakai penuh dengan keyboard).
+- jsdom tidak punya `PointerEvent`: `src/setupTests.ts` memasang polyfill berbasis `MouseEvent`.
+
+### D-033 · File berubah di disk & "Muat ulang"
+- Browser tidak bisa membuat file `.lock` di samping dokumen, jadi perlindungan dari sisi aplikasi: setiap
+  baca/tulis mencatat `File.lastModified` (`file-handle.registry`). Sebelum menulis (Simpan/autosave),
+  `assertUnchangedOnDisk` membandingkan; bila berbeda (mis. `timesheet import` baru menulis) penulisan ditolak
+  dengan pesan, autosave jatuh ke draft IndexedDB, dan perubahan lokal tidak hilang.
+- Tombol **Muat ulang** (top bar, saat ada file handle) membaca ulang file dari disk, dengan konfirmasi bila ada
+  perubahan belum disimpan. Simpan Sebagai ke file baru tidak diperiksa.
+
+### D-034 · Skema `refs` & aksi review (tetap `schemaVersion: 1`)
+- `EntryRefs` ditambah field opsional: `hint {first,last}` (jam aktivitas nyata), `files` (path saja),
+  `summary` (≤ 120 karakter), `needsName` (task masih nama hasil generate). File lama tetap valid.
+- Aksi store baru (semua bisa di-undo): `acceptEntries`, `mergeEntry` (hanya tanggal yang sama; daftar file
+  digabung, baris sumber dihapus), `setTicketName` / `removeTicketName`, `addRepo` / `updateRepo` / `removeRepo`.
+- Menerima entri yang `needsName` dan namanya sudah diganti → nama otomatis disimpan ke `ticketMap[ticket]`;
+  mengisi nama di editor ticketMap juga mengganti task entri usulan dengan ticket itu yang belum direview.
+- Nama ticket disimpan apa adanya saat diketik (boleh kosong sementara); kunci ticket dinormalisasi huruf besar.
+
+### D-035 · Tab "Review" (PROMPT §12.5)
+- `modules/import-review`: usulan dikelompokkan per minggu (Senin–Minggu) lalu per tanggal; tiap usulan
+  menampilkan sumber, ticket · branch · repo, hint jam, ringkasan Claude Code, file tersentuh (collapsed), input
+  nama task (ubah lalu terima), **Terima**, **Tolak**, **Gabung dengan…** (baris lain di tanggal yang sama) dan
+  **Terima semua minggu ini**. Label tab menampilkan jumlah usulan.
+- Karena aplikasi tidak bisa menjalankan CLI, tab menampilkan perintah `timesheet import --doc "<nama file>"
+  --month YYYY-MM` + tombol salin, lalu instruksi "Muat ulang".
+- `modules/automation-settings` (di tab yang sama): editor ticketMap (validasi pola ticket) dan daftar repo.
+- Item cek "Aktivitas otomatis … belum direview" kini membuka tab Review dan memfokuskan usulannya.
+
+### D-036 · CLI `timesheet` (`packages/cli`)
+- Node + TypeScript, dibundel Vite (SSR, `publicDir: false`) ke `packages/cli/dist/timesheet.mjs`; `bin`
+  di `package.json` (`npm run build:cli && npm link`). Memakai ulang parser/serializer dokumen, Zod schema dan
+  `insertEntrySorted` dari `src/` lewat alias `@/` — satu sumber kebenaran format file.
+- Git: allow-list `status`/`diff`/`log`/`branch`/`config --get`/`rev-parse`, `execFile` tanpa shell, dan
+  `GIT_OPTIONAL_LOCKS=0` agar `git status` tidak menyegarkan `.git/index` (diuji: index tidak berubah).
+- `snapshot`: `status --porcelain=v2 --branch --untracked-files=all` + `diff --numstat` (+ `--cached`),
+  untracked hanya yang mtime-nya hari ini, `log --since=midnight --author=<user.email>`. Repo tanpa perubahan
+  dan tanpa commit tidak dicatat. Repo dari `--doc` (disalin ke `config.json`), `config.json`, atau `--repo`.
+- `import`: snapshot terakhir per tanggal × repo; dikelompokkan per tanggal × ticket (fallback tanggal × repo ×
+  branch); `vscode-save` dan `claude-code` (dicocokkan lewat folder repo) menambah hint jam, file dan ringkasan.
+  Task = `ticketMap[ticket]` atau `"{ticket} – {kata branch}"` (`needsName: true`). Jam = default profil.
+  Dedupe terhadap entri apa pun di tanggal yang sama dengan ticket yang sama (di `refs.ticket`, di teks task,
+  atau sama dengan nama di ticketMap); entri yang ada tidak pernah diubah. `--month` harus sama dengan periode
+  dokumen (entri di luar periode tidak dicetak).
+- Baris `evidence` di worklog **hanya dihitung**, belum diimpor: CLI tidak punya canvas untuk blur, dan PROMPT
+  §5.1 melarang versi tanpa blur masuk ke file. Auto-evidence (dengan blur saat impor) dikerjakan di Fase 8.
+- `doctor`: folder data bisa ditulis, pola ticket valid, tiap repo adalah repo git dan punya `user.email`.
+- Belum: `install-scheduler`, `log-claude`, VS Code task/extension, skill `/timesheet` (Fase 8).
+- Test CLI berjalan di Jest environment `node` (docblock); integrasi membuat repo git sementara (staged,
+  unstaged, untracked, tanpa commit kedua) → `snapshot` → `import`, dan memastikan worklog & dokumen tidak
+  memuat isi file.
