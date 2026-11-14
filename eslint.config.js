@@ -150,6 +150,7 @@ export default defineConfig([
       "src/constants/**/*.{ts,tsx}",
       "src/hooks/**/*.{ts,tsx}",
       "src/store/timesheet.*",
+      "src/store/file.*",
     ],
     rules: {
       semi: ["error", "always"],
@@ -398,6 +399,15 @@ export default defineConfig([
       "max-lines-per-function": "off",
       "max-depth": "off",
       "max-params": "off",
+    },
+  },
+
+  // Ambient declaration files augment global DOM types; merging requires `interface`.
+  {
+    files: ["**/*.d.ts"],
+    rules: {
+      "no-restricted-syntax": "off",
+      "@typescript-eslint/consistent-type-definitions": "off",
     },
   },
 ]);

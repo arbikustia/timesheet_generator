@@ -48,6 +48,7 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/modules/<feature>/` | Feature logic using the module file pattern (below) |
 | `src/modules/timesheet-builder/` | Page shell: top bar, split view (input 2fr / preview 3fr), tabs Aktivitas · Hari khusus · Pengaturan |
 | `src/modules/{period-panel,entry-form,entry-list,day-overrides,profile-settings,document-preview}/` | Input panel sections and the fit-width live preview; each binds to the store through its `.hook.ts` |
+| `src/modules/file-menu/` | Word-like New / Open / Open last / Save / Save As, status indicator, autosave (file or IndexedDB draft), draft recovery, Ctrl/Cmd+S/O shortcuts, beforeunload |
 | `src/modules/timesheet-document/` | The A4 output (timesheet, signature, evidence cover, evidence pages). One tree for preview and PDF; geometry in pt in `TimesheetDocument.config.ts`, measured from the reference PDF |
 | `src/components/<Name>/` | Shared UI primitives (Button, Input, Select, Modal, ConfirmModal, Tabs, …) |
 | `src/constants/timesheet.constant.ts` | Fixed document labels, English month names, evidence capacities |
@@ -55,10 +56,11 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/libs/utils/date.util.ts`, `timesheet-engine.util.ts` | Pure engine: month dates, weekend, formatters, table rows, evidence pagination (3 then 4) and `Evidence Page N` numbering |
 | `src/libs/utils/timesheet-document.util.ts` | `parseTimesheetDoc` (the single upstream fallback), `migrateDoc`, `serializeTimesheetDoc`, `createEmptyDoc`, `getDefaultDocFileName` |
 | `src/libs/unit-test.ts` | The only allowed test import: re-exports RTL (+ `within`), `renderWithStore`, `createStoreWrapper`, `test.assertSnapshots(Component, configs, { wrapper })` |
-| `src/store/` | `makeStore()` (theme + `timesheet` slices), typed hooks, `ThemeProvider`. `timesheet.slice.ts` holds the whole document and every edit action |
-| `src/libs/utils/` | Pure shared logic: `date`, `date-option`, `timesheet-engine`, `timesheet-mutation`, `timesheet-document`, `entry-validation`, `file` |
-| `src/hooks/useElementWidth.ts` | ResizeObserver width hook (preview zoom) |
+| `src/store/` | `makeStore()` (theme + `timesheet` + `file` slices), typed hooks, `ThemeProvider`. `timesheet.slice.ts` holds the whole document, `savedDoc` (dirty = `doc !== savedDoc`) and every edit action; `file.slice.ts` holds file name/handle status |
+| `src/libs/utils/` | Shared logic: `date`, `date-option`, `timesheet-engine`, `timesheet-mutation`, `timesheet-document`, `entry-validation`, `file`, `file-system` (FS Access + download fallback), `draft-storage` (idb-keyval), `file-handle.registry` (current handle, outside Redux) |
+| `src/hooks/` | `useElementWidth` (preview zoom), `useKeyboardShortcuts`, `useBeforeUnload` |
 | `src/fixture/timesheet-2026-10.sample.json` | October 2026 real data for seed & golden test |
+| `src/fixture/file-handle.fixture.ts` | `makeFileHandle()` fake `DocumentFileHandle` |
 | `src/fixture/timesheet.fixture.ts` | `loadOctoberDoc()`, `loadOctoberDocWithEvidence()`, `makeDocStore()`, `makeEmptyOctoberStore()`, `SAMPLE_IMAGE` for tests |
 | `src/assets/` | `ifg-logo.png`, reference PDF |
 | `docs/design-system/` | UI foundations for the app chrome (not the A4 pages) |
@@ -88,7 +90,9 @@ index.ts          # exports the entry (wrapper or container)
 - Do not run plain `eslint --fix` on strict files: `jsdoc/require-jsdoc` auto-inserts empty JSDoc stubs. Use
   `npx eslint --fix --rule '{"jsdoc/require-jsdoc":"off"}' <path>` to sort imports, then `npx eslint <path>`.
 - Per-row handlers read `data-*` attributes (`data-entry-id`, `data-field`, …) instead of inline arrows (§4.4).
-- ESLint strict rules apply to `src/App.tsx`, `src/modules/**`, `src/libs/utils/**`, `src/types/**`, `src/constants/**`, `src/hooks/**`, `src/store/timesheet.*`.
+- ESLint strict rules apply to `src/App.tsx`, `src/modules/**`, `src/libs/utils/**`, `src/types/**`, `src/constants/**`, `src/hooks/**`, `src/store/timesheet.*`, `src/store/file.*`. Ambient `*.d.ts` files may use `interface` (declaration merging).
+- Jest setup mocks `idb-keyval` with an in-memory map cleared before each test (jsdom has no IndexedDB).
+  Await async file work in tests before they end, or remembered handles leak into the next test.
 - Jest only matches `*.test.ts(x)` and `*.snap.ts(x)` under `src/`. Coverage excludes `*.type`,
   `*.config`, `index`, `*.wrapper`, `*.style` and `src/types`. JSON imports work in Jest (`resolveJsonModule`).
 - Git: work on a feature branch; PRs target `development`. Commit format

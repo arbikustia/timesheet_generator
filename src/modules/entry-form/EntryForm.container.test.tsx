@@ -1,3 +1,4 @@
+import { createTimesheetState } from "@/store/timesheet.slice";
 import { fireEvent, renderWithStore, screen } from "@/libs/unit-test";
 import { createEmptyDoc } from "@/libs/utils/timesheet-document.util";
 
@@ -7,7 +8,7 @@ import EntryFormContainer from "./EntryForm.container";
 
 describe("EntryFormContainer", () => {
   it("should add an activity when Enter submits the form", () => {
-    const { store } = renderWithStore(<EntryFormContainer />, { timesheet: { doc: createEmptyDoc({ year: 2026, month: 10 }) } });
+    const { store } = renderWithStore(<EntryFormContainer />, { timesheet: createTimesheetState(createEmptyDoc({ year: 2026, month: 10 })) });
 
     fireEvent.change(screen.getByRole("combobox", { name: "Task" }), { target: { value: "Daily standup" } });
     fireEvent.submit(screen.getByRole("form", { name: "Tambah aktivitas" }));

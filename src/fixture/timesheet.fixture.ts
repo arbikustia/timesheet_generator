@@ -1,6 +1,7 @@
 import { createEmptyDoc, parseTimesheetDoc } from "@/libs/utils/timesheet-document.util";
 
 import { type AppStore, makeStore } from "@/store";
+import { createTimesheetState } from "@/store/timesheet.slice";
 
 import octoberFixture from "./timesheet-2026-10.sample.json";
 
@@ -57,7 +58,7 @@ export const loadOctoberDocWithEvidence = (): TimesheetDoc => {
  * @returns {AppStore} - Store
  */
 export const makeDocStore = (doc: TimesheetDoc = loadOctoberDoc()): AppStore => {
-  return makeStore({ timesheet: { doc } });
+  return makeStore({ timesheet: createTimesheetState(doc) });
 };
 
 /**

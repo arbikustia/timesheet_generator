@@ -1,3 +1,4 @@
+import { createTimesheetState } from "@/store/timesheet.slice";
 import { fireEvent, renderWithStore, screen } from "@/libs/unit-test";
 
 import { loadOctoberDoc } from "@/fixture/timesheet.fixture";
@@ -24,7 +25,7 @@ describe("TimesheetBuilderComponent", () => {
   it("should render the top bar, input panel and preview", () => {
     const props = makeProps();
 
-    renderWithStore(<TimesheetBuilderComponent {...props} />, { timesheet: { doc: loadOctoberDoc() } });
+    renderWithStore(<TimesheetBuilderComponent {...props} />, { timesheet: createTimesheetState(loadOctoberDoc()) });
 
     expect(screen.getByText("Oktober 2026 · Arbi Kustia")).toBeInTheDocument();
     expect(screen.getByRole("form", { name: "Tambah aktivitas" })).toBeInTheDocument();

@@ -1,3 +1,4 @@
+import { createTimesheetState } from "@/store/timesheet.slice";
 import { fireEvent, renderWithStore, screen } from "@/libs/unit-test";
 import { createEmptyDoc } from "@/libs/utils/timesheet-document.util";
 
@@ -7,7 +8,7 @@ import TimesheetBuilderContainer from "./TimesheetBuilder.container";
 
 describe("TimesheetBuilderContainer", () => {
   it("should add an activity and show it in the list and the live preview", () => {
-    const { store } = renderWithStore(<TimesheetBuilderContainer />, { timesheet: { doc: createEmptyDoc({ year: 2026, month: 10 }) } });
+    const { store } = renderWithStore(<TimesheetBuilderContainer />, { timesheet: createTimesheetState(createEmptyDoc({ year: 2026, month: 10 })) });
 
     fireEvent.change(screen.getByRole("combobox", { name: "Task" }), { target: { value: "Daily standup" } });
     fireEvent.submit(screen.getByRole("form", { name: "Tambah aktivitas" }));

@@ -24,3 +24,25 @@ jest.mock('./store/theme.hook', () => ({
     setTheme: jest.fn(),
   }),
 }));
+
+// jsdom has no IndexedDB: back idb-keyval with an in-memory map, emptied before every test.
+jest.mock('idb-keyval', () => {
+  const memory = new Map();
+
+  return {
+    get: jest.fn(async (key: string) => memory.get(key)),
+    set: jest.fn(async (key: string, value: object) => {
+      memory.set(key, value);
+    }),
+    del: jest.fn(async (key: string) => {
+      memory.delete(key);
+    }),
+    clear: jest.fn(async () => {
+      memory.clear();
+    }),
+  };
+});
+
+beforeEach(async () => {
+  await jest.requireMock<{ clear: () => Promise<void> }>('idb-keyval').clear();
+});

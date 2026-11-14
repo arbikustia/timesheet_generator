@@ -1,11 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
+import fileReducer from "./file.slice";
 import themeReducer from "./theme.slice";
 import timesheetReducer from "./timesheet.slice";
 
 const rootReducer = combineReducers({
   theme: themeReducer,
   timesheet: timesheetReducer,
+  file: fileReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

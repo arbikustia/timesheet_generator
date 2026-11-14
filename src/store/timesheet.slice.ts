@@ -31,7 +31,16 @@ import type { TimesheetState } from "./timesheet.type";
  * @returns {TimesheetState} - Initial state
  */
 export const createInitialTimesheetState = (now: Date = new Date()): TimesheetState => {
-  return { doc: createEmptyDoc(getCurrentPeriod(now)) };
+  return createTimesheetState(createEmptyDoc(getCurrentPeriod(now)));
+};
+
+/**
+ * State for a freshly loaded (clean) document.
+ * @param {TimesheetDoc} doc - Document
+ * @returns {TimesheetState} - State with no unsaved changes
+ */
+export const createTimesheetState = (doc: TimesheetDoc): TimesheetState => {
+  return { doc, savedDoc: doc };
 };
 
 /**
@@ -49,6 +58,13 @@ const timesheetSlice = createSlice({
   reducers: {
     loadDoc: (state, action: PayloadAction<TimesheetDoc>): void => {
       state.doc = action.payload;
+      state.savedDoc = action.payload;
+    },
+    restoreDraft: (state, action: PayloadAction<TimesheetDoc>): void => {
+      state.doc = action.payload;
+    },
+    markSaved: (state, action: PayloadAction<TimesheetDoc>): void => {
+      state.savedDoc = action.payload;
     },
     changePeriod: (state, action: PayloadAction<ChangePeriodPayload>): void => {
       const { period, mode } = action.payload;
@@ -112,6 +128,8 @@ const timesheetSlice = createSlice({
 
 export const {
   loadDoc,
+  restoreDraft,
+  markSaved,
   changePeriod,
   startNextMonth,
   addEntry,
@@ -131,6 +149,14 @@ export const {
  * @returns {TimesheetDoc} - Document
  */
 export const selectDoc = (state: { timesheet: TimesheetState }): TimesheetDoc => state.timesheet.doc;
+
+/**
+ * Whether the document has changes not yet written to a file.
+ * @param {{ timesheet: TimesheetState }} state - Root state
+ * @returns {boolean} - True when dirty
+ */
+export const selectIsDirty = (state: { timesheet: TimesheetState }): boolean =>
+  state.timesheet.doc !== state.timesheet.savedDoc;
 
 export { timesheetSlice };
 

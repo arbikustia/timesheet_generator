@@ -152,3 +152,40 @@ Format: tanggal · keputusan · alasan.
 - Slice Redux mendapat override lint seperti services lama: reducer inline dikecualikan dari JSDoc (§4.3).
 - `@/libs/unit-test` kini juga menyediakan `renderWithStore`, `createStoreWrapper`, `within`, dan opsi
   `wrapper` di `assertSnapshots` untuk container yang butuh store.
+
+## Fase 4 — File (2026-11-14)
+
+### D-020 · Satu dokumen = satu file `.json`
+- Chromium: File System Access API. `Simpan` menulis ke handle yang sama tanpa dialog (minta izin `readwrite`
+  bila perlu), `Simpan Sebagai` membuka dialog. Firefox/Safari: `Buka` lewat `<input type="file">`,
+  `Simpan`/`Simpan Sebagai` = download. Deteksi fitur (`showOpenFilePicker`/`showSaveFilePicker`), tanpa UA sniffing.
+- Nama default `Timesheet-{YYYY}-{MM}-{Consultant}.json`; setelah disimpan/dibuka nama file dipertahankan.
+- Isi file selalu melewati `parseTimesheetDoc` (JSON → versi → migrasi → Zod). File rusak/versi lebih baru →
+  pesan jelas di top bar, dokumen saat ini tidak berubah.
+- `Baru` = dokumen kosong bulan berjalan (profil ikut kosong; untuk membawa profil gunakan "Mulai bulan berikutnya").
+- `Baru`, `Buka`, `Buka terakhir` meminta konfirmasi bila ada perubahan belum disimpan.
+
+### D-021 · Status kotor & autosave
+- `timesheet.savedDoc` menyimpan referensi dokumen terakhir yang ditulis/dibuka; dirty = `doc !== savedDoc`
+  (Immer membuat referensi baru tiap perubahan). Indikator: `Tersimpan HH:mm` / `Belum disimpan ● · draft HH:mm`.
+- Autosave 1.5 dtk setelah perubahan terakhir: ke file yang terbuka **hanya** bila izin tulis sudah diberikan
+  (tidak pernah memunculkan prompt), selain itu ke draft IndexedDB. Draft dihapus setelah berhasil menyimpan ke file.
+- Saat aplikasi dibuka dan ada draft → dialog "Pulihkan draft?" (Pulihkan / Buang). Draft dipulihkan sebagai
+  perubahan belum disimpan.
+- `beforeunload` aktif selama dokumen kotor.
+
+### D-022 · "Buka terakhir" & penyimpanan lokal
+- `idb-keyval@6.3.0` (±600 B) untuk dua kunci saja: `timesheet-builder:draft` dan
+  `timesheet-builder:last-file-handle`. Ini buffer browser, bukan database aplikasi. Semua akses dibungkus
+  try/catch (mode privat / IndexedDB nonaktif → diabaikan, termasuk throw sinkron).
+- Handle file tidak serializable sehingga tidak disimpan di Redux; handle aktif ada di
+  `src/libs/utils/file-handle.registry.ts`, Redux hanya menyimpan `fileName`, `hasHandle`, `lastSavedAt`
+  (slice `file`).
+- `DocumentFileHandle` (name, getFile, createWritable, query/requestPermission) dipakai di seluruh kode supaya
+  handle palsu di test tidak butuh type assertion. Tipe picker/izin yang belum ada di lib DOM TypeScript
+  dideklarasikan di `src/types/file-system-access.d.ts`.
+
+### D-023 · Shortcut
+- `Ctrl/Cmd+S` simpan, `Ctrl/Cmd+Shift+S` simpan sebagai, `Ctrl/Cmd+O` buka (`src/hooks/useKeyboardShortcuts.ts`).
+  `Ctrl/Cmd+Z / Shift+Z` sudah dikenali hook-nya; undo/redo dikerjakan di Fase 6.
+- Belum diuji manual di browser sungguhan (Chrome + Firefox) — perlu dicek sesuai PROMPT §8 "Manual check".

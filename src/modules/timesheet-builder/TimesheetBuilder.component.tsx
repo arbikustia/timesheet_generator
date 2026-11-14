@@ -9,6 +9,7 @@ import DayOverrides from "@/modules/day-overrides";
 import DocumentPreview from "@/modules/document-preview";
 import EntryForm from "@/modules/entry-form";
 import EntryList from "@/modules/entry-list";
+import FileMenu from "@/modules/file-menu";
 import PeriodPanel from "@/modules/period-panel";
 import ProfileSettings from "@/modules/profile-settings";
 
@@ -33,18 +34,18 @@ const _buildTabItems = (): TabsProps["items"] => [
 ];
 
 /**
- * Top bar: app name, current period and the UI theme toggle.
+ * Top bar: app name, file menu, current period and the UI theme toggle.
  * @param {TimesheetBuilderProps} props - Shell props
  * @returns {React.ReactElement} - Header
  */
 const _renderTopBar = (props: TimesheetBuilderProps): React.ReactElement => (
-  <header className="flex items-center gap-3 border-b border-border-default bg-background-surface px-4 py-2">
+  <header className="flex flex-wrap items-center gap-3 border-b border-border-default bg-background-surface px-4 py-2">
     <h1 className="text-lg font-semibold">Timesheet Builder</h1>
-    <span className="text-sm text-text-secondary">
+    <FileMenu />
+    <span className="ml-auto text-sm text-text-secondary">
       {props.consultantName ? `${props.periodLabel} · ${props.consultantName}` : props.periodLabel}
     </span>
     <Button
-      className="ml-auto"
       type="text"
       aria-label={props.theme === "dark" ? "Mode terang" : "Mode gelap"}
       icon={props.theme === "dark" ? <FiSun aria-hidden /> : <FiMoon aria-hidden />}

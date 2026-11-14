@@ -1,3 +1,4 @@
+import { createTimesheetState } from "@/store/timesheet.slice";
 import { fireEvent, renderWithStore, screen } from "@/libs/unit-test";
 
 import { selectDoc } from "@/store/timesheet.slice";
@@ -15,7 +16,7 @@ const renderList = (): ReturnType<typeof renderWithStore>["store"] => {
 
   doc.entries = doc.entries.slice(0, 3);
 
-  return renderWithStore(<EntryListContainer />, { timesheet: { doc } }).store;
+  return renderWithStore(<EntryListContainer />, { timesheet: createTimesheetState(doc) }).store;
 };
 
 describe("EntryListContainer", () => {

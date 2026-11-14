@@ -1,3 +1,4 @@
+import { createTimesheetState } from "@/store/timesheet.slice";
 import { fireEvent, renderWithStore, screen, waitFor } from "@/libs/unit-test";
 
 import { selectDoc } from "@/store/timesheet.slice";
@@ -11,7 +12,7 @@ import ProfileSettingsContainer from "./ProfileSettings.container";
  * @returns {ReturnType<typeof renderWithStore>["store"]} - Store
  */
 const renderSettings = (): ReturnType<typeof renderWithStore>["store"] =>
-  renderWithStore(<ProfileSettingsContainer />, { timesheet: { doc: loadOctoberDoc() } }).store;
+  renderWithStore(<ProfileSettingsContainer />, { timesheet: createTimesheetState(loadOctoberDoc()) }).store;
 
 describe("ProfileSettingsContainer", () => {
   it("should update text fields, sign date, default hours and templates", () => {

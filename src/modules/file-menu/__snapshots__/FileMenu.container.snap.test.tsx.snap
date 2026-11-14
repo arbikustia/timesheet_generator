@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`FileMenuContainer Snapshot Test FileMenuContainer Snapshots should render a new clean document 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-wrap items-center gap-2"
+  >
+    <div
+      class="ant-space-compact css-dev-only-do-not-override-eofgey"
+    >
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-compact-item ant-btn-compact-first-item"
+        type="button"
+      >
+        <span
+          class="ant-btn-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+            />
+            <polyline
+              points="14 2 14 8 20 8"
+            />
+            <line
+              x1="12"
+              x2="12"
+              y1="18"
+              y2="12"
+            />
+            <line
+              x1="9"
+              x2="15"
+              y1="15"
+              y2="15"
+            />
+          </svg>
+        </span>
+        <span>
+          Baru
+        </span>
+      </button>
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-compact-item"
+        type="button"
+      >
+        <span
+          class="ant-btn-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+            />
+          </svg>
+        </span>
+        <span>
+          Buka
+        </span>
+      </button>
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ant-btn-compact-item"
+        type="button"
+      >
+        <span
+          class="ant-btn-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+            />
+            <polyline
+              points="17 21 17 13 7 13 7 21"
+            />
+            <polyline
+              points="7 3 7 8 15 8"
+            />
+          </svg>
+        </span>
+        <span>
+          Simpan
+        </span>
+      </button>
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-compact-item ant-btn-compact-last-item"
+        type="button"
+      >
+        <span>
+          Simpan Sebagai
+        </span>
+      </button>
+    </div>
+    <span
+      class="text-sm"
+      data-testid="file-status"
+    >
+      <span
+        class="font-medium"
+      >
+        Dokumen baru
+      </span>
+      <span
+        class="text-text-secondary"
+      >
+         · Tersimpan
+      </span>
+    </span>
+    <input
+      accept=".json,application/json"
+      aria-label="Pilih file dokumen"
+      hidden=""
+      type="file"
+    />
+  </div>
+</DocumentFragment>
+`;
