@@ -7,7 +7,8 @@ import { join } from "node:path";
 import { getCurrentPeriod } from "@/libs/utils/date.util";
 import { createEmptyDoc, parseTimesheetDoc, serializeTimesheetDoc } from "@/libs/utils/timesheet-document.util";
 
-import type { CliIo } from "./cli.type";
+import { getDefaultBackfillRange } from "./automation-commands.util";
+import type { CliIo, CommandResult, CommandRunner } from "./cli.type";
 import { parseCliArgs, parseMonth, runCli } from "./cli.util";
 import { runGit } from "./git.util";
 import { toLocalDate } from "./time.util";
@@ -29,6 +30,17 @@ const gitSetup = (cwd: string, args: string[]): void => {
  */
 type Captured = { io: CliIo; out: string[]; err: string[] };
 
+/** Fake crontab: `crontab -l` / `crontab -` backed by a variable. */
+let crontab = "";
+
+const fakeRun: CommandRunner = async (command, args, input): Promise<CommandResult> => {
+  if (command === "crontab" && args[0] === "-") {
+    crontab = input ?? "";
+  }
+
+  return { code: command === "crontab" && args[0] === "-l" && !crontab ? 1 : 0, stdout: crontab, stderr: "" };
+};
+
 /**
  * CLI side effects writing into arrays.
  * @param {string} home - TIMESHEET_HOME
@@ -41,7 +53,17 @@ const captureIo = (home: string): Captured => {
   return {
     out,
     err,
-    io: { out: (text: string): number => out.push(text), err: (text: string): number => err.push(text), env: { TIMESHEET_HOME: home }, now: (): Date => new Date(), git: runGit },
+    io: {
+      out: (text: string): number => out.push(text),
+      err: (text: string): number => err.push(text),
+      env: { TIMESHEET_HOME: home },
+      now: (): Date => new Date(),
+      git: runGit,
+      run: fakeRun,
+      host: { platform: "cron", homeDir: home, isWsl: false },
+      nodePath: "/usr/bin/node",
+      scriptPath: "/opt/timesheet/timesheet.mjs",
+    },
   };
 };
 
@@ -149,14 +171,72 @@ describe("timesheet CLI", () => {
 
     const doctor = captureIo(home);
 
-    expect(await runCli(["doctor", "--doc", docPath], doctor.io)).toBe(0);
+    expect(await runCli(["doctor", "--doc", docPath], doctor.io)).toBe(1);
     expect(doctor.out.join("")).toContain("✓ Email git BANTUIT FE: me@example.com");
+    expect(doctor.out.join("")).toContain("✗ Scheduler: belum dipasang");
+
+    crontab = "";
+    expect(await runCli(["install-scheduler", "--doc", docPath], captureIo(home).io)).toBe(0);
+    expect(crontab).toContain("45 16 * * 1-5 TIMESHEET_HOME=");
+
+    const installed = captureIo(home);
+
+    expect(await runCli(["doctor"], installed.io)).toBe(0);
+    expect(installed.out.join("")).toContain("✓ Scheduler: terpasang (cron)");
+    expect(await runCli(["uninstall-scheduler"], captureIo(home).io)).toBe(0);
+    expect(crontab).toBe("");
     expect(await runCli(["doctor"], captureIo(join(root, "empty-home")).io)).toBe(1);
   });
 
   it("should parse arguments and months", () => {
-    expect(parseCliArgs(["snapshot", "--repo", "/a", "--repo", "/b", "--event", "open"])).toEqual({ command: "snapshot", doc: null, month: null, repos: ["/a", "/b"], event: "open" });
+    expect(parseCliArgs(["snapshot", "--repo", "/a", "--repo", "/b", "--event", "open", "--dry-run"])).toEqual({ command: "snapshot", doc: null, month: null, repos: ["/a", "/b"], event: "open", time: null, from: null, to: null, isDryRun: true });
     expect(parseMonth("2026-11")).toEqual({ year: 2026, month: 11 });
     expect(parseMonth("2026-1")).toBeNull();
+  });
+
+  it("should backfill a missed day from the reflog and import it", async () => {
+    const home = join(root, "backfill-home");
+    const today = toLocalDate(new Date());
+
+    gitSetup(repo, ["checkout", "-q", "-b", "feature/BIT-77-report"]);
+    gitSetup(repo, ["commit", "-q", "-m", "work"]);
+
+    const first = captureIo(home);
+
+    expect(await runCli(["backfill", "--doc", docPath, "--from", today, "--to", today], first.io)).toBe(0);
+    expect(first.out.join("")).toMatch(/BANTUIT FE: [12] hari × branch ditambahkan/);
+
+    const again = captureIo(home);
+
+    expect(await runCli(["backfill", "--doc", docPath, "--from", today, "--to", today], again.io)).toBe(0);
+    expect(again.out.join("")).toContain("BANTUIT FE: 0 hari × branch ditambahkan");
+    expect(await runCli(["import", "--doc", docPath], captureIo(home).io)).toBe(0);
+
+    const result = parseTimesheetDoc(await readFile(docPath, "utf8"));
+    const tickets = result.isOk ? result.doc.entries.map((entry) => entry.refs?.ticket) : [];
+
+    expect(tickets).toContain("BIT-77");
+    expect(await readFile(join(home, "worklog.jsonl"), "utf8")).not.toContain(SECRET);
+  });
+
+  it("should validate scheduler and backfill arguments and print the VS Code task", async () => {
+    const home = join(root, "args-home");
+    const io = captureIo(home);
+
+    expect(await runCli(["install-scheduler", "--time", "25:00"], io.io)).toBe(2);
+    expect(await runCli(["install-scheduler"], io.io)).toBe(1);
+    expect(await runCli(["backfill", "--from", "2026-11-05", "--to", "2026-11-01"], io.io)).toBe(2);
+    expect(await runCli(["backfill"], io.io)).toBe(1);
+
+    const dry = captureIo(home);
+
+    expect(await runCli(["install-scheduler", "--repo", repo, "--time", "17:30", "--dry-run"], dry.io)).toBe(0);
+    expect(dry.out.join("")).toContain("30 17 * * 1-5");
+
+    const task = captureIo(home);
+
+    expect(await runCli(["vscode-task"], task.io)).toBe(0);
+    expect(task.out.join("")).toContain('"runOn": "folderOpen"');
+    expect(getDefaultBackfillRange(new Date(2026, 10, 1))).toEqual({ from: "2026-11-01", to: "2026-10-31" });
   });
 });

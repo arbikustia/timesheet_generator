@@ -17,7 +17,7 @@ npm test
 npm run build
 ```
 
-## CLI `timesheet` (automation, Fase 7)
+## CLI `timesheet` (automation, Fase 7–8, sumber data: git)
 
 Browser tidak bisa membaca git, jadi pengumpul data adalah CLI Node di `packages/cli`. Semua pembacaan git
 **read-only** (tanpa `add`/`commit`/`stash`/`checkout`, tanpa file di dalam repo kantor) dan hanya mencatat
@@ -28,8 +28,19 @@ npm run build:cli && npm link          # sekali: memasang perintah `timesheet`
 
 timesheet snapshot --doc Timesheet-2026-11-Nama.json   # catat working tree tiap repo (staged/unstaged/untracked)
 timesheet import   --doc Timesheet-2026-11-Nama.json   # buat entri usulan (reviewed: false) dari worklog
-timesheet doctor   --doc Timesheet-2026-11-Nama.json   # cek repo, email git, folder worklog, pola ticket
+timesheet doctor   --doc Timesheet-2026-11-Nama.json   # cek repo, email git, folder worklog, pola ticket, scheduler
+
+timesheet install-scheduler --doc Timesheet-2026-11-Nama.json   # snapshot otomatis Senin–Jumat 16:45 + saat login
+timesheet install-scheduler --dry-run                           # lihat dulu apa yang akan dipasang
+timesheet uninstall-scheduler
+timesheet backfill [--from 2026-11-01] [--to 2026-11-13]         # isi hari terlewat dari reflog & commit lokal
+timesheet vscode-task                                           # snippet tasks.json level user (snapshot saat folder dibuka)
 ```
+
+- Scheduler dipasang di level user: crontab (Linux/WSL), LaunchAgent (macOS) atau Task Scheduler (Windows).
+  Di **WSL**, cron hanya berjalan bila layanannya aktif (`sudo service cron start`, atau systemd di
+  `/etc/wsl.conf`). Jalankan ulang `install-scheduler` setelah memindah/upgrade Node (path Node ditulis absolut).
+  Log jadwal: `~/.timesheet/scheduler.log`.
 
 - Daftar repo diisi di aplikasi (tab **Review** → *Repo yang dipantau*); `snapshot --doc` menyalinnya ke
   `~/.timesheet/config.json`, sehingga `timesheet snapshot` tanpa `--doc` juga bisa dipakai (mis. dari cron).

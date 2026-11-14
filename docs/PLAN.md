@@ -13,7 +13,7 @@ Sumber: `docs/PROMPT.md` §9. Setiap fase ditutup dengan `npm run lint`, `npx ts
 | 5 — Evidence | ✅ | Dropzone + paste, kompresi canvas, layout evidence |
 | 6 — Export & polish | ✅ | Print CSS → PDF, panel validasi, ringkasan, shortcut, undo/redo, a11y |
 | 7 — Blur & Import | ✅ | Editor blur/pixelate (penuh/area), CLI `snapshot`/`import`/`doctor`, panel Import & Review, Muat ulang dari disk |
-| 8 — Collectors | ⏳ | Scheduler, VS Code, hook Claude Code, skill `/timesheet`, auto-evidence |
+| 8 — Collectors | 🟡 | Git: ✅ scheduler, backfill reflog, VS Code task, doctor. Ditahan: hook Claude Code, skill `/timesheet`, ekstensi VS Code, auto-evidence |
 
 ## Rancangan per fase
 

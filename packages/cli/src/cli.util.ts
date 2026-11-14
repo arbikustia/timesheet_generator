@@ -1,15 +1,18 @@
-import { basename, resolve } from "node:path";
+import { resolve } from "node:path";
 import { parseArgs } from "node:util";
 
-import type { AutomationRepo, Period, TimesheetDoc } from "@/types/timesheet.type";
+import type { Period } from "@/types/timesheet.type";
 
+import { runBackfill, runInstallScheduler, runUninstallScheduler, runVscodeTask } from "./automation-commands.util";
 import { DEFAULT_TICKET_PATTERN, USAGE } from "./cli.config";
-import type { CliArgs, CliIo, CliPaths } from "./cli.type";
+import type { CliArgs, CliIo } from "./cli.type";
 import { readDocFile, withDocLock, writeDocFile } from "./doc-file.util";
 import { checkDataFolder, checkRepo, checkTicketPattern, formatChecks } from "./doctor.util";
 import { importWorklog } from "./import.util";
+import { resolveRepos } from "./repos.util";
+import { isSchedulerInstalled } from "./scheduler.util";
 import { takeSnapshot } from "./snapshot.util";
-import { appendWorklogLine, getCliPaths, readCliConfig, readWorklog, writeCliConfig } from "./worklog.util";
+import { appendWorklogLine, getCliPaths, readCliConfig, readWorklog } from "./worklog.util";
 
 /**
  * Parse command-line arguments.
@@ -25,6 +28,10 @@ export const parseCliArgs = (argv: string[]): CliArgs => {
       month: { type: "string" },
       repo: { type: "string", multiple: true },
       event: { type: "string" },
+      time: { type: "string" },
+      from: { type: "string" },
+      to: { type: "string" },
+      "dry-run": { type: "boolean" },
     },
   });
 
@@ -34,6 +41,10 @@ export const parseCliArgs = (argv: string[]): CliArgs => {
     month: values.month ?? null,
     repos: (values.repo ?? []).map((path) => resolve(path)),
     event: values.event ?? null,
+    time: values.time ?? null,
+    from: values.from ?? null,
+    to: values.to ?? null,
+    isDryRun: values["dry-run"] ?? false,
   };
 };
 
@@ -54,27 +65,6 @@ export const parseMonth = (text: string): Period | null => {
  * @returns {string} - Month text
  */
 export const formatPeriod = (period: Period): string => `${period.year}-${String(period.month).padStart(2, "0")}`;
-
-/**
- * Repositories for a snapshot: `--repo` paths, then the document (copied to config.json), then config.json.
- * @param {CliArgs} args - Arguments
- * @param {TimesheetDoc | null} doc - Document from `--doc`
- * @param {CliPaths} paths - CLI paths
- * @returns {Promise<AutomationRepo[]>} - Repositories with a path
- */
-export const resolveRepos = async (args: CliArgs, doc: TimesheetDoc | null, paths: CliPaths): Promise<AutomationRepo[]> => {
-  const config = await readCliConfig(paths);
-  const docRepos = (doc?.automation.repos ?? []).filter((repo) => repo.path.trim());
-
-  if (docRepos.length > 0) {
-    await writeCliConfig(paths, { ...config, repos: docRepos });
-  }
-
-  const base = docRepos.length > 0 ? docRepos : config.repos;
-  const extra = args.repos.filter((path) => !base.some((repo) => repo.path === path)).map((path) => ({ path, label: basename(path) }));
-
-  return [...base, ...extra];
-};
 
 /**
  * `timesheet snapshot`: one worklog line per repository with changes or commits today.
@@ -181,7 +171,9 @@ export const runDoctor = async (args: CliArgs, io: CliIo): Promise<number> => {
     await checkDataFolder(paths),
     checkTicketPattern(doc?.automation.ticketPattern ?? DEFAULT_TICKET_PATTERN),
     ...(repos.length > 0 ? repoChecks : [{ ok: false, label: "Repo", detail: "Belum ada repo yang dipantau." }]),
-    { ok: true, label: "Scheduler", detail: "belum dipasang (timesheet install-scheduler menyusul di Fase 8)." },
+    (await isSchedulerInstalled(io.host, io.run))
+      ? { ok: true, label: "Scheduler", detail: `terpasang (${io.host.platform})` }
+      : { ok: false, label: "Scheduler", detail: "belum dipasang — jalankan `timesheet install-scheduler`." },
   ];
 
   io.out(`${formatChecks(checks)}\n`);
@@ -206,6 +198,14 @@ export const runCli = async (argv: string[], io: CliIo): Promise<number> => {
         return await runImport(args, io);
       case "doctor":
         return await runDoctor(args, io);
+      case "backfill":
+        return await runBackfill(args, io);
+      case "install-scheduler":
+        return await runInstallScheduler(args, io);
+      case "uninstall-scheduler":
+        return await runUninstallScheduler(io);
+      case "vscode-task":
+        return runVscodeTask(io);
       case "help":
         io.out(USAGE);
 

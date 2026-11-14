@@ -23,13 +23,18 @@ export const getLineDate = (line: WorklogLine): string => (line.kind === "eviden
 
 /**
  * The last snapshot per date × repository (a second snapshot on the same day replaces the first).
+ * Backfill lines describe one branch each, so they are kept per date × repository × branch.
  * @param {GitSnapshotLine[]} snapshots - Snapshots in worklog order
- * @returns {GitSnapshotLine[]} - Latest snapshot per date × repository
+ * @returns {GitSnapshotLine[]} - Latest snapshot per date × repository (× branch for backfill)
  */
 export const latestSnapshots = (snapshots: GitSnapshotLine[]): GitSnapshotLine[] => {
   const latest = new Map<string, GitSnapshotLine>();
 
-  snapshots.forEach((line) => latest.set(`${dateOfTimestamp(line.ts)}|${line.repo}`, line));
+  snapshots.forEach((line) => {
+    const branchKey = line.event === "backfill" ? `|${line.branch ?? ""}` : "";
+
+    latest.set(`${dateOfTimestamp(line.ts)}|${line.repo}${branchKey}`, line);
+  });
 
   return [...latest.values()];
 };
@@ -108,7 +113,7 @@ export const groupActivities = (lines: WorklogLine[], repos: AutomationRepo[], t
   const knownRepos = [...repos, ...snapshots.map((line) => ({ path: line.repo, label: line.label }))];
 
   snapshots
-    .filter((line) => line.changed.length > 0 || line.commitsToday > 0)
+    .filter((line) => line.changed.length > 0 || line.commitsToday > 0 || line.event === "backfill")
     .forEach((line) => {
       const group = collector.add(dateOfTimestamp(line.ts), line.label, line.branch, line.ticket);
 

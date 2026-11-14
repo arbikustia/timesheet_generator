@@ -27,9 +27,37 @@ Perintah:
   import    Buat entri usulan (reviewed: false) dari worklog ke dokumen
             --doc <file.json>   dokumen tujuan (wajib)
             --month YYYY-MM     bulan yang diimpor (default: periode dokumen)
-  doctor    Periksa repo, email git, folder worklog dan pola ticket
+  backfill  Isi hari yang terlewat dari reflog & commit lokal (read-only)
+            --from YYYY-MM-DD   default: tanggal 1 bulan ini
+            --to YYYY-MM-DD     default: kemarin
+            --doc <file.json>   opsional (daftar repo & pola ticket)
+  install-scheduler    Pasang snapshot otomatis tiap hari kerja + saat login (cron / launchd / Task Scheduler)
+            --time HH:mm        default 16:45
+            --doc <file.json>   salin daftar repo ke ~/.timesheet/config.json
+            --dry-run           tampilkan saja, tanpa memasang
+  uninstall-scheduler  Hapus jadwal tersebut
+  vscode-task          Tampilkan snippet tasks.json (level user) untuk snapshot saat folder dibuka
+  doctor    Periksa repo, email git, folder worklog, pola ticket dan scheduler
             --doc <file.json>   opsional
   help      Tampilkan bantuan ini
 
 Folder data: $TIMESHEET_HOME atau ~/.timesheet
 `;
+
+/** Default time of the daily snapshot (PROMPT §12.4). */
+export const DEFAULT_SNAPSHOT_TIME = "16:45";
+
+export const CRON_MARKER_START = "# >>> timesheet-builder snapshot >>>";
+
+export const CRON_MARKER_END = "# <<< timesheet-builder snapshot <<<";
+
+/** Delay after boot before the login snapshot, in seconds (repos on slow mounts). */
+export const LOGIN_DELAY_SECONDS = 120;
+
+export const LAUNCHD_LABEL = "id.timesheet-builder.snapshot";
+
+export const SCHTASKS_DAILY = "TimesheetBuilder Snapshot";
+
+export const SCHTASKS_LOGON = "TimesheetBuilder Snapshot (login)";
+
+export const SCHEDULER_LOG_FILE = "scheduler.log";

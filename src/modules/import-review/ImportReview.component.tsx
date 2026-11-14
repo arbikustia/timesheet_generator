@@ -15,7 +15,9 @@ const _renderInstructions = (props: ImportReviewProps): React.ReactElement => (
     <summary className="cursor-pointer font-medium">Cara impor dari worklog</summary>
     <ol className="mt-2 flex list-decimal flex-col gap-1 pl-5">
       <li>
-        Simpan dokumen ke file, lalu di terminal jalankan <code>{props.snapshotCommand}</code> (otomatis tiap sore bila scheduler terpasang).
+        Simpan dokumen ke file, lalu di terminal jalankan <code>{props.snapshotCommand}</code>. Agar otomatis tiap hari kerja 16:45 dan saat
+        login, pasang sekali dengan <code>timesheet install-scheduler --doc &lt;file&gt;</code>. Hari yang terlewat bisa diisi dari riwayat git
+        dengan <code>timesheet backfill</code>.
       </li>
       <li className="flex flex-col gap-1">
         <span>Impor worklog ke file dokumen (dari folder tempat file berada):</span>

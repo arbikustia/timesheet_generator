@@ -346,3 +346,43 @@ Dikerjakan atas permintaan langsung meski PROMPT §9 menyarankan Fase 0–6 dipa
 - Test CLI berjalan di Jest environment `node` (docblock); integrasi membuat repo git sementara (staged,
   unstaged, untracked, tanpa commit kedua) → `snapshot` → `import`, dan memastikan worklog & dokumen tidak
   memuat isi file.
+
+## Fase 8 — Collectors berbasis git (2026-11-14)
+
+Atas arahan: semua fitur yang berhubungan dengan Claude Code **ditahan** (hook `SessionStart`/`Stop`,
+`timesheet log-claude`, skill `/timesheet`); collector mengandalkan git saja. Ekstensi VS Code (`vscode-save`)
+dan auto-evidence (screenshot) juga ditahan karena bukan sumber git. Parser `claude-code`/`vscode-save` di
+importer (Fase 7) tetap ada sehingga bisa diaktifkan nanti tanpa mengubah format worklog.
+
+### D-037 · `timesheet install-scheduler` / `uninstall-scheduler`
+- Menjadwalkan `node <cli> snapshot` Senin–Jumat (default 16:45, `--time HH:mm`) dan saat login, di level user:
+  crontab (blok bertanda `# >>> timesheet-builder snapshot >>>`, hanya blok itu yang diganti/dihapus; login =
+  `@reboot sleep 120`), LaunchAgent `~/Library/LaunchAgents/id.timesheet-builder.snapshot.plist`
+  (`StartCalendarInterval` + `RunAtLoad`), atau dua tugas Task Scheduler (WEEKLY MON–FRI + ONLOGON, lewat `cmd /c`).
+- Path Node (`process.execPath`) dan skrip CLI (realpath) ditulis absolut supaya tidak bergantung PATH cron;
+  `TIMESHEET_HOME` ikut bila diset; output ke `~/.timesheet/scheduler.log`.
+- Jadwal menjalankan `snapshot` tanpa `--doc`, jadi daftar repo harus ada di `~/.timesheet/config.json`
+  (`install-scheduler --doc` menyalinnya; tanpa repo, instalasi ditolak). `--dry-run` hanya menampilkan.
+- WSL: dideteksi lewat `/proc/version`; diberi peringatan bahwa layanan cron harus aktif. Varian launchd dan
+  Task Scheduler hanya diuji dengan runner palsu (belum di mesin macOS/Windows sungguhan).
+
+### D-038 · `timesheet backfill`
+- Mengisi hari yang terlewat (laptop mati/tidur saat 16:45) dari **reflog HEAD** (`git log -g HEAD
+  --date=iso-strict`) — riwayat lokal clone ini, jadi hanya aktivitas di laptop sendiri — dan file commit
+  (`git log -1 --numstat` per commit). Tetap read-only.
+- Reflog dijalankan kronologis: `checkout: moving from A to B` menentukan branch aktif; commit / cherry-pick /
+  revert dihitung sebagai commit; pull/merge/reset tidak dihitung sebagai aktivitas. Satu baris `git-snapshot`
+  (`event: "backfill"`) per hari × branch; branch tanpa ticket hanya dicatat bila ada commit (menghindari
+  noise checkout ke `development`).
+- Hari yang sudah punya snapshot untuk repo itu dilewati, jadi aman dijalankan berulang. Importer menyimpan
+  baris backfill per tanggal × repo × branch (snapshot biasa tetap "terakhir per tanggal × repo") dan
+  menerimanya walau tanpa file (checkout ke branch ber-ticket sudah cukup sebagai sinyal).
+- Default rentang: tanggal 1 bulan berjalan s.d. kemarin. Batas: reflog bawaan git kedaluwarsa ±90 hari.
+
+### D-039 · VS Code (opsi ringan) & doctor
+- `timesheet vscode-task` hanya **mencetak** snippet `tasks.json` level user (`runOn: folderOpen` →
+  `snapshot --event open`); tidak menulis file apa pun, apalagi di repo. Catatan: snapshot pagi bisa memuat
+  perubahan belum di-commit dari hari sebelumnya; snapshot 16:45 di hari yang sama menggantikannya.
+- `doctor` kini memeriksa apakah scheduler terpasang (crontab berisi penanda / plist ada / `schtasks /Query`).
+- Program eksternal (crontab, launchctl, schtasks) dijalankan tanpa shell lewat `runCommand` (stdin untuk
+  `crontab -`); program yang tidak ada → exit 127, bukan crash.

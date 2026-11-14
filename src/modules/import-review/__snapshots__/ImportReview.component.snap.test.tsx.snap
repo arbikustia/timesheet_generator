@@ -66,7 +66,15 @@ exports[`ImportReviewComponent Snapshot Test ImportReviewComponent Snapshots sho
           <code>
             timesheet snapshot
           </code>
-           (otomatis tiap sore bila scheduler terpasang).
+          . Agar otomatis tiap hari kerja 16:45 dan saat login, pasang sekali dengan 
+          <code>
+            timesheet install-scheduler --doc &lt;file&gt;
+          </code>
+          . Hari yang terlewat bisa diisi dari riwayat git dengan 
+          <code>
+            timesheet backfill
+          </code>
+          .
         </li>
         <li
           class="flex flex-col gap-1"

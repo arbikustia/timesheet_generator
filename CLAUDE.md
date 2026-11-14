@@ -56,7 +56,7 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/modules/blur-editor/` | Blur editor modal: whole image or drawn areas, blur or pixelate; original only in memory |
 | `src/modules/import-review/` | "Review" tab: automatic `reviewed: false` entries per week/date — accept, edit, merge, reject, accept week; import command to copy |
 | `src/modules/automation-settings/` | Ticket → task name map and watched repositories (stored in `doc.automation`) |
-| `packages/cli/src/` | `timesheet snapshot / import / doctor` (Node). Read-only git allow-list, worklog `~/.timesheet/worklog.jsonl`, atomic doc write + `.lock`; reuses `src/` parser via `@/` |
+| `packages/cli/src/` | `timesheet snapshot / import / backfill / install-scheduler / uninstall-scheduler / vscode-task / doctor` (Node). Claude Code collectors are on hold (git only). Read-only git allow-list, worklog `~/.timesheet/worklog.jsonl`, atomic doc write + `.lock`; reuses `src/` parser via `@/` |
 | `src/modules/edit-history/` | Undo/redo buttons + Ctrl/Cmd+Z, Ctrl/Cmd+Shift+Z, Ctrl/Cmd+Y |
 | `src/modules/file-menu/` | Word-like New / Open / Open last / Reload from disk / Save / Save As (refuses to overwrite a file changed on disk), status indicator, autosave (file or IndexedDB draft), draft recovery, Ctrl/Cmd+S/O shortcuts, beforeunload |
 | `src/modules/timesheet-document/` | The A4 output (timesheet, signature, evidence cover, evidence pages). One tree for preview and PDF; geometry in pt in `TimesheetDocument.config.ts`, measured from the reference PDF |

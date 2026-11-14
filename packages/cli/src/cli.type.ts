@@ -157,6 +157,10 @@ export type CliArgs = {
   month: string | null;
   repos: string[];
   event: string | null;
+  time: string | null;
+  from: string | null;
+  to: string | null;
+  isDryRun: boolean;
 };
 
 /** Side effects the CLI needs; tests pass fakes. */
@@ -166,6 +170,12 @@ export type CliIo = {
   env: Partial<Record<string, string>>;
   now: () => Date;
   git: GitRunner;
+  /** Runs scheduler tools (`crontab`, `launchctl`, `schtasks`). */
+  run: CommandRunner;
+  host: SchedulerHost;
+  /** Absolute Node binary and CLI script, written into the scheduled job. */
+  nodePath: string;
+  scriptPath: string;
 };
 
 export type DoctorCheck = {
@@ -177,4 +187,67 @@ export type DoctorCheck = {
 /** The part of a Node system error the CLI inspects. */
 export type NodeErrorLike = {
   code?: string;
+};
+
+/** One HEAD reflog entry (local history of this clone; read with `git log -g`). */
+export type ReflogEntry = {
+  sha: string;
+  /** Reflog time with offset, e.g. `2026-11-02T09:00:00+07:00`. */
+  ts: string;
+  subject: string;
+};
+
+/** Activity of one day on one branch, reconstructed from the reflog. */
+export type BranchDay = {
+  date: string;
+  branch: string;
+  lastTs: string;
+  commits: string[];
+};
+
+export type BackfillRange = {
+  from: string;
+  to: string;
+};
+
+export type BackfillContext = {
+  git: GitRunner;
+  ticketPattern: string;
+  label: string;
+};
+
+/** Result of running an external program (scheduler tools). */
+export type CommandResult = {
+  code: number;
+  stdout: string;
+  stderr: string;
+};
+
+/** Runs a program without a shell; `input` is written to stdin. */
+export type CommandRunner = (command: string, args: string[], input?: string) => Promise<CommandResult>;
+
+export type SchedulerPlatform = "cron" | "launchd" | "schtasks";
+
+/** What the scheduled job runs and when. */
+export type SchedulerJob = {
+  /** Program and arguments of `timesheet snapshot` (absolute paths). */
+  program: string[];
+  hour: number;
+  minute: number;
+  logPath: string;
+  /** Extra environment for the job (e.g. TIMESHEET_HOME). */
+  env: Partial<Record<string, string>>;
+};
+
+/** Machine facts the scheduler installer needs. */
+export type SchedulerHost = {
+  platform: SchedulerPlatform;
+  homeDir: string;
+  isWsl: boolean;
+};
+
+export type PlistParts = {
+  args: string;
+  env: string;
+  days: string;
 };
