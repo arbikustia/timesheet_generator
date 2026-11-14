@@ -1,8 +1,10 @@
 import { getDurationMinutes, toMinutes } from "@/libs/utils/entry-validation.util";
 import { createEmptyDoc } from "@/libs/utils/timesheet-document.util";
+import { groupEntriesByDate } from "@/libs/utils/timesheet-engine.util";
 import {
   _checkDate,
   _checkEntry,
+  _checkRepeatedTasks,
   buildMonthSummary,
   formatDuration,
   getWorkdays,
@@ -99,8 +101,31 @@ describe("timesheet validation", () => {
     expect(_checkDate("2026-10-05", doc, [{ ...ENTRY, date: "2026-10-05" }])[0].message).toContain("(Cuti)");
   });
 
-  it("should pass a complete document except the double-booked day", () => {
-    expect(issueIds(makeReadyDoc())).toEqual(["hours:2026-10-07"]);
+  it("should pass a complete document except the double-booked day and a repeated-task note", () => {
+    const report = validateDoc(makeReadyDoc());
+
+    expect(report.issues.filter((issue) => issue.level !== "info").map((issue) => issue.id)).toEqual(["hours:2026-10-07"]);
+    expect(report.issues.filter((issue) => issue.level === "info").every((issue) => issue.id.startsWith("repeat:"))).toBe(true);
+  });
+
+  it("should note a task repeated on more than five consecutive working days", () => {
+    const doc = createEmptyDoc({ year: 2026, month: 10 });
+    const days = ["2026-10-01", "2026-10-02", "2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08"];
+
+    doc.entries = days.map((date, index) => ({ ...ENTRY, id: `d${index}`, date, task: " Daily " }));
+    doc.entries.push({ ...ENTRY, id: "other", date: "2026-10-09", task: "Other" });
+
+    const issues = _checkRepeatedTasks(doc, groupEntriesByDate(doc));
+
+    expect(issues).toEqual([
+      { id: "repeat:2026-10-01:Daily", level: "info", message: 'Task "Daily" sama selama 6 hari kerja berturut-turut (01/10–08/10).', target: { kind: "date", date: "2026-10-01" } },
+    ]);
+
+    doc.entries = doc.entries.filter((entry) => entry.date !== "2026-10-05");
+    expect(_checkRepeatedTasks(doc, groupEntriesByDate(doc))).toEqual([]);
+
+    doc.entries = days.map((date, index) => ({ ...ENTRY, id: `e${index}`, date }));
+    expect(_checkRepeatedTasks(doc, groupEntriesByDate(doc))).toHaveLength(1);
   });
 
   it("should require names, signatures and blurred code screenshots, errors first", () => {
@@ -120,6 +145,7 @@ describe("timesheet validation", () => {
       "signature:tribeLeader",
       "evidence-period:2026-11-02",
       "hours:2026-10-07",
+      ...report.issues.filter((issue) => issue.level === "info").map((issue) => issue.id),
     ]);
     expect(report.errorCount).toBe(3);
     expect(report.warningCount).toBe(2);

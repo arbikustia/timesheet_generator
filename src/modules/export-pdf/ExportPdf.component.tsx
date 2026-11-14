@@ -1,7 +1,7 @@
 import * as React from "react";
 import { createPortal } from "react-dom";
-import { FiPrinter } from "react-icons/fi";
-import { Button, Modal, Tooltip } from "antd";
+import { FiExternalLink, FiPrinter } from "react-icons/fi";
+import { Button, Modal, Space, Tooltip } from "antd";
 
 import type { ExportPdfProps } from "./ExportPdf.type";
 
@@ -38,11 +38,21 @@ const _renderBlockedDialog = (props: ExportPdfProps): React.ReactElement => (
  */
 const ExportPdfComponent = (props: ExportPdfProps): React.ReactElement => (
   <>
-    <Tooltip title="Ctrl/Cmd+P">
-      <Button icon={<FiPrinter aria-hidden />} aria-keyshortcuts="Control+P Meta+P" onClick={props.onExport}>
-        Export PDF
-      </Button>
-    </Tooltip>
+    <Space.Compact>
+      <Tooltip title="Ctrl/Cmd+P">
+        <Button icon={<FiPrinter aria-hidden />} aria-keyshortcuts="Control+P Meta+P" onClick={props.onExport}>
+          Export PDF
+        </Button>
+      </Tooltip>
+      <Tooltip title="Pratinjau dokumen di tab baru">
+        <Button aria-label="Buka di tab baru" icon={<FiExternalLink aria-hidden />} onClick={props.onOpenTab} />
+      </Tooltip>
+    </Space.Compact>
+    {props.tabError && (
+      <span role="alert" className="text-xs text-danger-strong">
+        {props.tabError}
+      </span>
+    )}
     {_renderBlockedDialog(props)}
     {createPortal(
       <div className="print-root" aria-hidden="true" data-testid="print-root">

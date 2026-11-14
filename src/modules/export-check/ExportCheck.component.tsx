@@ -21,6 +21,7 @@ const ExportCheckComponent = (props: ExportCheckProps): React.ReactElement => {
       <Alert type={getCheckStatusType(errors.length, warnings.length)} showIcon title={getCheckStatusText(errors.length, warnings.length)} />
       {renderIssueGroup("error", errors, onIssueClick)}
       {renderIssueGroup("warning", warnings, onIssueClick)}
+      {renderIssueGroup("info", props.infos, onIssueClick)}
     </section>
   );
 };

@@ -12,6 +12,8 @@ describe("ExportPdfComponent Snapshot Test", () => {
         printContainer: document.createElement("div"),
         errorMessages: [],
         isBlockedOpen: false,
+        tabError: null,
+        onOpenTab: jest.fn(),
         onExport: jest.fn(),
         onCloseBlocked: jest.fn(),
         onShowCheck: jest.fn(),

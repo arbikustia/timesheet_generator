@@ -386,3 +386,34 @@ importer (Fase 7) tetap ada sehingga bisa diaktifkan nanti tanpa mengubah format
 - `doctor` kini memeriksa apakah scheduler terpasang (crontab berisi penanda / plist ada / `schtasks /Query`).
 - Program eksternal (crontab, launchctl, schtasks) dijalankan tanpa shell lewat `runCommand` (stdin untuk
   `crontab -`); program yang tidak ada → exit 127, bukan crash.
+
+## Fase 9 — Sisa penguat alur PROMPT §7 (2026-11-14)
+
+Fase tambahan (tidak ada di PROMPT §9); isinya fitur §7 yang belum dibuat. "Duplikat dari hari/baris
+sebelumnya" dan "template task" sudah ada sejak Fase 3 (tombol Duplikat di form cepat, D-018).
+
+### D-040 · Isi massal
+- `modules/bulk-fill` (lipatan "Isi massal" di tab Aktivitas): rentang Dari–Sampai (hanya hari kerja: Senin–Jumat
+  tanpa libur/cuti), task (autocomplete sama dengan form cepat), jam (default dari Pengaturan) dan centang
+  "Lewati tanggal yang sudah punya aktivitas" (default aktif). Tombol menampilkan jumlah hari yang akan diisi.
+- Satu aksi `addEntries` → semua entri masuk berurutan tanggal sebagai **satu langkah undo**.
+- Validasi sama dengan form cepat (task wajib, HH:mm, selesai > mulai) + rentang terbalik / tidak ada hari.
+
+### D-041 · Impor dari bulan lalu
+- `modules/previous-month-import` (tab Pengaturan): memilih file `.json` bulan lalu lewat `<input type="file">`
+  (cukup baca, tidak perlu handle/izin tulis), melewati `parseTimesheetDoc` yang sama.
+- `mergePreviousMonth` hanya **mengisi yang kosong**: field teks profil dan tanda tangan; `signDate`, periode,
+  aktivitas, evidence dan hari khusus tidak disentuh. Daftar task = template favorit + template & task yang
+  dipakai bulan lalu (unik). Automation: ticket/ repo yang belum ada ditambahkan, nilai bulan ini menang.
+- Satu aksi `importPreviousMonth` (bisa di-undo) + ringkasan apa yang diambil.
+
+### D-042 · Buka di tab baru
+- Tombol ikon di samping Export PDF menyalin markup salinan cetak (`.print-root`, komponen `<Page>` yang
+  sama, style inline) ke tab kosong same-origin, plus CSS kecil (latar abu-abu di layar, A4 tanpa margin saat
+  print). Tab itu bisa di-print langsung; judulnya = nama file PDF. Pratinjau tidak melewati cek export.
+- Pop-up diblokir → pesan "Tab baru diblokir browser…". Tab tidak ikut diperbarui saat dokumen berubah (salinan).
+
+### D-043 · Info "task identik > N hari"
+- Level baru `info` di Cek export (grup "Info", ikon biru) yang tidak memblokir dan tidak dihitung di badge
+  tab. Aturan: task yang sama (trim) dipakai di lebih dari 5 hari kerja berturut-turut (`REPEATED_TASK_DAYS`);
+  weekend/libur tidak memutus, hari kerja tanpa task itu memutus. Klik → baris tanggal pertama di preview.

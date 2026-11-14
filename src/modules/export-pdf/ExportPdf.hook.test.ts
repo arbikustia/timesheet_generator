@@ -2,7 +2,7 @@ import { act, createStoreWrapper, renderHook } from "@/libs/unit-test";
 
 import { loadOctoberDocWithEvidence, makeDocStore } from "@/fixture/timesheet.fixture";
 
-import { useExportPdf } from "./ExportPdf.hook";
+import { getBlockingMessages, useExportPdf } from "./ExportPdf.hook";
 
 /**
  * October document that passes the export check.
@@ -52,5 +52,31 @@ describe("useExportPdf", () => {
     expect(document.title).toBe("BHN II - Timesheet October");
     window.dispatchEvent(new Event("afterprint"));
     expect(document.title).toBe("Timesheet Builder");
+  });
+
+  it("should open the preview tab or explain a blocked pop-up", () => {
+    const tabDocument = document.implementation.createHTMLDocument("");
+    const open = jest.spyOn(window, "open").mockReturnValue(null);
+    const { result } = renderHook(() => useExportPdf(jest.fn()), { wrapper: createStoreWrapper(makeDocStore(makeReadyDoc())) });
+
+    act(() => result.current.onOpenTab());
+    expect(result.current.tabError).toContain("Tab baru diblokir browser");
+
+    const printRoot = document.createElement("div");
+
+    printRoot.className = "print-root";
+    document.body.append(printRoot);
+    open.mockReturnValue({ document: tabDocument } as Window);
+    act(() => result.current.onOpenTab());
+    expect(result.current.tabError).toBeNull();
+    expect(tabDocument.title).toBe("BHN II - Timesheet October");
+    printRoot.remove();
+    open.mockRestore();
+  });
+
+  it("should list only the first blocking errors", () => {
+    const issues = Array.from({ length: 7 }, (_, index) => ({ id: String(index), level: "error" as const, message: `E${index}`, target: null }));
+
+    expect(getBlockingMessages([...issues, { id: "w", level: "warning", message: "W", target: null }])).toEqual(["E0", "E1", "E2", "E3", "E4"]);
   });
 });

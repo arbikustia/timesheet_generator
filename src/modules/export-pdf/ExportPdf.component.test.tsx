@@ -15,6 +15,8 @@ const makeProps = (overrides?: Partial<ExportPdfProps>): ExportPdfProps => ({
   printContainer: document.body,
   errorMessages: ["Nama Tribe Leader kosong."],
   isBlockedOpen: false,
+  tabError: null,
+  onOpenTab: jest.fn(),
   onExport: jest.fn(),
   onCloseBlocked: jest.fn(),
   onShowCheck: jest.fn(),
@@ -27,18 +29,21 @@ describe("ExportPdfComponent", () => {
 
     renderWithStore(<ExportPdfComponent {...props} />);
     fireEvent.click(screen.getByRole("button", { name: "Export PDF" }));
+    fireEvent.click(screen.getByRole("button", { name: "Buka di tab baru" }));
 
     expect(props.onExport).toHaveBeenCalled();
+    expect(props.onOpenTab).toHaveBeenCalled();
     expect(screen.getByTestId("print-root")).toHaveAttribute("aria-hidden", "true");
     expect(screen.getByTestId("print-root").querySelectorAll("[data-page-kind]").length).toBeGreaterThan(3);
   });
 
-  it("should list blocking errors", () => {
-    const props = makeProps({ isBlockedOpen: true });
+  it("should list blocking errors and a blocked pop-up", () => {
+    const props = makeProps({ isBlockedOpen: true, tabError: "Tab baru diblokir browser." });
 
     renderWithStore(<ExportPdfComponent {...props} />);
 
     expect(screen.getByText("Nama Tribe Leader kosong.")).toBeInTheDocument();
+    expect(screen.getByText("Tab baru diblokir browser.")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: "Lihat Cek export" }));
     fireEvent.click(screen.getByRole("button", { name: "Tutup" }));

@@ -221,44 +221,83 @@ exports[`TimesheetBuilderContainer Snapshot Test TimesheetBuilderContainer Snaps
           </span>
         </button>
       </div>
-      <button
-        aria-keyshortcuts="Control+P Meta+P"
-        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined"
-        type="button"
+      <div
+        class="ant-space-compact css-dev-only-do-not-override-eofgey"
       >
-        <span
-          class="ant-btn-icon"
+        <button
+          aria-keyshortcuts="Control+P Meta+P"
+          class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-compact-item ant-btn-compact-first-item"
+          type="button"
         >
-          <svg
-            aria-hidden="true"
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="ant-btn-icon"
           >
-            <polyline
-              points="6 9 6 2 18 2 18 9"
-            />
-            <path
-              d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
-            />
-            <rect
-              height="8"
-              width="12"
-              x="6"
-              y="14"
-            />
-          </svg>
-        </span>
-        <span>
-          Export PDF
-        </span>
-      </button>
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline
+                points="6 9 6 2 18 2 18 9"
+              />
+              <path
+                d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+              />
+              <rect
+                height="8"
+                width="12"
+                x="6"
+                y="14"
+              />
+            </svg>
+          </span>
+          <span>
+            Export PDF
+          </span>
+        </button>
+        <button
+          aria-label="Buka di tab baru"
+          class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only ant-btn-compact-item ant-btn-compact-last-item"
+          type="button"
+        >
+          <span
+            class="ant-btn-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              />
+              <polyline
+                points="15 3 21 3 21 9"
+              />
+              <line
+                x1="10"
+                x2="21"
+                y1="14"
+                y2="3"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
       <span
         class="ml-auto text-sm text-text-secondary"
       >
@@ -788,6 +827,378 @@ exports[`TimesheetBuilderContainer Snapshot Test TimesheetBuilderContainer Snaps
                       </button>
                     </div>
                   </form>
+                  <div
+                    class="mt-3"
+                  >
+                    <details
+                      class="rounded-lg border border-border-default p-2"
+                    >
+                      <summary
+                        class="cursor-pointer text-sm font-semibold"
+                      >
+                        Isi massal (rentang tanggal kerja)
+                      </summary>
+                      <form
+                        aria-label="Isi massal"
+                        class="mt-2 flex flex-col gap-2"
+                      >
+                        <div
+                          class="grid grid-cols-2 gap-2"
+                        >
+                          <label
+                            class="flex flex-col gap-1 text-sm font-medium"
+                          >
+                            Dari
+                            <select
+                              aria-label="Dari"
+                              class="rounded-md border border-border-default bg-background-surface px-2 py-1 text-sm"
+                              data-field="from"
+                            >
+                              <option
+                                value="2026-10-01"
+                              >
+                                Kam, 01/10/2026
+                              </option>
+                              <option
+                                value="2026-10-02"
+                              >
+                                Jum, 02/10/2026
+                              </option>
+                              <option
+                                value="2026-10-05"
+                              >
+                                Sen, 05/10/2026
+                              </option>
+                              <option
+                                value="2026-10-06"
+                              >
+                                Sel, 06/10/2026
+                              </option>
+                              <option
+                                value="2026-10-07"
+                              >
+                                Rab, 07/10/2026
+                              </option>
+                              <option
+                                value="2026-10-08"
+                              >
+                                Kam, 08/10/2026
+                              </option>
+                              <option
+                                value="2026-10-09"
+                              >
+                                Jum, 09/10/2026
+                              </option>
+                              <option
+                                value="2026-10-12"
+                              >
+                                Sen, 12/10/2026
+                              </option>
+                              <option
+                                value="2026-10-13"
+                              >
+                                Sel, 13/10/2026
+                              </option>
+                              <option
+                                value="2026-10-14"
+                              >
+                                Rab, 14/10/2026
+                              </option>
+                              <option
+                                value="2026-10-15"
+                              >
+                                Kam, 15/10/2026
+                              </option>
+                              <option
+                                value="2026-10-16"
+                              >
+                                Jum, 16/10/2026
+                              </option>
+                              <option
+                                value="2026-10-19"
+                              >
+                                Sen, 19/10/2026
+                              </option>
+                              <option
+                                value="2026-10-20"
+                              >
+                                Sel, 20/10/2026
+                              </option>
+                              <option
+                                value="2026-10-21"
+                              >
+                                Rab, 21/10/2026
+                              </option>
+                              <option
+                                value="2026-10-22"
+                              >
+                                Kam, 22/10/2026
+                              </option>
+                              <option
+                                value="2026-10-23"
+                              >
+                                Jum, 23/10/2026
+                              </option>
+                              <option
+                                value="2026-10-26"
+                              >
+                                Sen, 26/10/2026
+                              </option>
+                              <option
+                                value="2026-10-27"
+                              >
+                                Sel, 27/10/2026
+                              </option>
+                              <option
+                                value="2026-10-28"
+                              >
+                                Rab, 28/10/2026
+                              </option>
+                              <option
+                                value="2026-10-29"
+                              >
+                                Kam, 29/10/2026
+                              </option>
+                              <option
+                                value="2026-10-30"
+                              >
+                                Jum, 30/10/2026
+                              </option>
+                            </select>
+                          </label>
+                          <label
+                            class="flex flex-col gap-1 text-sm font-medium"
+                          >
+                            Sampai
+                            <select
+                              aria-label="Sampai"
+                              class="rounded-md border border-border-default bg-background-surface px-2 py-1 text-sm"
+                              data-field="to"
+                            >
+                              <option
+                                value="2026-10-01"
+                              >
+                                Kam, 01/10/2026
+                              </option>
+                              <option
+                                value="2026-10-02"
+                              >
+                                Jum, 02/10/2026
+                              </option>
+                              <option
+                                value="2026-10-05"
+                              >
+                                Sen, 05/10/2026
+                              </option>
+                              <option
+                                value="2026-10-06"
+                              >
+                                Sel, 06/10/2026
+                              </option>
+                              <option
+                                value="2026-10-07"
+                              >
+                                Rab, 07/10/2026
+                              </option>
+                              <option
+                                value="2026-10-08"
+                              >
+                                Kam, 08/10/2026
+                              </option>
+                              <option
+                                value="2026-10-09"
+                              >
+                                Jum, 09/10/2026
+                              </option>
+                              <option
+                                value="2026-10-12"
+                              >
+                                Sen, 12/10/2026
+                              </option>
+                              <option
+                                value="2026-10-13"
+                              >
+                                Sel, 13/10/2026
+                              </option>
+                              <option
+                                value="2026-10-14"
+                              >
+                                Rab, 14/10/2026
+                              </option>
+                              <option
+                                value="2026-10-15"
+                              >
+                                Kam, 15/10/2026
+                              </option>
+                              <option
+                                value="2026-10-16"
+                              >
+                                Jum, 16/10/2026
+                              </option>
+                              <option
+                                value="2026-10-19"
+                              >
+                                Sen, 19/10/2026
+                              </option>
+                              <option
+                                value="2026-10-20"
+                              >
+                                Sel, 20/10/2026
+                              </option>
+                              <option
+                                value="2026-10-21"
+                              >
+                                Rab, 21/10/2026
+                              </option>
+                              <option
+                                value="2026-10-22"
+                              >
+                                Kam, 22/10/2026
+                              </option>
+                              <option
+                                value="2026-10-23"
+                              >
+                                Jum, 23/10/2026
+                              </option>
+                              <option
+                                value="2026-10-26"
+                              >
+                                Sen, 26/10/2026
+                              </option>
+                              <option
+                                value="2026-10-27"
+                              >
+                                Sel, 27/10/2026
+                              </option>
+                              <option
+                                value="2026-10-28"
+                              >
+                                Rab, 28/10/2026
+                              </option>
+                              <option
+                                value="2026-10-29"
+                              >
+                                Kam, 29/10/2026
+                              </option>
+                              <option
+                                value="2026-10-30"
+                              >
+                                Jum, 30/10/2026
+                              </option>
+                            </select>
+                          </label>
+                        </div>
+                        <label
+                          class="flex flex-col gap-1 text-sm font-medium"
+                        >
+                          Task / Ticket
+                          <div
+                            class="ant-select ant-select-outlined ant-select-auto-complete css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-search"
+                          >
+                            <div
+                              class="ant-select-content"
+                            >
+                              <div
+                                class="ant-select-placeholder"
+                              />
+                              <input
+                                aria-autocomplete="list"
+                                aria-expanded="false"
+                                aria-haspopup="listbox"
+                                aria-label="Task massal"
+                                autocomplete="new-password"
+                                class="ant-select-input"
+                                id="test-id"
+                                role="combobox"
+                                type="text"
+                                value=""
+                              />
+                            </div>
+                          </div>
+                        </label>
+                        <div
+                          class="grid grid-cols-2 gap-2"
+                        >
+                          <label
+                            class="flex flex-col gap-1 text-sm font-medium"
+                          >
+                            Mulai
+                            <input
+                              aria-label="Jam mulai massal"
+                              class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+                              data-field="start"
+                              type="time"
+                              value="08:00"
+                            />
+                          </label>
+                          <label
+                            class="flex flex-col gap-1 text-sm font-medium"
+                          >
+                            Selesai
+                            <input
+                              aria-label="Jam selesai massal"
+                              class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+                              data-field="end"
+                              type="time"
+                              value="17:00"
+                            />
+                          </label>
+                        </div>
+                        <label
+                          class="ant-checkbox-wrapper ant-checkbox-wrapper-checked css-var-root ant-checkbox-css-var css-dev-only-do-not-override-eofgey"
+                        >
+                          <span
+                            class="ant-checkbox ant-wave-target css-dev-only-do-not-override-eofgey ant-checkbox-checked"
+                          >
+                            <input
+                              checked=""
+                              class="ant-checkbox-input"
+                              type="checkbox"
+                            />
+                          </span>
+                          <span
+                            class="ant-checkbox-label"
+                          >
+                            Lewati tanggal yang sudah punya aktivitas
+                          </span>
+                        </label>
+                        <button
+                          class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined self-end"
+                          type="submit"
+                        >
+                          <span
+                            class="ant-btn-icon"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              fill="none"
+                              height="1em"
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              viewBox="0 0 24 24"
+                              width="1em"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <polygon
+                                points="12 2 2 7 12 12 22 7 12 2"
+                              />
+                              <polyline
+                                points="2 17 12 22 22 17"
+                              />
+                              <polyline
+                                points="2 12 12 17 22 12"
+                              />
+                            </svg>
+                          </span>
+                          <span>
+                            Isi 22 hari kerja
+                          </span>
+                        </button>
+                      </form>
+                    </details>
+                  </div>
                   <div
                     class="ant-divider css-dev-only-do-not-override-eofgey css-var-root ant-divider-horizontal ant-divider-rail"
                     role="separator"

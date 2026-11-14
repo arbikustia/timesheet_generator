@@ -52,7 +52,9 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/modules/{period-panel,entry-form,entry-list,day-overrides,profile-settings,document-preview}/` | Input panel sections and the fit-width live preview; each binds to the store through its `.hook.ts` |
 | `src/modules/evidence-panel/` | Evidence tab: per-date left/right slots, upload / drag & drop / paste (auto-blur), replace, swap, blur, remove, document size warning |
 | `src/modules/export-check/` | "Cek export" tab: month summary + clickable errors/warnings from `selectValidationReport` |
-| `src/modules/export-pdf/` | Export PDF button (+ Ctrl/Cmd+P), blocked-by-errors dialog, print-only `.print-root` portal of the same `<TimesheetDocument>`; print CSS in `src/index.css` |
+| `src/modules/export-pdf/` | Export PDF button (+ Ctrl/Cmd+P), "Buka di tab baru" preview, blocked-by-errors dialog, print-only `.print-root` portal of the same `<TimesheetDocument>`; print CSS in `src/index.css` |
+| `src/modules/bulk-fill/` | "Isi massal" in the Aktivitas tab: working-day range → same task & hours, one undo step |
+| `src/modules/previous-month-import/` | Settings: take over profile, signatures, task list and automation from last month's file (fills empty fields only) |
 | `src/modules/blur-editor/` | Blur editor modal: whole image or drawn areas, blur or pixelate; original only in memory |
 | `src/modules/import-review/` | "Review" tab: automatic `reviewed: false` entries per week/date — accept, edit, merge, reject, accept week; import command to copy |
 | `src/modules/automation-settings/` | Ticket → task name map and watched repositories (stored in `doc.automation`) |
@@ -67,7 +69,7 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/libs/utils/timesheet-document.util.ts` | `parseTimesheetDoc` (the single upstream fallback), `migrateDoc`, `serializeTimesheetDoc`, `createEmptyDoc`, `getDefaultDocFileName` |
 | `src/libs/unit-test.ts` | The only allowed test import: re-exports RTL (+ `within`), `renderWithStore`, `createStoreWrapper`, `test.assertSnapshots(Component, configs, { wrapper })` |
 | `src/store/` | `makeStore()` (theme + `timesheet` + `file` slices), typed hooks, `ThemeProvider`. `timesheet.slice.ts` holds the whole document, `savedDoc` (dirty = `doc !== savedDoc`), every edit action, undo/redo history (`timesheet.history.ts`, edits recorded by the wrapped default-export reducer) and `selectValidationReport`; `file.slice.ts` holds file name/handle status |
-| `src/libs/utils/` | Shared logic: `date`, `date-option`, `timesheet-engine`, `timesheet-mutation`, `timesheet-document`, `entry-validation`, `file`, `file-system` (FS Access + download fallback), `draft-storage` (idb-keyval), `file-handle.registry` (current handle, outside Redux), `image` (resize, full blur, JPEG), `document-size`, `timesheet-validation` (export check + month summary), `anchor` (DOM ids the check navigates to) |
+| `src/libs/utils/` | Shared logic: `date`, `date-option`, `timesheet-engine`, `timesheet-mutation`, `timesheet-document`, `entry-validation`, `file`, `file-system` (FS Access + download fallback), `draft-storage` (idb-keyval), `file-handle.registry` (current handle, outside Redux), `image` (resize, full blur, JPEG), `document-size`, `timesheet-validation` (export check: error/warning/info + month summary), `workflow` (bulk fill dates, previous-month merge), `anchor` (DOM ids the check navigates to) |
 | `src/hooks/` | `useElementWidth` (preview zoom), `useKeyboardShortcuts`, `useBeforeUnload`, `usePrintTitle` (PDF file name) |
 | `src/fixture/timesheet-2026-10.sample.json` | October 2026 real data for seed & golden test |
 | `src/fixture/canvas.fixture.ts` | `installFakeCanvas()` — fake 2D canvas + `createImageBitmap` for jsdom |

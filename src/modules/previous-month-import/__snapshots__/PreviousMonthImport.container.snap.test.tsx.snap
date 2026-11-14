@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`PreviousMonthImportContainer Snapshot Test PreviousMonthImportContainer Snapshots should render the import button 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="previous-month-title"
+    class="flex flex-col gap-2 rounded-lg border border-border-default p-2"
+  >
+    <h3
+      class="m-0 text-sm font-semibold"
+      id="previous-month-title"
+    >
+      Impor dari bulan lalu
+    </h3>
+    <p
+      class="m-0 text-xs text-text-secondary"
+    >
+      Ambil profil, tanda tangan, daftar task, ticket dan repo dari file bulan sebelumnya. Hanya isian yang masih kosong yang diisi; aktivitas dan evidence tidak ikut.
+    </p>
+    <button
+      class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined self-start"
+      type="button"
+    >
+      <span
+        class="ant-btn-icon"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+          />
+          <polyline
+            points="7 10 12 15 17 10"
+          />
+          <line
+            x1="12"
+            x2="12"
+            y1="15"
+            y2="3"
+          />
+        </svg>
+      </span>
+      <span>
+        Pilih file bulan lalu…
+      </span>
+    </button>
+    <input
+      accept=".json,application/json"
+      aria-label="File dokumen bulan lalu"
+      hidden=""
+      type="file"
+    />
+  </section>
+</DocumentFragment>
+`;

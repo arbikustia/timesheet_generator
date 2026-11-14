@@ -12,6 +12,7 @@ import {
   shiftDocToPeriod,
 } from "@/libs/utils/timesheet-mutation.util";
 import { validateDoc } from "@/libs/utils/timesheet-validation.util";
+import { mergePreviousMonth } from "@/libs/utils/workflow.util";
 
 import { EVIDENCE_MAX_PER_DATE } from "@/constants/timesheet.constant";
 import type { Entry, TimesheetDoc } from "@/types/timesheet.type";
@@ -92,6 +93,15 @@ const timesheetSlice = createSlice({
         state.doc.entries = insertEntrySorted(state.doc.entries, action.payload);
       },
       prepare: (input: NewEntryInput) => ({ payload: _buildManualEntry(input) }),
+    },
+    addEntries: {
+      reducer: (state, action: PayloadAction<Entry[]>): void => {
+        state.doc.entries = action.payload.reduce(insertEntrySorted, state.doc.entries);
+      },
+      prepare: (inputs: NewEntryInput[]) => ({ payload: inputs.map(_buildManualEntry) }),
+    },
+    importPreviousMonth: (state, action: PayloadAction<TimesheetDoc>): void => {
+      state.doc = mergePreviousMonth(state.doc, action.payload).doc;
     },
     updateEntry: (state, action: PayloadAction<UpdateEntryPayload>): void => {
       const entry = state.doc.entries.find((item) => item.id === action.payload.id);
@@ -256,6 +266,8 @@ export const {
   changePeriod,
   startNextMonth,
   addEntry,
+  addEntries,
+  importPreviousMonth,
   updateEntry,
   removeEntry,
   duplicateEntry,
@@ -325,6 +337,8 @@ const isUndoableAction = isAnyOf(
   changePeriod,
   startNextMonth,
   addEntry,
+  addEntries,
+  importPreviousMonth,
   updateEntry,
   removeEntry,
   duplicateEntry,

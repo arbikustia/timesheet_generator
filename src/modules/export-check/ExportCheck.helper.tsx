@@ -1,5 +1,5 @@
 import * as React from "react";
-import { FiAlertTriangle, FiXCircle } from "react-icons/fi";
+import { FiAlertTriangle, FiInfo, FiXCircle } from "react-icons/fi";
 
 import type { ValidationIssue, ValidationLevel } from "@/types/timesheet-validation.type";
 
@@ -9,6 +9,7 @@ import type { CheckStatusType, ExportCheckProps, SummaryItem } from "./ExportChe
 const LEVEL_ICONS: Record<ValidationLevel, React.ReactElement> = {
   error: <FiXCircle aria-hidden className="mt-0.5 shrink-0 text-danger-strong" />,
   warning: <FiAlertTriangle aria-hidden className="mt-0.5 shrink-0 text-warning-strong" />,
+  info: <FiInfo aria-hidden className="mt-0.5 shrink-0 text-information-strong" />,
 };
 
 /**

@@ -7,6 +7,9 @@ export const MIN_DAILY_HOURS = 8;
 /** Daily total above this many hours triggers a warning (PROMPT §7). */
 export const MAX_DAILY_HOURS = 12;
 
+/** A task repeated on more than this many consecutive working days gets an info note (PROMPT §7). */
+export const REPEATED_TASK_DAYS = 5;
+
 /** Indonesian labels of the profile fields the export check requires. */
 export const REQUIRED_PROFILE_FIELD_LABELS: Record<RequiredProfileField, string> = {
   consultantName: "Nama konsultan",

@@ -1,4 +1,4 @@
-import type { AutomationRepo, DayOverride, Entry, Evidence, Period, Profile, Signatures, WorkHours } from "./timesheet.type";
+import type { Automation, AutomationRepo, DayOverride, Entry, Evidence, Period, Profile, Signatures, TimesheetDoc, WorkHours } from "./timesheet.type";
 
 /** Fields the user types when adding an activity. */
 export type NewEntryInput = Pick<Entry, "date" | "task" | "start" | "end">;
@@ -81,4 +81,35 @@ export type RepoChanges = Partial<AutomationRepo>;
 export type UpdateRepoPayload = {
   index: number;
   changes: RepoChanges;
+};
+
+/** "Isi massal": the same task and hours for every working day in a range. */
+export type BulkFillInput = {
+  from: string;
+  to: string;
+  task: string;
+  start: string;
+  end: string;
+  /** Leave dates that already have an activity untouched. */
+  skipFilled: boolean;
+};
+
+/** What "Impor dari bulan lalu" took over from the previous document. */
+export type PreviousMonthSummary = {
+  /** Profile text fields and signatures that were empty and got filled. */
+  filledFields: number;
+  /** Tasks added to the favourite templates. */
+  addedTasks: number;
+  /** Ticket names and repositories added. */
+  addedAutomation: number;
+};
+
+export type AutomationMerge = {
+  automation: Automation;
+  added: number;
+};
+
+export type PreviousMonthMerge = {
+  doc: TimesheetDoc;
+  summary: PreviousMonthSummary;
 };

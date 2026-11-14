@@ -11,7 +11,10 @@ export type ExportPdfProps = {
   printContainer: HTMLElement;
   errorMessages: string[];
   isBlockedOpen: boolean;
+  /** Error of the last "Buka di tab baru", e.g. a blocked pop-up. */
+  tabError: string | null;
   onExport: () => void;
+  onOpenTab: () => void;
   onCloseBlocked: () => void;
   onShowCheck: () => void;
 };

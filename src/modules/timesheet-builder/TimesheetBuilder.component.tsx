@@ -6,6 +6,7 @@ import { BUILDER_TAB_LABELS, COUNT_TONE_CLASSES } from "./TimesheetBuilder.confi
 import type { CountTone, TimesheetBuilderProps } from "./TimesheetBuilder.type";
 
 import AutomationSettings from "@/modules/automation-settings";
+import BulkFill from "@/modules/bulk-fill";
 import DayOverrides from "@/modules/day-overrides";
 import DocumentPreview from "@/modules/document-preview";
 import EditHistory from "@/modules/edit-history";
@@ -17,6 +18,7 @@ import ExportPdf from "@/modules/export-pdf";
 import FileMenu from "@/modules/file-menu";
 import ImportReview from "@/modules/import-review";
 import PeriodPanel from "@/modules/period-panel";
+import PreviousMonthImport from "@/modules/previous-month-import";
 import ProfileSettings from "@/modules/profile-settings";
 
 /**
@@ -54,36 +56,45 @@ const _renderCheckTabLabel = (props: TimesheetBuilderProps): React.ReactElement 
   return _renderCountLabel(BUILDER_TAB_LABELS.check, props.warningCount, "warning", "peringatan");
 };
 
+/** "Aktivitas" tab: quick add, bulk fill and the activity list. */
+const ACTIVITIES_PANEL = (
+  <div className="flex flex-col">
+    <EntryForm />
+    <div className="mt-3">
+      <BulkFill />
+    </div>
+    <Divider />
+    <EntryList />
+  </div>
+);
+
+/** "Review" tab: automatic entries plus ticket map and repositories. */
+const REVIEW_PANEL = (
+  <div className="flex flex-col gap-4">
+    <ImportReview />
+    <AutomationSettings />
+  </div>
+);
+
+/** "Pengaturan" tab: import from last month above the profile settings. */
+const SETTINGS_PANEL = (
+  <div className="flex flex-col gap-4">
+    <PreviousMonthImport />
+    <ProfileSettings />
+  </div>
+);
+
 /**
  * Tabs of the input panel.
  * @param {TimesheetBuilderProps} props - Shell props
  * @returns {TabsProps["items"]} - Tab items
  */
 const _buildTabItems = (props: TimesheetBuilderProps): TabsProps["items"] => [
-  {
-    key: "activities",
-    label: BUILDER_TAB_LABELS.activities,
-    children: (
-      <div className="flex flex-col">
-        <EntryForm />
-        <Divider />
-        <EntryList />
-      </div>
-    ),
-  },
+  { key: "activities", label: BUILDER_TAB_LABELS.activities, children: ACTIVITIES_PANEL },
   { key: "evidence", label: BUILDER_TAB_LABELS.evidence, children: <EvidencePanel /> },
-  {
-    key: "review",
-    label: _renderCountLabel(BUILDER_TAB_LABELS.review, props.reviewCount, "warning", "usulan"),
-    children: (
-      <div className="flex flex-col gap-4">
-        <ImportReview />
-        <AutomationSettings />
-      </div>
-    ),
-  },
+  { key: "review", label: _renderCountLabel(BUILDER_TAB_LABELS.review, props.reviewCount, "warning", "usulan"), children: REVIEW_PANEL },
   { key: "days", label: BUILDER_TAB_LABELS.days, children: <DayOverrides /> },
-  { key: "settings", label: BUILDER_TAB_LABELS.settings, children: <ProfileSettings /> },
+  { key: "settings", label: BUILDER_TAB_LABELS.settings, children: SETTINGS_PANEL },
   { key: "check", label: _renderCheckTabLabel(props), children: <ExportCheck onNavigate={props.onNavigate} /> },
 ];
 

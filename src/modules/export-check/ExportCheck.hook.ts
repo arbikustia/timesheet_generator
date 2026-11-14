@@ -18,6 +18,7 @@ export const useExportCheck = (onNavigate: (target: ValidationTarget) => void): 
   const summaryItems = useMemo(() => buildSummaryItems(report.summary), [report.summary]);
   const errors = useMemo(() => report.issues.filter((issue) => issue.level === "error"), [report.issues]);
   const warnings = useMemo(() => report.issues.filter((issue) => issue.level === "warning"), [report.issues]);
+  const infos = useMemo(() => report.issues.filter((issue) => issue.level === "info"), [report.issues]);
 
   /**
    * Navigate to the target of the clicked item (`data-issue-id`).
@@ -35,5 +36,5 @@ export const useExportCheck = (onNavigate: (target: ValidationTarget) => void): 
     [report.issues, onNavigate],
   );
 
-  return { summaryItems, errors, warnings, onIssueClick: handleIssueClick };
+  return { summaryItems, errors, warnings, infos, onIssueClick: handleIssueClick };
 };

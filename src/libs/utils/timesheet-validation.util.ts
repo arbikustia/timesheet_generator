@@ -1,22 +1,23 @@
 import { MAX_DOCUMENT_BYTES } from "@/constants/image.constant";
-import { MAX_DAILY_HOURS, MIN_DAILY_HOURS, REQUIRED_PROFILE_FIELD_LABELS, SIGNATURE_LABELS } from "@/constants/validation.constant";
+import { MAX_DAILY_HOURS, MIN_DAILY_HOURS, REPEATED_TASK_DAYS, REQUIRED_PROFILE_FIELD_LABELS, SIGNATURE_LABELS } from "@/constants/validation.constant";
 import type { Entry, TimesheetDoc } from "@/types/timesheet.type";
 import type { SignatureKey } from "@/types/timesheet-edit.type";
 import type {
   MonthSummary,
   RequiredProfileField,
+  TaskRun,
   ValidationIssue,
   ValidationLevel,
   ValidationReport,
   ValidationTarget,
 } from "@/types/timesheet-validation.type";
 
-import { formatDateOptionLabel, formatPeriodLabelId, getMonthDates, isInPeriod, isWeekend } from "./date.util";
+import { formatDateOptionLabel, formatDateSlash, formatPeriodLabelId, getMonthDates, isInPeriod, isWeekend } from "./date.util";
 import { estimateDocumentBytes, formatBytes } from "./document-size.util";
 import { getDurationMinutes, isValidTime } from "./entry-validation.util";
 import { getEvidenceDates, groupEntriesByDate, paginateEvidence } from "./timesheet-engine.util";
 
-const LEVEL_ORDER: Record<ValidationLevel, number> = { error: 0, warning: 1 };
+const LEVEL_ORDER: Record<ValidationLevel, number> = { error: 0, warning: 1, info: 2 };
 
 const REQUIRED_PROFILE_FIELDS: RequiredProfileField[] = ["consultantName", "leadProject", "tribeLeader"];
 
@@ -197,6 +198,47 @@ export const _checkSignaturePage = (doc: TimesheetDoc): ValidationIssue[] => {
 };
 
 /**
+ * Info note for a run of the same task over consecutive working days.
+ * @param {TaskRun} run - Run
+ * @returns {ValidationIssue} - Info item
+ */
+const _repeatIssue = (run: TaskRun): ValidationIssue => {
+  const range = `${formatDateSlash(run.first).slice(0, 5)}–${formatDateSlash(run.last).slice(0, 5)}`;
+
+  return _issue(`repeat:${run.first}:${run.task}`, "info", `Task "${run.task}" sama selama ${run.days} hari kerja berturut-turut (${range}).`, {
+    kind: "date",
+    date: run.first,
+  });
+};
+
+/**
+ * Info (optional in PROMPT §7): a task used on more than N consecutive working days — a reminder to check
+ * it is not copied by mistake. Weekends and marked days do not break a run; a working day without it does.
+ * @param {TimesheetDoc} doc - Document
+ * @param {Map<string, Entry[]>} entriesByDate - Entries of the period by date
+ * @returns {ValidationIssue[]} - Info items
+ */
+export const _checkRepeatedTasks = (doc: TimesheetDoc, entriesByDate: Map<string, Entry[]>): ValidationIssue[] => {
+  const finished: TaskRun[] = [];
+  let open = new Map<string, TaskRun>();
+
+  getWorkdays(doc).forEach((isoDate) => {
+    const tasks = new Set((entriesByDate.get(isoDate) ?? []).map((entry) => entry.task.trim()).filter(Boolean));
+    const next = new Map<string, TaskRun>();
+
+    tasks.forEach((task) => {
+      const run = open.get(task);
+
+      next.set(task, run ? { ...run, last: isoDate, days: run.days + 1 } : { task, first: isoDate, last: isoDate, days: 1 });
+    });
+    open.forEach((run, task) => (next.has(task) ? undefined : finished.push(run)));
+    open = next;
+  });
+
+  return [...finished, ...open.values()].filter((run) => run.days > REPEATED_TASK_DAYS).map(_repeatIssue);
+};
+
+/**
  * Full "Cek sebelum export" report (PROMPT §7): errors block the export, warnings never do.
  * @param {TimesheetDoc} doc - Document
  * @returns {ValidationReport} - Sorted issues (errors first), counts and the month summary
@@ -214,6 +256,7 @@ export const validateDoc = (doc: TimesheetDoc): ValidationReport => {
     ..._checkSignaturePage(doc),
     ...getMonthDates(doc.period).flatMap((isoDate) => _checkDate(isoDate, doc, entriesByDate.get(isoDate) ?? [])),
     ...sizeIssues,
+    ..._checkRepeatedTasks(doc, entriesByDate),
   ].sort((a, b) => LEVEL_ORDER[a.level] - LEVEL_ORDER[b.level]);
 
   return {

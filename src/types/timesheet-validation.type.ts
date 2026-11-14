@@ -1,7 +1,7 @@
 import type { SignatureKey } from "./timesheet-edit.type";
 
-/** Severity of a check: errors block the PDF export, warnings never do (info = the month summary). */
-export type ValidationLevel = "error" | "warning";
+/** Severity of a check: errors block the PDF export; warnings and info never do. */
+export type ValidationLevel = "error" | "warning" | "info";
 
 /** Profile fields the export check requires. */
 export type RequiredProfileField = "consultantName" | "leadProject" | "tribeLeader";
@@ -14,6 +14,14 @@ export type ValidationTarget =
   | { kind: "evidence"; date: string }
   | { kind: "profile"; field: RequiredProfileField }
   | { kind: "signature"; key: SignatureKey };
+
+/** The same task on consecutive working days. */
+export type TaskRun = {
+  task: string;
+  first: string;
+  last: string;
+  days: number;
+};
 
 export type ValidationIssue = {
   /** Stable id (rule + subject), also the React key. */

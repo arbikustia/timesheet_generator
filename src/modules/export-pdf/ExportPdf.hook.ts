@@ -5,11 +5,45 @@ import { getPdfFileTitle } from "@/libs/utils/timesheet-document.util";
 import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 import { usePrintTitle } from "@/hooks/usePrintTitle";
 
-import { MAX_LISTED_ERRORS } from "./ExportPdf.config";
+import type { ValidationIssue } from "@/types/timesheet-validation.type";
+
+import { MAX_LISTED_ERRORS, POPUP_BLOCKED_MESSAGE } from "./ExportPdf.config";
 import type { ExportPdfProps } from "./ExportPdf.type";
+import { openDocumentInNewTab } from "./ExportPdf.util";
 
 import { useAppSelector } from "@/store/hooks";
 import { selectDoc, selectValidationReport } from "@/store/timesheet.slice";
+
+/**
+ * Messages of the errors that block the export (the first few).
+ * @param {ValidationIssue[]} issues - Check items
+ * @returns {string[]} - Messages
+ */
+export const getBlockingMessages = (issues: ValidationIssue[]): string[] => {
+  return issues
+    .filter((issue) => issue.level === "error")
+    .map((issue) => issue.message)
+    .slice(0, MAX_LISTED_ERRORS);
+};
+
+/**
+ * "Buka di tab baru": the rendered document in a separate tab (a preview; no export check needed).
+ * @param {string} title - Tab title
+ * @returns {Pick<ExportPdfProps, "tabError" | "onOpenTab">} - Error of the last attempt and the handler
+ */
+export const usePreviewTab = (title: string): Pick<ExportPdfProps, "tabError" | "onOpenTab"> => {
+  const [tabError, setTabError] = useState<string | null>(null);
+
+  /**
+   * Open the tab, or explain that the pop-up was blocked.
+   * @returns {void}
+   */
+  const handleOpenTab = (): void => {
+    setTabError(openDocumentInNewTab(document.querySelector(".print-root"), title) ? null : POPUP_BLOCKED_MESSAGE);
+  };
+
+  return { tabError, onOpenTab: handleOpenTab };
+};
 
 /**
  * Export to PDF through the browser print dialog (vector PDF, selectable text). Errors of the export
@@ -21,12 +55,10 @@ export const useExportPdf = (onShowCheck: () => void): ExportPdfProps => {
   const doc = useAppSelector(selectDoc);
   const report = useAppSelector(selectValidationReport);
   const [isBlockedOpen, setIsBlockedOpen] = useState(false);
-  const errorMessages = useMemo(
-    () => report.issues.filter((issue) => issue.level === "error").map((issue) => issue.message).slice(0, MAX_LISTED_ERRORS),
-    [report.issues],
-  );
+  const pdfTitle = getPdfFileTitle(doc);
+  const errorMessages = useMemo(() => getBlockingMessages(report.issues), [report.issues]);
 
-  usePrintTitle(getPdfFileTitle(doc));
+  usePrintTitle(pdfTitle);
 
   /**
    * Print the document, or explain why the export is blocked.
@@ -67,6 +99,7 @@ export const useExportPdf = (onShowCheck: () => void): ExportPdfProps => {
     errorMessages,
     isBlockedOpen,
     onExport: handleExport,
+    ...usePreviewTab(pdfTitle),
     onCloseBlocked: handleCloseBlocked,
     onShowCheck: handleShowCheck,
   };

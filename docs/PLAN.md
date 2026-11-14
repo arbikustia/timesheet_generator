@@ -14,6 +14,7 @@ Sumber: `docs/PROMPT.md` §9. Setiap fase ditutup dengan `npm run lint`, `npx ts
 | 6 — Export & polish | ✅ | Print CSS → PDF, panel validasi, ringkasan, shortcut, undo/redo, a11y |
 | 7 — Blur & Import | ✅ | Editor blur/pixelate (penuh/area), CLI `snapshot`/`import`/`doctor`, panel Import & Review, Muat ulang dari disk |
 | 8 — Collectors | 🟡 | Git: ✅ scheduler, backfill reflog, VS Code task, doctor. Ditahan: hook Claude Code, skill `/timesheet`, ekstensi VS Code, auto-evidence |
+| 9 — Penguat alur | ✅ | Isi massal, impor dari bulan lalu, buka di tab baru, info task identik berturut (PROMPT §7) |
 
 ## Rancangan per fase
 

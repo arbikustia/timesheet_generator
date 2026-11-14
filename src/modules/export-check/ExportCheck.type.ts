@@ -18,6 +18,7 @@ export type ExportCheckProps = {
   summaryItems: SummaryItem[];
   errors: ValidationIssue[];
   warnings: ValidationIssue[];
+  infos: ValidationIssue[];
   onIssueClick: (event: MouseEvent<HTMLElement>) => void;
 };
 
