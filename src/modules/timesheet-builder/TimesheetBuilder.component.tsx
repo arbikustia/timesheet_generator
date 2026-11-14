@@ -9,6 +9,7 @@ import DayOverrides from "@/modules/day-overrides";
 import DocumentPreview from "@/modules/document-preview";
 import EntryForm from "@/modules/entry-form";
 import EntryList from "@/modules/entry-list";
+import EvidencePanel from "@/modules/evidence-panel";
 import FileMenu from "@/modules/file-menu";
 import PeriodPanel from "@/modules/period-panel";
 import ProfileSettings from "@/modules/profile-settings";
@@ -29,6 +30,7 @@ const _buildTabItems = (): TabsProps["items"] => [
       </div>
     ),
   },
+  { key: "evidence", label: BUILDER_TAB_LABELS.evidence, children: <EvidencePanel /> },
   { key: "days", label: BUILDER_TAB_LABELS.days, children: <DayOverrides /> },
   { key: "settings", label: BUILDER_TAB_LABELS.settings, children: <ProfileSettings /> },
 ];

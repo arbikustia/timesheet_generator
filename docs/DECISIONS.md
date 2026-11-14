@@ -189,3 +189,35 @@ Format: tanggal · keputusan · alasan.
 - `Ctrl/Cmd+S` simpan, `Ctrl/Cmd+Shift+S` simpan sebagai, `Ctrl/Cmd+O` buka (`src/hooks/useKeyboardShortcuts.ts`).
   `Ctrl/Cmd+Z / Shift+Z` sudah dikenali hook-nya; undo/redo dikerjakan di Fase 6.
 - Belum diuji manual di browser sungguhan (Chrome + Firefox) — perlu dicek sesuai PROMPT §8 "Manual check".
+
+## Fase 5 — Evidence (2026-11-14)
+
+### D-024 · Blur penuh sudah diterapkan sejak Fase 5
+- PROMPT §5.1 melarang versi asli screenshot kode tertulis ke `.json`. Karena paste default `"code"` dan editor
+  blur baru ada di Fase 7, blur **penuh** dikerjakan sekarang: gambar `code` dipixelate (blok 14px) lalu diberi
+  Gaussian blur 6px **pada piksel canvas** (bukan CSS), sebelum kompresi. Yang tersimpan hanya versi blur
+  (`blurred: true`). Fase 7 menambah blur area/pixelate manual di atas fondasi ini.
+- Paste (Ctrl/Cmd+V) selalu dianggap screenshot kode → otomatis diblur. Upload/drag & drop default `plain`; ada
+  checkbox "screenshot kode (blur otomatis)" untuk upload dan tombol **Blur** per gambar `plain`.
+- Gambar yang sudah diblur tidak bisa "dikembalikan" (aslinya tidak pernah disimpan); unggah ulang bila perlu.
+
+### D-025 · Pemrosesan gambar di browser
+- `src/libs/utils/image.util.ts`: decode (`createImageBitmap`, fallback `<img>`), sisi terpanjang maks 1600px
+  (tanpa upscale), latar putih, JPEG kualitas 0.8. Semua evidence disimpan sebagai JPEG (PNG transparan →
+  latar putih). Tanda tangan tidak lewat jalur ini (tetap PNG asli).
+- Tidak ada pengiriman ke server; data URL → Blob di-decode lokal (`atob`).
+
+### D-026 · Panel Evidence
+- Tab baru **Evidence**: satu blok per tanggal yang punya aktivitas (plus tanggal yang sudah punya evidence),
+  dua slot Kiri/Kanan. Slot kosong = drop zone + pilih file; slot terisi = thumbnail + Ganti / Blur / Hapus;
+  tombol Tukar posisi bila dua gambar.
+- "Tanggal aktif" = blok yang terakhir diklik/difokus (ditandai `aria-current`); paste mengisi slot kosong
+  pertama tanggal aktif, atau tanggal pertama yang masih punya slot kosong.
+- Lebih dari 2 gambar → hanya slot yang tersedia diisi + pesan "Maksimal 2 gambar per tanggal".
+- Ukuran dokumen diestimasi (jumlah panjang data URL + sisa JSON kecil) agar tidak men-serialize megabyte
+  gambar setiap ketikan; peringatan bila > 15 MB.
+
+### D-027 · Test
+- jsdom tidak punya canvas: `src/fixture/canvas.fixture.ts` memasang canvas 2D palsu + `createImageBitmap`
+  (dengan `Object.defineProperty`, tanpa type assertion) dan mencatat filter yang aktif saat menggambar
+  sehingga test bisa memastikan blur benar-benar diterapkan.

@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`EvidencePanelComponent Snapshot Test EvidencePanelComponent Snapshots should render one date with an image and an empty slot 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="evidence-title"
+    class="flex flex-col gap-3"
+  >
+    <h3
+      class="sr-only"
+      id="evidence-title"
+    >
+      Evidence
+    </h3>
+    <div
+      class="flex flex-col gap-2 text-sm"
+    >
+      <p>
+        Klik sebuah tanggal lalu tekan 
+        <kbd>
+          Ctrl/Cmd+V
+        </kbd>
+         untuk menempel screenshot — hasil tempel dianggap screenshot kode dan otomatis diblur.
+      </p>
+      <label
+        class="ant-checkbox-wrapper css-var-root ant-checkbox-css-var css-dev-only-do-not-override-eofgey"
+      >
+        <span
+          class="ant-checkbox ant-wave-target css-dev-only-do-not-override-eofgey"
+        >
+          <input
+            class="ant-checkbox-input"
+            type="checkbox"
+          />
+        </span>
+        <span
+          class="ant-checkbox-label"
+        >
+          Gambar yang diunggah/ditarik adalah screenshot kode (blur otomatis)
+        </span>
+      </label>
+      <p
+        class="text-text-secondary"
+        data-testid="document-size"
+      >
+        Ukuran dokumen: 12 KB
+      </p>
+    </div>
+    <ul
+      class="flex flex-col gap-2"
+    >
+      <li
+        aria-current="true"
+        aria-label="Evidence Kam, 01/10/2026"
+        class="flex flex-col gap-2 rounded-lg border p-2 outline-none border-primary-500 ring-2 ring-primary-200"
+        data-date="2026-10-01"
+        tabindex="0"
+      >
+        <div
+          class="flex items-center gap-2 text-sm"
+        >
+          <span
+            class="font-medium"
+          >
+            Kam, 01/10/2026
+          </span>
+          <span
+            class="truncate text-text-secondary"
+          >
+            Tech debt case admin list
+          </span>
+        </div>
+        <div
+          class="grid grid-cols-2 gap-2"
+        >
+          <figure
+            class="flex flex-col gap-1"
+          >
+            <div
+              class="relative flex h-28 items-center justify-center overflow-hidden rounded border border-border-default bg-white"
+            >
+              <img
+                alt="Evidence kiri Kam, 01/10/2026"
+                class="max-h-full max-w-full object-contain"
+                src="data:image/png;base64,AA"
+              />
+            </div>
+            <figcaption
+              class="flex flex-wrap gap-1"
+            >
+              <label
+                class="inline-flex cursor-pointer items-center gap-1 rounded border border-border-default px-2 text-xs"
+              >
+                <svg
+                  aria-hidden="true"
+                  fill="none"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="23 4 23 10 17 10"
+                  />
+                  <polyline
+                    points="1 20 1 14 7 14"
+                  />
+                  <path
+                    d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"
+                  />
+                </svg>
+                Ganti
+                <input
+                  accept="image/png,image/jpeg,image/webp"
+                  aria-label="Ganti gambar kiri Kam, 01/10/2026"
+                  data-date="2026-10-01"
+                  data-replace-id="img"
+                  hidden=""
+                  type="file"
+                />
+              </label>
+              <button
+                aria-label="Blur gambar kiri Kam, 01/10/2026"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm"
+                data-date="2026-10-01"
+                data-id="img"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  Blur
+                </span>
+              </button>
+              <button
+                aria-label="Hapus gambar kiri Kam, 01/10/2026"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+                data-date="2026-10-01"
+                data-id="img"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polyline
+                      points="3 6 5 6 21 6"
+                    />
+                    <path
+                      d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                    />
+                    <line
+                      x1="10"
+                      x2="10"
+                      y1="11"
+                      y2="17"
+                    />
+                    <line
+                      x1="14"
+                      x2="14"
+                      y1="11"
+                      y2="17"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </figcaption>
+          </figure>
+          <label
+            class="flex h-28 cursor-pointer flex-col items-center justify-center gap-1 rounded border border-dashed border-border-strong text-center text-xs text-text-secondary"
+            data-date="2026-10-01"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+              />
+              <polyline
+                points="17 8 12 3 7 8"
+              />
+              <line
+                x1="12"
+                x2="12"
+                y1="3"
+                y2="15"
+              />
+            </svg>
+            Kanan: tarik gambar atau klik
+            <input
+              accept="image/png,image/jpeg,image/webp"
+              aria-label="Unggah evidence kanan Kam, 01/10/2026"
+              data-date="2026-10-01"
+              hidden=""
+              multiple=""
+              type="file"
+            />
+          </label>
+        </div>
+      </li>
+    </ul>
+  </section>
+</DocumentFragment>
+`;

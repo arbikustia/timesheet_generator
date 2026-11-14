@@ -32,3 +32,31 @@ export type PermissionTarget = Pick<FileSystemHandle, "queryPermission" | "reque
  * Real handles satisfy it structurally; test fakes can implement it without type assertions.
  */
 export type DocumentFileHandle = Pick<FileSystemFileHandle, "name" | "getFile"> & WritableFileTarget & PermissionTarget;
+
+export type ImageSize = {
+  width: number;
+  height: number;
+};
+
+/** A decoded image ready to draw; `release` frees decoder resources. */
+export type LoadedImage = ImageSize & {
+  source: CanvasImageSource;
+  release: () => void;
+};
+
+/** A processed evidence image (always JPEG, already blurred when requested). */
+export type ProcessedImage = {
+  dataUrl: string;
+  mime: string;
+  w: number;
+  h: number;
+};
+
+export type ProcessImageOptions = {
+  shouldBlur: boolean;
+};
+
+/** Anything that carries files: `DataTransfer` (clipboard, drop) or a file input. */
+export type FileCarrier = {
+  files: ArrayLike<File> | null;
+};

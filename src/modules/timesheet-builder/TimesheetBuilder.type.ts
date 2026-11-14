@@ -1,7 +1,7 @@
 import type { Theme } from "@/store/theme.type";
 
 /** Tabs of the input panel. */
-export type BuilderTab = "activities" | "days" | "settings";
+export type BuilderTab = "activities" | "evidence" | "days" | "settings";
 
 export type TimesheetBuilderProps = {
   activeTab: BuilderTab;

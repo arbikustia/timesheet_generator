@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`EvidencePanelContainer Snapshot Test EvidencePanelContainer Snapshots should render the empty state 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="evidence-title"
+    class="flex flex-col gap-3"
+  >
+    <h3
+      class="sr-only"
+      id="evidence-title"
+    >
+      Evidence
+    </h3>
+    <div
+      class="flex flex-col gap-2 text-sm"
+    >
+      <p>
+        Klik sebuah tanggal lalu tekan 
+        <kbd>
+          Ctrl/Cmd+V
+        </kbd>
+         untuk menempel screenshot — hasil tempel dianggap screenshot kode dan otomatis diblur.
+      </p>
+      <label
+        class="ant-checkbox-wrapper css-var-root ant-checkbox-css-var css-dev-only-do-not-override-eofgey"
+      >
+        <span
+          class="ant-checkbox ant-wave-target css-dev-only-do-not-override-eofgey"
+        >
+          <input
+            class="ant-checkbox-input"
+            type="checkbox"
+          />
+        </span>
+        <span
+          class="ant-checkbox-label"
+        >
+          Gambar yang diunggah/ditarik adalah screenshot kode (blur otomatis)
+        </span>
+      </label>
+      <p
+        class="text-text-secondary"
+        data-testid="document-size"
+      >
+        Ukuran dokumen: 512 B
+      </p>
+    </div>
+    <p
+      class="text-sm text-text-secondary"
+    >
+      Belum ada aktivitas. Evidence ditempel per tanggal yang punya aktivitas.
+    </p>
+  </section>
+</DocumentFragment>
+`;

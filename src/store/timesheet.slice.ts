@@ -11,14 +11,18 @@ import {
   shiftDocToPeriod,
 } from "@/libs/utils/timesheet-mutation.util";
 
+import { EVIDENCE_MAX_PER_DATE } from "@/constants/timesheet.constant";
 import type { Entry, TimesheetDoc } from "@/types/timesheet.type";
 import type {
+  AddEvidencePayload,
   ChangePeriodPayload,
   DayOverridePayload,
   DefaultHoursChanges,
+  EvidenceRefPayload,
   MoveEntryPayload,
   NewEntryInput,
   ProfileChanges,
+  ReplaceEvidencePayload,
   SignaturePayload,
   UpdateEntryPayload,
 } from "@/types/timesheet-edit.type";
@@ -123,6 +127,41 @@ const timesheetSlice = createSlice({
     setSignature: (state, action: PayloadAction<SignaturePayload>): void => {
       state.doc.profile.signatures[action.payload.key] = action.payload.dataUrl;
     },
+    addEvidence: (state, action: PayloadAction<AddEvidencePayload>): void => {
+      const { date, image } = action.payload;
+      const images = state.doc.evidence[date] ?? [];
+
+      if (images.length < EVIDENCE_MAX_PER_DATE) {
+        state.doc.evidence[date] = [...images, image];
+      }
+    },
+    replaceEvidence: (state, action: PayloadAction<ReplaceEvidencePayload>): void => {
+      const { date, id, image } = action.payload;
+      const images = state.doc.evidence[date];
+
+      if (images) {
+        state.doc.evidence[date] = images.map((item) => (item.id === id ? image : item));
+      }
+    },
+    removeEvidence: (state, action: PayloadAction<EvidenceRefPayload>): void => {
+      const { date, id } = action.payload;
+      const images = (state.doc.evidence[date] ?? []).filter((item) => item.id !== id);
+
+      if (images.length > 0) {
+        state.doc.evidence[date] = images;
+
+        return;
+      }
+
+      delete state.doc.evidence[date];
+    },
+    swapEvidence: (state, action: PayloadAction<string>): void => {
+      const images = state.doc.evidence[action.payload];
+
+      if (images?.length === EVIDENCE_MAX_PER_DATE) {
+        state.doc.evidence[action.payload] = [images[1], images[0]];
+      }
+    },
   },
 });
 
@@ -141,6 +180,10 @@ export const {
   updateProfile,
   updateDefaultHours,
   setSignature,
+  addEvidence,
+  replaceEvidence,
+  removeEvidence,
+  swapEvidence,
 } = timesheetSlice.actions;
 
 /**

@@ -1,4 +1,4 @@
-import type { DayOverride, Entry, Period, Profile, Signatures, WorkHours } from "./timesheet.type";
+import type { DayOverride, Entry, Evidence, Period, Profile, Signatures, WorkHours } from "./timesheet.type";
 
 /** Fields the user types when adding an activity. */
 export type NewEntryInput = Pick<Entry, "date" | "task" | "start" | "end">;
@@ -49,3 +49,17 @@ export type SignaturePayload = {
 };
 
 export type DefaultHoursChanges = Partial<WorkHours>;
+
+export type AddEvidencePayload = {
+  date: string;
+  image: Evidence;
+};
+
+export type EvidenceRefPayload = {
+  date: string;
+  id: string;
+};
+
+export type ReplaceEvidencePayload = EvidenceRefPayload & {
+  image: Evidence;
+};

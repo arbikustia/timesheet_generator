@@ -1,22 +1,26 @@
 import { makeStore } from "@/store";
 import timesheetReducer, {
   addEntry,
+  addEvidence,
   changePeriod,
   createInitialTimesheetState,
   duplicateEntry,
   loadDoc,
   moveEntry,
   removeEntry,
+  removeEvidence,
+  replaceEvidence,
   selectDoc,
   setDayOverride,
   setSignature,
   startNextMonth,
+  swapEvidence,
   updateDefaultHours,
   updateEntry,
   updateProfile,
 } from "@/store/timesheet.slice";
 
-import { loadOctoberDoc } from "@/fixture/timesheet.fixture";
+import { loadOctoberDoc, SAMPLE_IMAGE } from "@/fixture/timesheet.fixture";
 
 /**
  * Store preloaded with the October fixture.
@@ -121,5 +125,44 @@ describe("timesheet slice", () => {
     expect(doc.period).toEqual({ year: 2026, month: 11 });
     expect(doc.entries).toEqual([]);
     expect(doc.profile.consultantName).toBe("Arbi Kustia");
+  });
+});
+
+describe("evidence actions", () => {
+  const left = { ...SAMPLE_IMAGE, id: "l" };
+  const right = { ...SAMPLE_IMAGE, id: "r" };
+
+  it("should add up to two images per date", () => {
+    const store = makeOctoberStore();
+
+    [left, right, { ...SAMPLE_IMAGE, id: "x" }].forEach((image) => store.dispatch(addEvidence({ date: "2026-10-01", image })));
+
+    expect(selectDoc(store.getState()).evidence["2026-10-01"].map((image) => image.id)).toEqual(["l", "r"]);
+  });
+
+  it("should swap, replace and remove images", () => {
+    const store = makeOctoberStore();
+    const ids = (): string[] | undefined => selectDoc(store.getState()).evidence["2026-10-01"]?.map((image) => image.id);
+
+    store.dispatch(addEvidence({ date: "2026-10-01", image: left }));
+    store.dispatch(swapEvidence("2026-10-01"));
+    expect(ids()).toEqual(["l"]);
+
+    store.dispatch(addEvidence({ date: "2026-10-01", image: right }));
+    store.dispatch(swapEvidence("2026-10-01"));
+    expect(ids()).toEqual(["r", "l"]);
+
+    store.dispatch(replaceEvidence({ date: "2026-10-01", id: "r", image: { ...SAMPLE_IMAGE, id: "n" } }));
+    expect(ids()).toEqual(["n", "l"]);
+
+    store.dispatch(removeEvidence({ date: "2026-10-01", id: "n" }));
+    expect(ids()).toEqual(["l"]);
+
+    store.dispatch(removeEvidence({ date: "2026-10-01", id: "l" }));
+    expect(selectDoc(store.getState()).evidence).toEqual({});
+
+    store.dispatch(replaceEvidence({ date: "2026-10-09", id: "z", image: left }));
+    store.dispatch(removeEvidence({ date: "2026-10-09", id: "z" }));
+    expect(selectDoc(store.getState()).evidence).toEqual({});
   });
 });
