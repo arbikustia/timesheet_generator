@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ProfileSettingsContainer Snapshot Test ProfileSettingsContainer Snapshots should render the October settings 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="profile-settings-title"
+    class="flex flex-col gap-5"
+  >
+    <h3
+      class="sr-only"
+      id="profile-settings-title"
+    >
+      Pengaturan
+    </h3>
+    <fieldset
+      class="grid grid-cols-2 gap-2"
+    >
+      <legend
+        class="mb-2 text-sm font-semibold"
+      >
+        Data dokumen
+      </legend>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Vendor Name
+        <input
+          aria-label="Vendor Name"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="vendorName"
+          type="text"
+          value="PT Negeri Emas Perkasa"
+        />
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Consultant Name
+        <input
+          aria-label="Consultant Name"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="consultantName"
+          type="text"
+          value="Arbi Kustia"
+        />
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Consultan Role
+        <input
+          aria-label="Consultan Role"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="consultantRole"
+          type="text"
+          value="Front End Developer"
+        />
+        <span
+          class="text-xs font-normal text-text-secondary"
+        >
+          Ejaan label di dokumen memang "Consultan".
+        </span>
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Platform (kanan atas)
+        <input
+          aria-label="Platform (kanan atas)"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="platform"
+          type="text"
+          value="Legacy Platform"
+        />
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Lead Project/PO
+        <input
+          aria-label="Lead Project/PO"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="leadProject"
+          type="text"
+          value="Fahly Faraby"
+        />
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Tribe Leader
+        <input
+          aria-label="Tribe Leader"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="tribeLeader"
+          type="text"
+          value="Rio Hermanto"
+        />
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Squad
+        <input
+          aria-label="Squad"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="squad"
+          type="text"
+          value="Epics Asum"
+        />
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Footer cover — perusahaan
+        <input
+          aria-label="Footer cover — perusahaan"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="footerCompany"
+          type="text"
+          value=""
+        />
+        <span
+          class="text-xs font-normal text-text-secondary"
+        >
+          mis. PT NEGERI EMAS PERKASA
+        </span>
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Footer cover — grup
+        <input
+          aria-label="Footer cover — grup"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="footerGroup"
+          type="text"
+          value=""
+        />
+        <span
+          class="text-xs font-normal text-text-secondary"
+        >
+          mis. INDONESIA FINANCIAL GROUP (IFG)
+        </span>
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Prefix nama file PDF
+        <input
+          aria-label="Prefix nama file PDF"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-field="pdfFilePrefix"
+          type="text"
+          value="BHN II - Timesheet"
+        />
+      </label>
+    </fieldset>
+    <fieldset
+      class="flex flex-col gap-2"
+    >
+      <legend
+        class="mb-2 text-sm font-semibold"
+      >
+        Tanda tangan
+      </legend>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Tanggal tanda tangan
+        <input
+          aria-label="Tanggal tanda tangan"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          max="2026-10-31"
+          min="2026-10-01"
+          type="date"
+          value="2026-10-30"
+        />
+      </label>
+      <div
+        class="grid grid-cols-3 gap-2"
+      >
+        <div
+          class="flex flex-col gap-2 rounded-lg border border-border-default p-2 text-sm"
+        >
+          <span
+            class="font-medium"
+          >
+            Prepared by (konsultan)
+          </span>
+          <div
+            class="flex h-20 items-center justify-center rounded bg-white"
+          >
+            <span
+              class="text-xs text-neutral-500"
+            >
+              Belum ada
+            </span>
+          </div>
+          <input
+            accept="image/png,image/jpeg,image/webp"
+            aria-label="Unggah tanda tangan Prepared by (konsultan)"
+            class="text-xs"
+            data-signature-key="preparedBy"
+            type="file"
+          />
+        </div>
+        <div
+          class="flex flex-col gap-2 rounded-lg border border-border-default p-2 text-sm"
+        >
+          <span
+            class="font-medium"
+          >
+            Lead Project/PO
+          </span>
+          <div
+            class="flex h-20 items-center justify-center rounded bg-white"
+          >
+            <span
+              class="text-xs text-neutral-500"
+            >
+              Belum ada
+            </span>
+          </div>
+          <input
+            accept="image/png,image/jpeg,image/webp"
+            aria-label="Unggah tanda tangan Lead Project/PO"
+            class="text-xs"
+            data-signature-key="leadProject"
+            type="file"
+          />
+        </div>
+        <div
+          class="flex flex-col gap-2 rounded-lg border border-border-default p-2 text-sm"
+        >
+          <span
+            class="font-medium"
+          >
+            Tribe Leader
+          </span>
+          <div
+            class="flex h-20 items-center justify-center rounded bg-white"
+          >
+            <span
+              class="text-xs text-neutral-500"
+            >
+              Belum ada
+            </span>
+          </div>
+          <input
+            accept="image/png,image/jpeg,image/webp"
+            aria-label="Unggah tanda tangan Tribe Leader"
+            class="text-xs"
+            data-signature-key="tribeLeader"
+            type="file"
+          />
+        </div>
+      </div>
+    </fieldset>
+    <fieldset
+      class="flex flex-col gap-2"
+    >
+      <legend
+        class="mb-2 text-sm font-semibold"
+      >
+        Default & template
+      </legend>
+      <div
+        class="grid grid-cols-2 gap-2"
+      >
+        <label
+          class="flex flex-col gap-1 text-sm font-medium"
+        >
+          Jam mulai default
+          <input
+            aria-label="Jam mulai default"
+            class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+            data-field="start"
+            type="time"
+            value="08:00"
+          />
+        </label>
+        <label
+          class="flex flex-col gap-1 text-sm font-medium"
+        >
+          Jam selesai default
+          <input
+            aria-label="Jam selesai default"
+            class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+            data-field="end"
+            type="time"
+            value="17:00"
+          />
+        </label>
+      </div>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Template task (satu per baris)
+        <textarea
+          aria-label="Template task"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          style="overflow-y: hidden; resize: none;"
+        />
+      </label>
+    </fieldset>
+  </section>
+</DocumentFragment>
+`;

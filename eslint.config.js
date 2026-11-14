@@ -148,6 +148,8 @@ export default defineConfig([
       "src/libs/utils/**/*.{ts,tsx}",
       "src/types/**/*.{ts,tsx}",
       "src/constants/**/*.{ts,tsx}",
+      "src/hooks/**/*.{ts,tsx}",
+      "src/store/timesheet.*",
     ],
     rules: {
       semi: ["error", "always"],
@@ -323,6 +325,30 @@ export default defineConfig([
       ],
       "max-depth": ["error", 4],
       "max-params": ["error", 4],
+    },
+  },
+
+  // Redux slices: reducers/prepare are declarative inline callbacks (Section 4.3 exemption);
+  // JSDoc stays mandatory on named functions.
+  {
+    files: ["src/store/*.slice.ts"],
+    rules: {
+      "jsdoc/require-jsdoc": [
+        "error",
+        {
+          require: {
+            FunctionDeclaration: true,
+            MethodDefinition: true,
+            ClassDeclaration: true,
+            ArrowFunctionExpression: false,
+            FunctionExpression: false,
+          },
+          contexts: [
+            "VariableDeclaration:has(> VariableDeclarator > ArrowFunctionExpression)",
+          ],
+        },
+      ],
+      "jsdoc/require-param": "off",
     },
   },
 

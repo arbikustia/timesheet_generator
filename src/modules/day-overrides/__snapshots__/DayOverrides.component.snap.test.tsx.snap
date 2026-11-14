@@ -1,0 +1,348 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`DayOverridesComponent Snapshot Test DayOverridesComponent Snapshots should render a marked day 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="day-overrides-title"
+    class="flex flex-col gap-3"
+  >
+    <h3
+      class="text-sm font-semibold"
+      id="day-overrides-title"
+    >
+      Hari khusus (baris merah)
+    </h3>
+    <form
+      aria-label="Tandai hari khusus"
+      class="grid grid-cols-2 items-end gap-2"
+    >
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Tanggal
+        <div
+          class="ant-select ant-select-outlined css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-arrow ant-select-show-search"
+        >
+          <div
+            class="ant-select-content ant-select-content-has-value"
+            title="Kam, 01/10/2026"
+          >
+            Kam, 01/10/2026
+            <input
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-label="Tanggal hari khusus"
+              autocomplete="new-password"
+              class="ant-select-input"
+              id="test-id"
+              role="combobox"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="ant-select-suffix"
+          >
+            <span
+              aria-label="down"
+              class="anticon anticon-down"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="down"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Jenis
+        <div
+          class="ant-select ant-select-outlined css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-arrow"
+        >
+          <div
+            class="ant-select-content ant-select-content-has-value"
+            title="Libur nasional"
+          >
+            Libur nasional
+            <input
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-label="Jenis hari khusus"
+              autocomplete="new-password"
+              class="ant-select-input"
+              id="test-id"
+              readonly=""
+              role="combobox"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="ant-select-suffix"
+          >
+            <span
+              aria-label="down"
+              class="anticon anticon-down"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="down"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </label>
+      <label
+        class="col-span-2 flex flex-col gap-1 text-sm font-medium"
+      >
+        Keterangan (Remark)
+        <input
+          aria-label="Keterangan"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          type="text"
+          value="Public Holiday"
+        />
+      </label>
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-primary ant-btn-color-primary ant-btn-variant-solid col-span-2"
+        type="submit"
+      >
+        <span>
+          Tandai
+        </span>
+      </button>
+    </form>
+    <ul
+      class="flex flex-col gap-2"
+    >
+      <li
+        class="flex items-center gap-2 rounded-lg border border-border-default p-2 text-sm"
+      >
+        <span
+          class="font-medium"
+        >
+          Sel, 20/10/2026
+        </span>
+        <span
+          class="ant-tag ant-tag-filled ant-tag-orange css-dev-only-do-not-override-eofgey css-var-root"
+        >
+          Cuti
+        </span>
+        <span
+          class="text-xs text-warning"
+        >
+          Ada aktivitas — baris tetap tampil sebagai aktivitas
+        </span>
+        <button
+          aria-label="Hapus Sel, 20/10/2026"
+          class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only ml-auto"
+          data-date="2026-10-20"
+          type="button"
+        >
+          <span
+            class="ant-btn-icon"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline
+                points="3 6 5 6 21 6"
+              />
+              <path
+                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+              />
+              <line
+                x1="10"
+                x2="10"
+                y1="11"
+                y2="17"
+              />
+              <line
+                x1="14"
+                x2="14"
+                y1="11"
+                y2="17"
+              />
+            </svg>
+          </span>
+        </button>
+      </li>
+    </ul>
+  </section>
+</DocumentFragment>
+`;
+
+exports[`DayOverridesComponent Snapshot Test DayOverridesComponent Snapshots should render the empty form 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="day-overrides-title"
+    class="flex flex-col gap-3"
+  >
+    <h3
+      class="text-sm font-semibold"
+      id="day-overrides-title"
+    >
+      Hari khusus (baris merah)
+    </h3>
+    <form
+      aria-label="Tandai hari khusus"
+      class="grid grid-cols-2 items-end gap-2"
+    >
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Tanggal
+        <div
+          class="ant-select ant-select-outlined css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-arrow ant-select-show-search"
+        >
+          <div
+            class="ant-select-content ant-select-content-has-value"
+            title="Kam, 01/10/2026"
+          >
+            Kam, 01/10/2026
+            <input
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-label="Tanggal hari khusus"
+              autocomplete="new-password"
+              class="ant-select-input"
+              id="test-id"
+              role="combobox"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="ant-select-suffix"
+          >
+            <span
+              aria-label="down"
+              class="anticon anticon-down"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="down"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Jenis
+        <div
+          class="ant-select ant-select-outlined css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-arrow"
+        >
+          <div
+            class="ant-select-content ant-select-content-has-value"
+            title="Libur nasional"
+          >
+            Libur nasional
+            <input
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-label="Jenis hari khusus"
+              autocomplete="new-password"
+              class="ant-select-input"
+              id="test-id"
+              readonly=""
+              role="combobox"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="ant-select-suffix"
+          >
+            <span
+              aria-label="down"
+              class="anticon anticon-down"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="down"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </label>
+      <label
+        class="col-span-2 flex flex-col gap-1 text-sm font-medium"
+      >
+        Keterangan (Remark)
+        <input
+          aria-label="Keterangan"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          type="text"
+          value="Public Holiday"
+        />
+      </label>
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-primary ant-btn-color-primary ant-btn-variant-solid col-span-2"
+        type="submit"
+      >
+        <span>
+          Tandai
+        </span>
+      </button>
+    </form>
+  </section>
+</DocumentFragment>
+`;

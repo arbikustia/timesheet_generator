@@ -1,11 +1,17 @@
 import {
   formatDateDash,
+  formatDateOptionLabel,
   formatDateSlash,
   formatLongDate,
   formatMonthYear,
+  formatPeriodLabelId,
+  getCurrentPeriod,
+  getDayOfMonth,
   getDaysInMonth,
   getLastWeekday,
   getMonthDates,
+  getNextPeriod,
+  getWeekday,
   isInPeriod,
   isWeekend,
   toIsoDate,
@@ -78,5 +84,33 @@ describe("formatters", () => {
     expect(formatMonthYear({ year: 2026, month: 10 })).toBe("October 2026");
     expect(formatLongDate("2026-10-30")).toBe("30 October 2026");
     expect(formatLongDate("2026-01-05")).toBe("5 January 2026");
+  });
+});
+
+describe("period helpers", () => {
+  it("should read the current period from a date", () => {
+    expect(getCurrentPeriod(new Date(2026, 10, 14))).toEqual({ year: 2026, month: 11 });
+    expect(getCurrentPeriod()).toEqual({ year: new Date().getFullYear(), month: new Date().getMonth() + 1 });
+  });
+
+  it("should roll over to the next month and year", () => {
+    expect(getNextPeriod({ year: 2026, month: 10 })).toEqual({ year: 2026, month: 11 });
+    expect(getNextPeriod({ year: 2026, month: 12 })).toEqual({ year: 2027, month: 1 });
+  });
+
+  it("should read weekday and day of month", () => {
+    expect(getWeekday("2026-10-01")).toBe(4);
+    expect(getDayOfMonth("2026-10-31")).toBe(31);
+  });
+
+  it("should format an Indonesian option label", () => {
+    expect(formatDateOptionLabel("2026-10-01")).toBe("Kam, 01/10/2026");
+    expect(formatDateOptionLabel("2026-10-04")).toBe("Min, 04/10/2026");
+  });
+});
+
+describe("formatPeriodLabelId", () => {
+  it("should format an Indonesian period label", () => {
+    expect(formatPeriodLabelId({ year: 2026, month: 11 })).toBe("November 2026");
   });
 });

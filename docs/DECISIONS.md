@@ -110,3 +110,45 @@ Format: tanggal · keputusan · alasan.
 - Preview sementara di `App` merender fixture Oktober sampai panel input selesai (Fase 3).
 - Visual regression Playwright belum jalan: Chromium headless di WSL butuh library sistem
   (`sudo npx playwright install-deps chromium`).
+
+## Fase 3 — Input (2026-11-14)
+
+### D-016 · State dokumen di Redux slice `timesheet`
+- `src/store/timesheet.slice.ts` memegang `doc` (dokumen lengkap). Semua perubahan lewat action:
+  `loadDoc`, `changePeriod` (move/reset), `startNextMonth`, `addEntry`, `updateEntry`, `removeEntry`,
+  `duplicateEntry`, `moveEntry`, `setDayOverride`, `updateProfile`, `updateDefaultHours`, `setSignature`.
+  Logika murni di `src/libs/utils/timesheet-mutation.util.ts` (ter-test). Undo/redo menyusul di Fase 6.
+- `makeStore(preloadedState)` untuk test; `serializableCheck` dimatikan karena dokumen berisi data URL besar.
+- State awal = dokumen kosong bulan berjalan. Belum ada persistensi: refresh = data hilang sampai Fase 4
+  (Simpan/Buka + draft IndexedDB).
+
+### D-017 · Modul UI
+- `timesheet-builder` (shell: top bar, split view 2fr/3fr, tabs, toggle tema UI), `period-panel`,
+  `entry-form`, `entry-list`, `day-overrides`, `profile-settings`, `document-preview`. Semua mengikuti pola
+  container/component/hook + test + snapshot. Tombol Baru/Buka/Simpan di top bar menyusul di Fase 4.
+- Input memakai antd langsung (bukan komponen shared template yang berukuran besar h-14/text-xl) dan
+  `<input type="time">` / `<select>` native agar tidak perlu dayjs.
+- Tanpa react-hook-form: setiap field langsung men-dispatch perubahan sehingga live preview selalu sinkron.
+- Handler per baris membaca `data-*` (`data-entry-id`, `data-field`, `data-index`, `data-date`,
+  `data-signature-key`) supaya tidak ada arrow function inline di JSX (Convention §4.4).
+
+### D-018 · Perilaku input
+- Ganti bulan/tahun saat ada data → dialog: "Pindahkan tanggal" (hari yang sama; tanggal yang tidak ada di
+  bulan tujuan, mis. 31, dibuang), "Mulai periode baru" (kosong), "Batal". Tanggal tanda tangan direset ke
+  hari kerja terakhir periode baru.
+- "Mulai {bulan berikutnya}" membawa profil, tanda tangan dan automation; aktivitas, evidence dan hari khusus kosong.
+- Form cepat: tanggal default = hari kerja pertama yang belum terisi (lompat weekend/libur), jam default dari
+  Settings, Enter = tambah, fokus kembali ke Task. Autocomplete Task = template favorit lalu task yang pernah
+  dipakai (terbaru dulu). Entri baru disisipkan berurutan tanggal.
+- Daftar aktivitas: edit inline, duplikat (tepat di bawahnya), hapus, urut ulang via drag & drop atau tombol
+  naik/turun (aksesibel keyboard), Remark manual opsional (kosong = otomatis).
+- Template task disimpan per baris apa adanya (baris kosong boleh saat mengetik; diabaikan saat dipakai).
+- Tanda tangan dibaca lokal sebagai data URL (PNG/JPG/WebP), tidak pernah dikirim ke server.
+- Preview: zoom fit-width dengan CSS `zoom` (lebar halaman A4 = 793.7px), halaman selalu putih walau UI gelap.
+
+### D-019 · Tooling
+- `eslint --fix` menyisipkan stub JSDoc kosong (rule `jsdoc/require-jsdoc` auto-fixable). Untuk merapikan import
+  gunakan `npx eslint --fix --rule '{"jsdoc/require-jsdoc":"off"}' <path>`.
+- Slice Redux mendapat override lint seperti services lama: reducer inline dikecualikan dari JSDoc (§4.3).
+- `@/libs/unit-test` kini juga menyediakan `renderWithStore`, `createStoreWrapper`, `within`, dan opsi
+  `wrapper` di `assertSnapshots` untuk container yang butuh store.

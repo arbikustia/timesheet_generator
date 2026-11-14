@@ -1,0 +1,1622 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TimesheetBuilderComponent Snapshot Test TimesheetBuilderComponent Snapshots should render the builder for an empty February 2026 1`] = `
+<DocumentFragment>
+  <div
+    class="flex h-screen flex-col bg-background-page text-text-primary"
+  >
+    <header
+      class="flex items-center gap-3 border-b border-border-default bg-background-surface px-4 py-2"
+    >
+      <h1
+        class="text-lg font-semibold"
+      >
+        Timesheet Builder
+      </h1>
+      <span
+        class="text-sm text-text-secondary"
+      >
+        Februari 2026
+      </span>
+      <button
+        aria-label="Mode gelap"
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-text ant-btn-color-default ant-btn-variant-text ant-btn-icon-only ml-auto"
+        type="button"
+      >
+        <span
+          class="ant-btn-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+            />
+          </svg>
+        </span>
+      </button>
+    </header>
+    <main
+      class="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[2fr_3fr]"
+    >
+      <aside
+        aria-label="Panel input"
+        class="flex min-h-0 flex-col gap-4 overflow-y-auto border-r border-border-default p-4"
+      >
+        <section
+          aria-labelledby="period-title"
+          class="flex flex-wrap items-end gap-3"
+        >
+          <h2
+            class="sr-only"
+            id="period-title"
+          >
+            Periode
+          </h2>
+          <label
+            class="flex flex-col gap-1 text-sm font-medium"
+          >
+            Bulan
+            <div
+              class="ant-select ant-select-outlined w-40 css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-arrow"
+            >
+              <div
+                class="ant-select-content ant-select-content-has-value"
+                title="Februari"
+              >
+                Februari
+                <input
+                  aria-autocomplete="list"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                  aria-label="Bulan"
+                  autocomplete="new-password"
+                  class="ant-select-input"
+                  id="test-id"
+                  readonly=""
+                  role="combobox"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="ant-select-suffix"
+              >
+                <span
+                  aria-label="down"
+                  class="anticon anticon-down"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="down"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </label>
+          <label
+            class="flex flex-col gap-1 text-sm font-medium"
+          >
+            Tahun
+            <div
+              class="ant-select ant-select-outlined w-28 css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-arrow"
+            >
+              <div
+                class="ant-select-content ant-select-content-has-value"
+                title="2026"
+              >
+                2026
+                <input
+                  aria-autocomplete="list"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                  aria-label="Tahun"
+                  autocomplete="new-password"
+                  class="ant-select-input"
+                  id="test-id"
+                  readonly=""
+                  role="combobox"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="ant-select-suffix"
+              >
+                <span
+                  aria-label="down"
+                  class="anticon anticon-down"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="down"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </label>
+          <button
+            class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined"
+            type="button"
+          >
+            <span>
+              Mulai Maret 2026
+            </span>
+          </button>
+        </section>
+        <div
+          class="ant-tabs ant-tabs-top css-dev-only-do-not-override-eofgey css-var-root ant-tabs-css-var"
+        >
+          <div
+            aria-orientation="horizontal"
+            class="ant-tabs-nav"
+            role="tablist"
+          >
+            <div
+              class="ant-tabs-nav-wrap"
+            >
+              <div
+                class="ant-tabs-nav-list"
+                style="transform: translate(0px, 0px);"
+              >
+                <div
+                  class="ant-tabs-tab ant-tabs-tab-active"
+                  data-node-key="activities"
+                >
+                  <div
+                    aria-controls="rc-tabs-test-panel-activities"
+                    aria-selected="true"
+                    class="ant-tabs-tab-btn"
+                    id="rc-tabs-test-tab-activities"
+                    role="tab"
+                    tabindex="0"
+                  >
+                    Aktivitas
+                  </div>
+                </div>
+                <div
+                  class="ant-tabs-tab"
+                  data-node-key="days"
+                >
+                  <div
+                    aria-controls="rc-tabs-test-panel-days"
+                    aria-selected="false"
+                    class="ant-tabs-tab-btn"
+                    id="rc-tabs-test-tab-days"
+                    role="tab"
+                    tabindex="-1"
+                  >
+                    Hari khusus
+                  </div>
+                </div>
+                <div
+                  class="ant-tabs-tab"
+                  data-node-key="settings"
+                >
+                  <div
+                    aria-controls="rc-tabs-test-panel-settings"
+                    aria-selected="false"
+                    class="ant-tabs-tab-btn"
+                    id="rc-tabs-test-tab-settings"
+                    role="tab"
+                    tabindex="-1"
+                  >
+                    Pengaturan
+                  </div>
+                </div>
+                <div
+                  class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+                />
+              </div>
+            </div>
+            <div
+              class="ant-tabs-nav-operations ant-tabs-nav-operations-hidden"
+            >
+              <button
+                aria-controls="rc-tabs-test-more-popup"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                class="ant-tabs-nav-more"
+                id="rc-tabs-test-more"
+                style="visibility: hidden; order: 1;"
+                type="button"
+              >
+                <span
+                  aria-label="ellipsis"
+                  class="anticon anticon-ellipsis"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    data-icon="ellipsis"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <path
+                      d="M176 511a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0zm280 0a56 56 0 10112 0 56 56 0 10-112 0z"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            class="ant-tabs-body-holder"
+          >
+            <div
+              class="ant-tabs-body ant-tabs-body-top"
+            >
+              <div
+                aria-hidden="false"
+                aria-labelledby="rc-tabs-test-tab-activities"
+                class="ant-tabs-content ant-tabs-content-active"
+                id="rc-tabs-test-panel-activities"
+                role="tabpanel"
+                tabindex="0"
+              >
+                <div
+                  class="flex flex-col"
+                >
+                  <form
+                    aria-label="Tambah aktivitas"
+                    class="flex flex-col gap-3"
+                  >
+                    <div
+                      class="grid grid-cols-[1fr_auto_auto] items-end gap-2"
+                    >
+                      <label
+                        class="flex flex-col gap-1 text-sm font-medium"
+                      >
+                        Tanggal
+                        <div
+                          class="ant-select ant-select-outlined css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-arrow ant-select-show-search"
+                        >
+                          <div
+                            class="ant-select-content ant-select-content-has-value"
+                            title="Sen, 02/02/2026"
+                          >
+                            Sen, 02/02/2026
+                            <input
+                              aria-autocomplete="list"
+                              aria-expanded="false"
+                              aria-haspopup="listbox"
+                              aria-label="Tanggal"
+                              autocomplete="new-password"
+                              class="ant-select-input"
+                              id="test-id"
+                              role="combobox"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                          <div
+                            class="ant-select-suffix"
+                          >
+                            <span
+                              aria-label="down"
+                              class="anticon anticon-down"
+                              role="img"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                data-icon="down"
+                                fill="currentColor"
+                                focusable="false"
+                                height="1em"
+                                viewBox="64 64 896 896"
+                                width="1em"
+                              >
+                                <path
+                                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                                />
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                      </label>
+                      <label
+                        class="flex flex-col gap-1 text-sm font-medium"
+                      >
+                        Mulai
+                        <input
+                          aria-label="Jam mulai"
+                          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+                          type="time"
+                          value="08:00"
+                        />
+                      </label>
+                      <label
+                        class="flex flex-col gap-1 text-sm font-medium"
+                      >
+                        Selesai
+                        <input
+                          aria-label="Jam selesai"
+                          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+                          type="time"
+                          value="17:00"
+                        />
+                      </label>
+                    </div>
+                    <label
+                      class="flex flex-col gap-1 text-sm font-medium"
+                    >
+                      Task / Ticket
+                      <div
+                        class="ant-select ant-select-outlined ant-select-auto-complete css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-search"
+                      >
+                        <div
+                          class="ant-select-content"
+                        >
+                          <div
+                            class="ant-select-placeholder"
+                          >
+                            mis. Tech debt case admin list
+                          </div>
+                          <input
+                            aria-autocomplete="list"
+                            aria-expanded="false"
+                            aria-haspopup="listbox"
+                            aria-label="Task"
+                            autocomplete="new-password"
+                            class="ant-select-input"
+                            id="test-id"
+                            role="combobox"
+                            type="text"
+                            value=""
+                          />
+                        </div>
+                      </div>
+                    </label>
+                    <div
+                      class="flex justify-end gap-2"
+                    >
+                      <button
+                        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined"
+                        disabled=""
+                        type="button"
+                      >
+                        <span
+                          class="ant-btn-icon"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              height="13"
+                              rx="2"
+                              ry="2"
+                              width="13"
+                              x="9"
+                              y="9"
+                            />
+                            <path
+                              d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                            />
+                          </svg>
+                        </span>
+                        <span>
+                          Duplikat sebelumnya
+                        </span>
+                      </button>
+                      <button
+                        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-primary ant-btn-color-primary ant-btn-variant-solid"
+                        type="submit"
+                      >
+                        <span
+                          class="ant-btn-icon"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            fill="none"
+                            height="1em"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            width="1em"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <line
+                              x1="12"
+                              x2="12"
+                              y1="5"
+                              y2="19"
+                            />
+                            <line
+                              x1="5"
+                              x2="19"
+                              y1="12"
+                              y2="12"
+                            />
+                          </svg>
+                        </span>
+                        <span>
+                          Tambah
+                        </span>
+                      </button>
+                    </div>
+                  </form>
+                  <div
+                    class="ant-divider css-dev-only-do-not-override-eofgey css-var-root ant-divider-horizontal ant-divider-rail"
+                    role="separator"
+                  />
+                  <p
+                    class="text-sm text-text-secondary"
+                  >
+                    Belum ada aktivitas. Tambahkan lewat form di atas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div
+        class="min-h-0"
+      >
+        <section
+          aria-label="Pratinjau dokumen"
+          class="h-full overflow-auto bg-neutral-300 py-4 dark:bg-neutral-800"
+        >
+          <div
+            data-testid="preview-zoom"
+            data-zoom="1.000"
+          >
+            <div
+              data-testid="timesheet-document"
+              style="display: flex; flex-direction: column; align-items: center; gap: 16px;"
+            >
+              <section
+                data-page-kind="sheet"
+                style="position: relative; width: 210mm; height: 297mm; overflow: hidden; box-sizing: border-box; background: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: "Trebuchet MS", "Fira Sans", sans-serif; break-after: page; print-color-adjust: exact;"
+              >
+                <img
+                  alt="IFG"
+                  src="/src/assets/ifg-logo.png"
+                  style="position: absolute; left: 20pt; top: 8pt; width: 93pt; height: 46pt; object-fit: contain;"
+                />
+                <h1
+                  style="position: absolute; top: 76pt; left: 0px; width: 595.28pt; margin: 0px; text-align: center; font-size: 18pt; font-weight: 700; line-height: 1.2;"
+                >
+                  TIMESHEET
+                </h1>
+                <table
+                  data-testid="sheet-info"
+                  style="position: absolute; top: 119pt; left: 42pt; border-collapse: collapse; table-layout: fixed; font-size: 12pt;"
+                >
+                  <colgroup>
+                    <col
+                      style="width: 106pt;"
+                    />
+                    <col
+                      style="width: 6.5pt;"
+                    />
+                    <col
+                      style="width: 157pt;"
+                    />
+                    <col
+                      style="width: 99pt;"
+                    />
+                    <col
+                      style="width: 6.5pt;"
+                    />
+                    <col
+                      style="width: 136pt;"
+                    />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 106pt;"
+                      >
+                        Vendor Name
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      >
+                        :
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      />
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 99pt;"
+                      >
+                        Legacy Platform
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      />
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      />
+                    </tr>
+                    <tr>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 106pt;"
+                      >
+                        Consultant Name
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      >
+                        :
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      />
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 99pt;"
+                      >
+                        Lead Project/PO
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      >
+                        :
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      />
+                    </tr>
+                    <tr>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 106pt;"
+                      >
+                        Consultan Role
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      >
+                        :
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      />
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 99pt;"
+                      >
+                        Tribe Leader
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      >
+                        :
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      />
+                    </tr>
+                    <tr>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 106pt;"
+                      >
+                        Month
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      >
+                        :
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      >
+                        February 2026
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15; width: 99pt;"
+                      >
+                        Squad
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      >
+                        :
+                      </td>
+                      <td
+                        style="height: 14.5pt; padding: 0px; vertical-align: top; white-space: nowrap; line-height: 1.15;"
+                      />
+                    </tr>
+                  </tbody>
+                </table>
+                <table
+                  data-testid="sheet-table"
+                  style="position: absolute; left: 36pt; width: 517pt; border-collapse: collapse; table-layout: fixed; top: 194pt;"
+                >
+                  <colgroup>
+                    <col
+                      data-column="date"
+                      style="width: 66pt;"
+                    />
+                    <col
+                      data-column="task"
+                      style="width: 246pt;"
+                    />
+                    <col
+                      data-column="start"
+                      style="width: 42pt;"
+                    />
+                    <col
+                      data-column="end"
+                      style="width: 43pt;"
+                    />
+                    <col
+                      data-column="remark"
+                      style="width: 120pt;"
+                    />
+                  </colgroup>
+                  <thead>
+                    <tr
+                      style="height: 29pt; background: rgb(192, 0, 0); color: rgb(255, 255, 255);"
+                    >
+                      <th
+                        scope="col"
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+                      >
+                        Date
+                      </th>
+                      <th
+                        scope="col"
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+                      >
+                        Task /Activities/ Project Name/ Ticket Number
+                      </th>
+                      <th
+                        scope="col"
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+                      >
+                        Start Time
+                      </th>
+                      <th
+                        scope="col"
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+                      >
+                        End Time
+                      </th>
+                      <th
+                        scope="col"
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; font-size: 12pt; font-weight: 700; line-height: 1.1;"
+                      >
+                        Remark
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      data-row-kind="off"
+                      style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        01/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        >
+                          Weekend
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        02/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        03/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        04/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        05/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        06/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="off"
+                      style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        07/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        >
+                          Weekend
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="off"
+                      style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        08/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        >
+                          Weekend
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        09/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        10/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        11/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        12/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        13/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="off"
+                      style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        14/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        >
+                          Weekend
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="off"
+                      style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        15/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        >
+                          Weekend
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        16/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        17/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <section
+                data-page-kind="sheet"
+                style="position: relative; width: 210mm; height: 297mm; overflow: hidden; box-sizing: border-box; background: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: "Trebuchet MS", "Fira Sans", sans-serif; break-after: page; print-color-adjust: exact;"
+              >
+                <table
+                  data-testid="sheet-table"
+                  style="position: absolute; left: 36pt; width: 517pt; border-collapse: collapse; table-layout: fixed; top: 9pt;"
+                >
+                  <colgroup>
+                    <col
+                      data-column="date"
+                      style="width: 66pt;"
+                    />
+                    <col
+                      data-column="task"
+                      style="width: 246pt;"
+                    />
+                    <col
+                      data-column="start"
+                      style="width: 42pt;"
+                    />
+                    <col
+                      data-column="end"
+                      style="width: 43pt;"
+                    />
+                    <col
+                      data-column="remark"
+                      style="width: 120pt;"
+                    />
+                  </colgroup>
+                  <tbody>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        18/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        19/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        20/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="off"
+                      style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        21/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        >
+                          Weekend
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="off"
+                      style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        22/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        >
+                          Weekend
+                        </span>
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        23/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        24/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        25/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        26/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="empty"
+                      style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        27/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        />
+                      </td>
+                    </tr>
+                    <tr
+                      data-row-kind="off"
+                      style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
+                    >
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 12pt; line-height: 13pt; overflow-wrap: anywhere; white-space: nowrap;"
+                      >
+                        28/02/2026
+                      </td>
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere; text-align: center;"
+                      />
+                      <td
+                        style="border: 0.75pt solid rgb(0, 0, 0); padding: 2pt 2pt; vertical-align: top; font-size: 11pt; line-height: 13pt; overflow-wrap: anywhere;"
+                      >
+                        <span
+                          style="display: block;"
+                        >
+                          Weekend
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <section
+                data-page-kind="signature"
+                style="position: relative; width: 210mm; height: 297mm; overflow: hidden; box-sizing: border-box; background: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: "Trebuchet MS", "Fira Sans", sans-serif; break-after: page; print-color-adjust: exact;"
+              >
+                <table
+                  data-testid="signature-table"
+                  style="position: absolute; top: 143.5pt; left: 36.8pt; border-collapse: collapse; table-layout: fixed; font-size: 12pt; font-weight: 700;"
+                >
+                  <colgroup>
+                    <col
+                      style="width: 169.5pt;"
+                    />
+                    <col
+                      style="width: 183.7pt;"
+                    />
+                    <col
+                      style="width: 162.9pt;"
+                    />
+                  </colgroup>
+                  <tbody>
+                    <tr>
+                      <td
+                        style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+                      >
+                        Prepared by,
+                      </td>
+                      <td
+                        colspan="2"
+                        style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+                      >
+                        Approved by,
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+                      >
+                        Name : 
+                      </td>
+                      <td
+                        style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+                      >
+                        Name: 
+                      </td>
+                      <td
+                        style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+                      >
+                        Name: 
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        style="height: 117.3pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px; text-align: center; vertical-align: middle;"
+                      />
+                      <td
+                        style="height: 117.3pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px; text-align: center; vertical-align: middle;"
+                      />
+                      <td
+                        style="height: 117.3pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px; text-align: center; vertical-align: middle;"
+                      />
+                    </tr>
+                    <tr>
+                      <td
+                        style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+                      >
+                        Date: 27 February 2026
+                      </td>
+                      <td
+                        style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+                      >
+                        Date: 27 February 2026
+                      </td>
+                      <td
+                        style="height: 14.6pt; border: 0.75pt solid rgb(0, 0, 0); padding: 0px 2pt; text-align: center; vertical-align: middle; line-height: 1.1;"
+                      >
+                        Date: 27 February 2026
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <section
+                data-page-kind="cover"
+                style="position: relative; width: 210mm; height: 297mm; overflow: hidden; box-sizing: border-box; background: rgb(255, 255, 255); color: rgb(0, 0, 0); font-family: "Trebuchet MS", "Fira Sans", sans-serif; break-after: page; print-color-adjust: exact;"
+              >
+                <div
+                  style="position: absolute; left: 36pt; top: 54.7pt; width: 524.2pt; height: 112pt; background: rgb(192, 0, 0);"
+                />
+                <p
+                  style="position: absolute; left: 36pt; top: 166.7pt; width: 524.2pt; height: 207pt; margin: 0px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 11pt; font-weight: 700;"
+                >
+                  EVIDENCE FEBRUARY 2026 –  –  – 
+                </p>
+                <div
+                  style="position: absolute; left: 36pt; top: 373.7pt; width: 524.2pt; height: 410.6pt; background: rgb(192, 0, 0);"
+                />
+                <p
+                  style="position: absolute; left: 36pt; top: 714pt; width: 524.2pt; margin: 0px; color: rgb(255, 255, 255); text-align: center; font-size: 11pt; font-weight: 700; line-height: 1.75;"
+                >
+                  <span
+                    style="display: block;"
+                  />
+                  <span
+                    style="display: block;"
+                  />
+                </p>
+              </section>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</DocumentFragment>
+`;

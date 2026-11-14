@@ -1,0 +1,517 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`EntryListComponent Snapshot Test EntryListComponent Snapshots should render the empty state 1`] = `
+<DocumentFragment>
+  <p
+    class="text-sm text-text-secondary"
+  >
+    Belum ada aktivitas. Tambahkan lewat form di atas.
+  </p>
+</DocumentFragment>
+`;
+
+exports[`EntryListComponent Snapshot Test EntryListComponent Snapshots should render two activities 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="entry-list-title"
+    class="flex flex-col gap-2"
+  >
+    <h3
+      class="text-sm font-semibold"
+      id="entry-list-title"
+    >
+      Daftar aktivitas (2)
+    </h3>
+    <ol
+      class="flex flex-col gap-2"
+    >
+      <li
+        aria-label="Aktivitas 2026-10-01"
+        class="flex flex-col gap-2 rounded-lg border p-2  border-border-default"
+        data-index="0"
+        draggable="true"
+      >
+        <div
+          class="flex flex-wrap items-center gap-2"
+        >
+          <svg
+            aria-hidden="true"
+            class="cursor-grab text-text-secondary"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="3"
+              x2="21"
+              y1="12"
+              y2="12"
+            />
+            <line
+              x1="3"
+              x2="21"
+              y1="6"
+              y2="6"
+            />
+            <line
+              x1="3"
+              x2="21"
+              y1="18"
+              y2="18"
+            />
+          </svg>
+          <select
+            aria-label="Tanggal aktivitas"
+            class="h-8 rounded-md border border-border-default bg-background-surface px-1 text-sm"
+            data-entry-id="e1"
+            data-field="date"
+          >
+            <option
+              value="2026-10-01"
+            >
+              Kam, 01/10/2026
+            </option>
+            <option
+              value="2026-10-02"
+            >
+              Jum, 02/10/2026
+            </option>
+          </select>
+          <input
+            aria-label="Mulai"
+            class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined !w-24 css-var-root ant-input-css-var"
+            data-entry-id="e1"
+            data-field="start"
+            type="time"
+            value="08:04"
+          />
+          <input
+            aria-label="Selesai"
+            class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined !w-24 css-var-root ant-input-css-var"
+            data-entry-id="e1"
+            data-field="end"
+            type="time"
+            value="17:00"
+          />
+          <span
+            class="ml-auto"
+          >
+            <div
+              class="flex gap-1"
+            >
+              <button
+                aria-label="Naikkan"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+                data-index="0"
+                disabled=""
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="19"
+                      y2="5"
+                    />
+                    <polyline
+                      points="5 12 12 5 19 12"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <button
+                aria-label="Turunkan"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+                data-index="0"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="5"
+                      y2="19"
+                    />
+                    <polyline
+                      points="19 12 12 19 5 12"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <button
+                aria-label="Duplikat"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+                data-entry-id="e1"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      height="13"
+                      rx="2"
+                      ry="2"
+                      width="13"
+                      x="9"
+                      y="9"
+                    />
+                    <path
+                      d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <button
+                aria-label="Hapus"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+                data-entry-id="e1"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polyline
+                      points="3 6 5 6 21 6"
+                    />
+                    <path
+                      d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                    />
+                    <line
+                      x1="10"
+                      x2="10"
+                      y1="11"
+                      y2="17"
+                    />
+                    <line
+                      x1="14"
+                      x2="14"
+                      y1="11"
+                      y2="17"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </span>
+        </div>
+        <input
+          aria-label="Task"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-entry-id="e1"
+          data-field="task"
+          type="text"
+          value="Tech debt case admin list"
+        />
+        <textarea
+          aria-label="Remark manual"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-entry-id="e1"
+          placeholder="Remark otomatis (isi untuk override)"
+          style="overflow-y: hidden; resize: none;"
+        />
+      </li>
+      <li
+        aria-label="Aktivitas 2026-10-02"
+        class="flex flex-col gap-2 rounded-lg border p-2  border-border-default"
+        data-index="1"
+        draggable="true"
+      >
+        <div
+          class="flex flex-wrap items-center gap-2"
+        >
+          <svg
+            aria-hidden="true"
+            class="cursor-grab text-text-secondary"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="3"
+              x2="21"
+              y1="12"
+              y2="12"
+            />
+            <line
+              x1="3"
+              x2="21"
+              y1="6"
+              y2="6"
+            />
+            <line
+              x1="3"
+              x2="21"
+              y1="18"
+              y2="18"
+            />
+          </svg>
+          <select
+            aria-label="Tanggal aktivitas"
+            class="h-8 rounded-md border border-border-default bg-background-surface px-1 text-sm"
+            data-entry-id="e2"
+            data-field="date"
+          >
+            <option
+              value="2026-10-01"
+            >
+              Kam, 01/10/2026
+            </option>
+            <option
+              value="2026-10-02"
+            >
+              Jum, 02/10/2026
+            </option>
+          </select>
+          <input
+            aria-label="Mulai"
+            class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined !w-24 css-var-root ant-input-css-var"
+            data-entry-id="e2"
+            data-field="start"
+            type="time"
+            value="08:00"
+          />
+          <input
+            aria-label="Selesai"
+            class="ant-input ant-input-sm css-dev-only-do-not-override-eofgey ant-input-outlined !w-24 css-var-root ant-input-css-var"
+            data-entry-id="e2"
+            data-field="end"
+            type="time"
+            value="17:00"
+          />
+          <span
+            class="ml-auto"
+          >
+            <div
+              class="flex gap-1"
+            >
+              <button
+                aria-label="Naikkan"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+                data-index="1"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="19"
+                      y2="5"
+                    />
+                    <polyline
+                      points="5 12 12 5 19 12"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <button
+                aria-label="Turunkan"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+                data-index="1"
+                disabled=""
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <line
+                      x1="12"
+                      x2="12"
+                      y1="5"
+                      y2="19"
+                    />
+                    <polyline
+                      points="19 12 12 19 5 12"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <button
+                aria-label="Duplikat"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+                data-entry-id="e2"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      height="13"
+                      rx="2"
+                      ry="2"
+                      width="13"
+                      x="9"
+                      y="9"
+                    />
+                    <path
+                      d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                    />
+                  </svg>
+                </span>
+              </button>
+              <button
+                aria-label="Hapus"
+                class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-dangerous ant-btn-color-dangerous ant-btn-variant-outlined ant-btn-sm ant-btn-icon-only"
+                data-entry-id="e2"
+                type="button"
+              >
+                <span
+                  class="ant-btn-icon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    fill="none"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <polyline
+                      points="3 6 5 6 21 6"
+                    />
+                    <path
+                      d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+                    />
+                    <line
+                      x1="10"
+                      x2="10"
+                      y1="11"
+                      y2="17"
+                    />
+                    <line
+                      x1="14"
+                      x2="14"
+                      y1="11"
+                      y2="17"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </span>
+        </div>
+        <input
+          aria-label="Task"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-entry-id="e2"
+          data-field="task"
+          type="text"
+          value="Tech debt case admin list"
+        />
+        <textarea
+          aria-label="Remark manual"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          data-entry-id="e2"
+          placeholder="Remark otomatis (isi untuk override)"
+          style="overflow-y: hidden; resize: none;"
+        />
+      </li>
+    </ol>
+  </section>
+</DocumentFragment>
+`;

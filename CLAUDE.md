@@ -44,18 +44,22 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | Path | Role |
 |---|---|
 | `src/main.tsx` | Root: Redux `Provider` → `ThemeProvider` → `App` |
-| `src/App.tsx` | Single-screen app root |
+| `src/App.tsx` | Renders `modules/timesheet-builder` (single screen) |
 | `src/modules/<feature>/` | Feature logic using the module file pattern (below) |
+| `src/modules/timesheet-builder/` | Page shell: top bar, split view (input 2fr / preview 3fr), tabs Aktivitas · Hari khusus · Pengaturan |
+| `src/modules/{period-panel,entry-form,entry-list,day-overrides,profile-settings,document-preview}/` | Input panel sections and the fit-width live preview; each binds to the store through its `.hook.ts` |
 | `src/modules/timesheet-document/` | The A4 output (timesheet, signature, evidence cover, evidence pages). One tree for preview and PDF; geometry in pt in `TimesheetDocument.config.ts`, measured from the reference PDF |
 | `src/components/<Name>/` | Shared UI primitives (Button, Input, Select, Modal, ConfirmModal, Tabs, …) |
 | `src/constants/timesheet.constant.ts` | Fixed document labels, English month names, evidence capacities |
 | `src/types/timesheet.type.ts` | Zod schemas + `z.infer` types for the document file (`schemaVersion`) |
 | `src/libs/utils/date.util.ts`, `timesheet-engine.util.ts` | Pure engine: month dates, weekend, formatters, table rows, evidence pagination (3 then 4) and `Evidence Page N` numbering |
 | `src/libs/utils/timesheet-document.util.ts` | `parseTimesheetDoc` (the single upstream fallback), `migrateDoc`, `serializeTimesheetDoc`, `createEmptyDoc`, `getDefaultDocFileName` |
-| `src/libs/unit-test.ts` | The only allowed test import: re-exports RTL + `test.assertSnapshots` |
-| `src/store/` | `configureStore` (theme slice), typed hooks, `ThemeProvider` |
+| `src/libs/unit-test.ts` | The only allowed test import: re-exports RTL (+ `within`), `renderWithStore`, `createStoreWrapper`, `test.assertSnapshots(Component, configs, { wrapper })` |
+| `src/store/` | `makeStore()` (theme + `timesheet` slices), typed hooks, `ThemeProvider`. `timesheet.slice.ts` holds the whole document and every edit action |
+| `src/libs/utils/` | Pure shared logic: `date`, `date-option`, `timesheet-engine`, `timesheet-mutation`, `timesheet-document`, `entry-validation`, `file` |
+| `src/hooks/useElementWidth.ts` | ResizeObserver width hook (preview zoom) |
 | `src/fixture/timesheet-2026-10.sample.json` | October 2026 real data for seed & golden test |
-| `src/fixture/timesheet.fixture.ts` | `loadOctoberDoc()`, `loadOctoberDocWithEvidence()`, `SAMPLE_IMAGE` for tests |
+| `src/fixture/timesheet.fixture.ts` | `loadOctoberDoc()`, `loadOctoberDocWithEvidence()`, `makeDocStore()`, `makeEmptyOctoberStore()`, `SAMPLE_IMAGE` for tests |
 | `src/assets/` | `ifg-logo.png`, reference PDF |
 | `docs/design-system/` | UI foundations for the app chrome (not the A4 pages) |
 
@@ -81,7 +85,10 @@ index.ts          # exports the entry (wrapper or container)
   Indonesian, document language English; never send data or images to any server; original (unblurred)
   `code` evidence must never be written to the `.json` file.
 - One `<Page>` implementation serves both preview and PDF export; never fork the layout.
-- ESLint strict rules apply to `src/App.tsx`, `src/modules/**`, `src/libs/utils/**`, `src/types/**`, `src/constants/**`.
+- Do not run plain `eslint --fix` on strict files: `jsdoc/require-jsdoc` auto-inserts empty JSDoc stubs. Use
+  `npx eslint --fix --rule '{"jsdoc/require-jsdoc":"off"}' <path>` to sort imports, then `npx eslint <path>`.
+- Per-row handlers read `data-*` attributes (`data-entry-id`, `data-field`, …) instead of inline arrows (§4.4).
+- ESLint strict rules apply to `src/App.tsx`, `src/modules/**`, `src/libs/utils/**`, `src/types/**`, `src/constants/**`, `src/hooks/**`, `src/store/timesheet.*`.
 - Jest only matches `*.test.ts(x)` and `*.snap.ts(x)` under `src/`. Coverage excludes `*.type`,
   `*.config`, `index`, `*.wrapper`, `*.style` and `src/types`. JSON imports work in Jest (`resolveJsonModule`).
 - Git: work on a feature branch; PRs target `development`. Commit format

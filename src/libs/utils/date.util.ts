@@ -1,4 +1,5 @@
 import { MONTH_NAMES_EN } from "@/constants/timesheet.constant";
+import { MONTH_NAMES_ID, WEEKDAY_SHORT_ID } from "@/constants/ui.constant";
 import type { Period } from "@/types/timesheet.type";
 
 /**
@@ -56,8 +57,7 @@ export const getMonthDates = (period: Period): string[] => {
  * @returns {boolean} - True on weekends
  */
 export const isWeekend = (isoDate: string): boolean => {
-  const [year, month, day] = _splitIso(isoDate);
-  const weekday = new Date(Date.UTC(year, month - 1, day)).getUTCDay();
+  const weekday = getWeekday(isoDate);
 
   return weekday === 0 || weekday === 6;
 };
@@ -123,4 +123,60 @@ export const formatLongDate = (isoDate: string): string => {
   const [year, month, day] = _splitIso(isoDate);
 
   return `${day} ${MONTH_NAMES_EN[month - 1]} ${year}`;
+};
+
+/**
+ * Weekday index of an ISO date (0 = Sunday), timezone-independent.
+ * @param {string} isoDate - ISO date
+ * @returns {number} - 0 to 6
+ */
+export const getWeekday = (isoDate: string): number => {
+  const [year, month, day] = _splitIso(isoDate);
+
+  return new Date(Date.UTC(year, month - 1, day)).getUTCDay();
+};
+
+/**
+ * Period of a calendar date in local time.
+ * @param {Date} [now=new Date()] - Reference date
+ * @returns {Period} - Year and 1-based month
+ */
+export const getCurrentPeriod = (now: Date = new Date()): Period => {
+  return { year: now.getFullYear(), month: now.getMonth() + 1 };
+};
+
+/**
+ * The period right after the given one.
+ * @param {Period} period - Year and 1-based month
+ * @returns {Period} - Next month, rolling over the year
+ */
+export const getNextPeriod = (period: Period): Period => {
+  return period.month === 12 ? { year: period.year + 1, month: 1 } : { year: period.year, month: period.month + 1 };
+};
+
+/**
+ * Day of month of an ISO date.
+ * @param {string} isoDate - ISO date
+ * @returns {number} - 1 to 31
+ */
+export const getDayOfMonth = (isoDate: string): number => {
+  return _splitIso(isoDate)[2];
+};
+
+/**
+ * Date label for the app UI, e.g. `Kam, 01/10/2026`.
+ * @param {string} isoDate - ISO date
+ * @returns {string} - Indonesian weekday + `DD/MM/YYYY`
+ */
+export const formatDateOptionLabel = (isoDate: string): string => {
+  return `${WEEKDAY_SHORT_ID[getWeekday(isoDate)]}, ${formatDateSlash(isoDate)}`;
+};
+
+/**
+ * Period label in Indonesian for the app UI, e.g. `Oktober 2026`.
+ * @param {Period} period - Year and 1-based month
+ * @returns {string} - Label
+ */
+export const formatPeriodLabelId = (period: Period): string => {
+  return `${MONTH_NAMES_ID[period.month - 1]} ${period.year}`;
 };

@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`EntryFormContainer Snapshot Test EntryFormContainer Snapshots should render the form for an empty October 1`] = `
+<DocumentFragment>
+  <form
+    aria-label="Tambah aktivitas"
+    class="flex flex-col gap-3"
+  >
+    <div
+      class="grid grid-cols-[1fr_auto_auto] items-end gap-2"
+    >
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Tanggal
+        <div
+          class="ant-select ant-select-outlined css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-arrow ant-select-show-search"
+        >
+          <div
+            class="ant-select-content ant-select-content-has-value"
+            title="Kam, 01/10/2026"
+          >
+            Kam, 01/10/2026
+            <input
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-label="Tanggal"
+              autocomplete="new-password"
+              class="ant-select-input"
+              id="test-id"
+              role="combobox"
+              type="text"
+              value=""
+            />
+          </div>
+          <div
+            class="ant-select-suffix"
+          >
+            <span
+              aria-label="down"
+              class="anticon anticon-down"
+              role="img"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="down"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Mulai
+        <input
+          aria-label="Jam mulai"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          type="time"
+          value="08:00"
+        />
+      </label>
+      <label
+        class="flex flex-col gap-1 text-sm font-medium"
+      >
+        Selesai
+        <input
+          aria-label="Jam selesai"
+          class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
+          type="time"
+          value="17:00"
+        />
+      </label>
+    </div>
+    <label
+      class="flex flex-col gap-1 text-sm font-medium"
+    >
+      Task / Ticket
+      <div
+        class="ant-select ant-select-outlined ant-select-auto-complete css-var-root ant-select-css-var css-dev-only-do-not-override-eofgey ant-select-single ant-select-show-search"
+      >
+        <div
+          class="ant-select-content"
+        >
+          <div
+            class="ant-select-placeholder"
+          >
+            mis. Tech debt case admin list
+          </div>
+          <input
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-label="Task"
+            autocomplete="new-password"
+            class="ant-select-input"
+            id="test-id"
+            role="combobox"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </label>
+    <div
+      class="flex justify-end gap-2"
+    >
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined"
+        disabled=""
+        type="button"
+      >
+        <span
+          class="ant-btn-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              height="13"
+              rx="2"
+              ry="2"
+              width="13"
+              x="9"
+              y="9"
+            />
+            <path
+              d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+            />
+          </svg>
+        </span>
+        <span>
+          Duplikat sebelumnya
+        </span>
+      </button>
+      <button
+        class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-primary ant-btn-color-primary ant-btn-variant-solid"
+        type="submit"
+      >
+        <span
+          class="ant-btn-icon"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="12"
+              x2="12"
+              y1="5"
+              y2="19"
+            />
+            <line
+              x1="5"
+              x2="19"
+              y1="12"
+              y2="12"
+            />
+          </svg>
+        </span>
+        <span>
+          Tambah
+        </span>
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
+`;
