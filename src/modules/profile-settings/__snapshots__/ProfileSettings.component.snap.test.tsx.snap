@@ -28,6 +28,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Vendor Name"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="vendorName"
+          id="profile-vendorName"
           type="text"
           value="PT Negeri Emas Perkasa"
         />
@@ -40,6 +41,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Consultant Name"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="consultantName"
+          id="profile-consultantName"
           type="text"
           value="Arbi Kustia"
         />
@@ -52,6 +54,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Consultan Role"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="consultantRole"
+          id="profile-consultantRole"
           type="text"
           value="Front End Developer"
         />
@@ -69,6 +72,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Platform (kanan atas)"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="platform"
+          id="profile-platform"
           type="text"
           value="Legacy Platform"
         />
@@ -81,6 +85,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Lead Project/PO"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="leadProject"
+          id="profile-leadProject"
           type="text"
           value="Fahly Faraby"
         />
@@ -93,6 +98,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Tribe Leader"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="tribeLeader"
+          id="profile-tribeLeader"
           type="text"
           value="Rio Hermanto"
         />
@@ -105,6 +111,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Squad"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="squad"
+          id="profile-squad"
           type="text"
           value="Epics Asum"
         />
@@ -117,6 +124,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Footer cover — perusahaan"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="footerCompany"
+          id="profile-footerCompany"
           type="text"
           value=""
         />
@@ -134,6 +142,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Footer cover — grup"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="footerGroup"
+          id="profile-footerGroup"
           type="text"
           value=""
         />
@@ -151,6 +160,7 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
           aria-label="Prefix nama file PDF"
           class="ant-input css-dev-only-do-not-override-eofgey ant-input-outlined css-var-root ant-input-css-var"
           data-field="pdfFilePrefix"
+          id="profile-pdfFilePrefix"
           type="text"
           value="BHN II - Timesheet"
         />
@@ -182,6 +192,8 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
       >
         <div
           class="flex flex-col gap-2 rounded-lg border border-border-default p-2 text-sm"
+          id="signature-preparedBy"
+          tabindex="-1"
         >
           <span
             class="font-medium"
@@ -207,6 +219,8 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
         </div>
         <div
           class="flex flex-col gap-2 rounded-lg border border-border-default p-2 text-sm"
+          id="signature-leadProject"
+          tabindex="-1"
         >
           <span
             class="font-medium"
@@ -232,6 +246,8 @@ exports[`ProfileSettingsComponent Snapshot Test ProfileSettingsComponent Snapsho
         </div>
         <div
           class="flex flex-col gap-2 rounded-lg border border-border-default p-2 text-sm"
+          id="signature-tribeLeader"
+          tabindex="-1"
         >
           <span
             class="font-medium"

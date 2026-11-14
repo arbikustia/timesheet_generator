@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 import type { ShortcutCombo, ShortcutHandlers } from "./useKeyboardShortcuts.type";
 
-const COMBOS: readonly string[] = ["mod+s", "mod+shift+s", "mod+o", "mod+z", "mod+shift+z"];
+const COMBOS: readonly string[] = ["mod+s", "mod+shift+s", "mod+o", "mod+p", "mod+z", "mod+shift+z", "mod+y"];
 
 /**
  * Whether a string is a known shortcut combo.

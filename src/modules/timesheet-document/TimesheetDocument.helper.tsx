@@ -90,7 +90,7 @@ export const renderSheetRow = (sheetRow: SheetRow): React.ReactElement => {
   const remarkLines = row.kind === "work" ? row.remarkLines : [row.kind === "off" ? row.remark : ""];
 
   return (
-    <tr key={row.key} data-row-kind={row.kind} style={{ ...ROW_KIND_STYLES[row.kind], height: `${heightPt}pt` }}>
+    <tr key={row.key} data-row-kind={row.kind} data-date={row.date} style={{ ...ROW_KIND_STYLES[row.kind], height: `${heightPt}pt` }}>
       <td style={{ ...styles.cell, ...styles.dateCell }}>{formatDateSlash(row.date)}</td>
       <td style={styles.cell}>{isWork ? row.task : ""}</td>
       <td style={{ ...styles.cell, ...ALIGN_STYLES.center }}>{isWork ? row.start : ""}</td>

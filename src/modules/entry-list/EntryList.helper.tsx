@@ -2,6 +2,8 @@ import * as React from "react";
 import { FiArrowDown, FiArrowUp, FiCopy, FiMenu, FiTrash2 } from "react-icons/fi";
 import { Button, Input } from "antd";
 
+import { getEntryAnchorId } from "@/libs/utils/anchor.util";
+
 import type { EntryField } from "@/types/timesheet-edit.type";
 
 import type { EntryListProps, EntryListRow } from "./EntryList.type";
@@ -85,6 +87,8 @@ export const renderEntryHeader = (row: EntryListRow, props: EntryListProps, isLa
 export const renderEntryItem = (row: EntryListRow, props: EntryListProps, isLast: boolean): React.ReactElement => (
   <li
     key={row.entry.id}
+    id={getEntryAnchorId(row.entry.id)}
+    tabIndex={-1}
     draggable
     data-index={row.index}
     aria-label={`Aktivitas ${row.entry.date}`}

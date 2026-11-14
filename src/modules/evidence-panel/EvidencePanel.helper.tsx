@@ -2,6 +2,8 @@ import * as React from "react";
 import { FiDroplet, FiRefreshCw, FiRepeat, FiTrash2, FiUpload } from "react-icons/fi";
 import { Button, Spin, Tag } from "antd";
 
+import { getEvidenceAnchorId } from "@/libs/utils/anchor.util";
+
 import { ACCEPTED_IMAGE_TYPES } from "@/constants/image.constant";
 import type { Evidence } from "@/types/timesheet.type";
 
@@ -69,6 +71,7 @@ export const renderEmptySlot = (block: EvidenceDateBlock, side: EvidenceSide, pr
 export const renderDateBlock = (block: EvidenceDateBlock, props: EvidencePanelProps): React.ReactElement => (
   <li
     key={block.date}
+    id={getEvidenceAnchorId(block.date)}
     tabIndex={0}
     data-date={block.date}
     aria-label={`Evidence ${block.label}`}

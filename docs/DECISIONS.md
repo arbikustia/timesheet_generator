@@ -117,7 +117,7 @@ Format: tanggal · keputusan · alasan.
 - `src/store/timesheet.slice.ts` memegang `doc` (dokumen lengkap). Semua perubahan lewat action:
   `loadDoc`, `changePeriod` (move/reset), `startNextMonth`, `addEntry`, `updateEntry`, `removeEntry`,
   `duplicateEntry`, `moveEntry`, `setDayOverride`, `updateProfile`, `updateDefaultHours`, `setSignature`.
-  Logika murni di `src/libs/utils/timesheet-mutation.util.ts` (ter-test). Undo/redo menyusul di Fase 6.
+  Logika murni di `src/libs/utils/timesheet-mutation.util.ts` (ter-test). Undo/redo: lihat D-030.
 - `makeStore(preloadedState)` untuk test; `serializableCheck` dimatikan karena dokumen berisi data URL besar.
 - State awal = dokumen kosong bulan berjalan. Belum ada persistensi: refresh = data hilang sampai Fase 4
   (Simpan/Buka + draft IndexedDB).
@@ -221,3 +221,58 @@ Format: tanggal · keputusan · alasan.
 - jsdom tidak punya canvas: `src/fixture/canvas.fixture.ts` memasang canvas 2D palsu + `createImageBitmap`
   (dengan `Object.defineProperty`, tanpa type assertion) dan mencatat filter yang aktif saat menggambar
   sehingga test bisa memastikan blur benar-benar diterapkan.
+
+## Fase 6 — Export & polish (2026-11-14)
+
+### D-028 · Export PDF = print CSS + `window.print()`
+- Tidak memakai `@react-pdf/renderer`: print CSS sudah presisi karena halaman digambar dengan posisi absolut
+  dalam `pt` di bingkai `210mm × 297mm` (D-012), dan hasilnya PDF vektor dengan teks yang bisa di-select.
+- Preview berada di dalam `#root` yang di-`zoom: 0.67`, panel ber-scroll, dan pratinjau di-`zoom` fit-width.
+  Supaya cetak tidak bergantung pada itu semua, `modules/export-pdf` me-mount **salinan** `<TimesheetDocument>`
+  (komponen yang sama, bukan layout kedua) lewat portal ke `document.body` dalam `.print-root`. Di layar
+  `.print-root { display: none }`; saat print semua anak `body` lain disembunyikan, `@page { size: A4; margin: 0 }`,
+  jarak antarhalaman preview (`gap`) dinolkan dan halaman terakhir tidak memaksa page break.
+- `print-color-adjust: exact` sudah ada di style halaman (Fase 2) sehingga merah/kuning ikut tercetak.
+- Nama file PDF default diambil browser dari `document.title`: selama `beforeprint`…`afterprint` judul diganti
+  `{pdfFilePrefix} {MonthName}` (`getPdfFileTitle`, mis. `BHN II - Timesheet October`), lalu dikembalikan
+  (`src/hooks/usePrintTitle.ts`). Berlaku juga untuk print dari menu browser.
+- Tombol **Export PDF** dan `Ctrl/Cmd+P` menjalankan cek dulu: ada error → dialog daftar error (maks. 5) +
+  "Lihat Cek export"; tanpa error → `window.print()`. Print dari menu browser tidak bisa dicegat (tidak diblokir).
+- Belum dikerjakan: tombol "Buka di tab baru" (PROMPT §7). Preview di kanan sudah = output cetak.
+
+### D-029 · Panel "Cek export" & ringkasan bulan
+- Aturan murni di `src/libs/utils/timesheet-validation.util.ts` (`validateDoc` → issues + counts + summary),
+  di-memo per dokumen lewat `selectValidationReport` (`createSelector`) sehingga tab, badge dan tombol export
+  memakai satu hasil.
+- ❌ Error (memblokir export): tanggal di luar periode, task kosong, format jam salah, jam selesai ≤ mulai,
+  entri otomatis belum direview, screenshot `code` belum diblur, nama konsultan/Lead Project/Tribe Leader kosong,
+  tiga gambar tanda tangan belum diunggah. Nama konsultan ikut wajib karena tercetak di kolom "Prepared by".
+- ⚠️ Warning: hari kerja tanpa aktivitas, aktivitas pada Weekend/libur/cuti (D-011), aktivitas tanpa evidence,
+  evidence tanpa aktivitas, evidence di luar periode, total jam harian < 8 atau > 12, ukuran dokumen > 15 MB.
+  Info "task identik > N hari" (opsional di PROMPT) tidak dibuat.
+- 💡 Info = ringkasan bulan di atas daftar: hari kerja terisi / total (Senin–Jumat tanpa libur/cuti), total jam
+  (durasi valid entri dalam periode), jumlah aktivitas, halaman evidence (dan jumlah tanggal).
+- Klik item → pindah tab dan fokus/scroll: aktivitas (`entry-{id}`), blok evidence (`evidence-{date}`),
+  input profil (`profile-{field}`), slot tanda tangan (`signature-{key}`); item tanggal juga men-scroll baris
+  tabel di preview (`[data-preview] tr[data-date]`). Id dibuat di `src/libs/utils/anchor.util.ts`.
+- Label tab menampilkan jumlah error (merah) atau, bila tidak ada error, jumlah peringatan.
+
+### D-030 · Undo/redo
+- Riwayat ada di slice `timesheet` (`past`, `future`, maks. 100 langkah) — reducer slice dibungkus
+  `timesheetReducer` yang mencatat setiap aksi edit yang benar-benar mengubah `doc` (`isAnyOf(...)`).
+  `loadDoc`/`restoreDraft` mengosongkan riwayat; `markSaved` tidak dicatat. Karena dirty = `doc !== savedDoc`,
+  undo kembali ke dokumen tersimpan otomatis menjadi "Tersimpan".
+- Ketikan beruntun di field yang sama (merge key `entry:{id}:{field}`, `profile:{field}`, `defaults:{field}`)
+  digabung menjadi satu langkah; aksi lain (tambah/hapus/pindah/evidence/periode) selalu langkah sendiri.
+- Shortcut `Ctrl/Cmd+Z` undo, `Ctrl/Cmd+Shift+Z` dan `Ctrl/Cmd+Y` redo, juga saat fokus di input teks
+  (menggantikan undo bawaan input, karena tiap ketikan sudah langsung masuk ke dokumen). Tombol
+  Urungkan/Ulangi di top bar (`modules/edit-history`).
+- `removeEntry` dengan id tak dikenal kini no-op (tidak membuat dokumen baru → tidak tercatat di riwayat).
+
+### D-031 · Aksesibilitas dasar
+- Preview bisa di-scroll dengan keyboard (`tabIndex=0` pada region "Pratinjau dokumen"); dokumen A4 diberi
+  `lang="en"` (UI tetap `lang="id"`). Salinan cetak `aria-hidden`.
+- Item cek berupa `<button>` dengan prefix level untuk screen reader ("Error: …"/"Peringatan: …"); ikon
+  dekoratif `aria-hidden`; tombol ikon (Urungkan/Ulangi) punya `aria-label` dan `aria-keyshortcuts`.
+- Teks peringatan memakai `text-warning-strong` (kontras ≥ 4.5:1) menggantikan `text-warning` (≈3.2:1).
+- jsdom tidak punya `scrollIntoView`; `src/setupTests.ts` memasang stub `jest.fn()`.

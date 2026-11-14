@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ExportCheckComponent Snapshot Test ExportCheckComponent Snapshots should render the summary with one error and one warning 1`] = `
+<DocumentFragment>
+  <section
+    aria-labelledby="export-check-title"
+    class="flex flex-col gap-3"
+  >
+    <h3
+      class="m-0 text-sm font-semibold"
+      id="export-check-title"
+    >
+      Ringkasan bulan
+    </h3>
+    <dl
+      class="m-0 grid grid-cols-2 gap-2"
+    >
+      <div
+        class="flex flex-col rounded-lg border border-border-default p-2"
+      >
+        <dt
+          class="text-xs text-text-secondary"
+        >
+          Hari kerja terisi
+        </dt>
+        <dd
+          class="m-0 text-base font-semibold"
+        >
+          21 / 22
+        </dd>
+      </div>
+      <div
+        class="flex flex-col rounded-lg border border-border-default p-2"
+      >
+        <dt
+          class="text-xs text-text-secondary"
+        >
+          Total jam
+        </dt>
+        <dd
+          class="m-0 text-base font-semibold"
+        >
+          189 jam
+        </dd>
+      </div>
+    </dl>
+    <div
+      class="ant-alert ant-alert-error ant-alert-outlined css-var-root css-dev-only-do-not-override-eofgey"
+      data-show="true"
+      role="alert"
+    >
+      <span
+        class="ant-alert-icon"
+      >
+        <span
+          aria-label="close-circle"
+          class="anticon anticon-close-circle"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="close-circle"
+            fill="currentColor"
+            fill-rule="evenodd"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M512 64c247.4 0 448 200.6 448 448S759.4 960 512 960 64 759.4 64 512 264.6 64 512 64zm127.98 274.82h-.04l-.08.06L512 466.75 384.14 338.88c-.04-.05-.06-.06-.08-.06a.12.12 0 00-.07 0c-.03 0-.05.01-.09.05l-45.02 45.02a.2.2 0 00-.05.09.12.12 0 000 .07v.02a.27.27 0 00.06.06L466.75 512 338.88 639.86c-.05.04-.06.06-.06.08a.12.12 0 000 .07c0 .03.01.05.05.09l45.02 45.02a.2.2 0 00.09.05.12.12 0 00.07 0c.02 0 .04-.01.08-.05L512 557.25l127.86 127.87c.04.04.06.05.08.05a.12.12 0 00.07 0c.03 0 .05-.01.09-.05l45.02-45.02a.2.2 0 00.05-.09.12.12 0 000-.07v-.02a.27.27 0 00-.05-.06L557.25 512l127.87-127.86c.04-.04.05-.06.05-.08a.12.12 0 000-.07c0-.03-.01-.05-.05-.09l-45.02-45.02a.2.2 0 00-.09-.05.12.12 0 00-.07 0z"
+            />
+          </svg>
+        </span>
+      </span>
+      <div
+        class="ant-alert-section"
+      >
+        <div
+          class="ant-alert-title"
+        >
+          1 error harus diperbaiki sebelum export PDF.
+        </div>
+      </div>
+    </div>
+    <section
+      aria-labelledby="export-check-error"
+      class="flex flex-col gap-1"
+    >
+      <h4
+        class="m-0 text-sm font-semibold"
+        id="export-check-error"
+      >
+        Error (1)
+      </h4>
+      <ul
+        class="m-0 flex list-none flex-col p-0"
+      >
+        <li>
+          <button
+            class="flex w-full cursor-pointer items-start gap-2 rounded-md border-0 bg-transparent p-1.5 text-left text-sm text-text-primary hover:bg-background-subtle"
+            data-issue-id="signature:preparedBy"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="mt-0.5 shrink-0 text-danger-strong"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+              />
+              <line
+                x1="15"
+                x2="9"
+                y1="9"
+                y2="15"
+              />
+              <line
+                x1="9"
+                x2="15"
+                y1="9"
+                y2="15"
+              />
+            </svg>
+            <span>
+              <span
+                class="sr-only"
+              >
+                Error: 
+              </span>
+              Tanda tangan konsultan (Prepared by) belum diunggah.
+            </span>
+          </button>
+        </li>
+      </ul>
+    </section>
+    <section
+      aria-labelledby="export-check-warning"
+      class="flex flex-col gap-1"
+    >
+      <h4
+        class="m-0 text-sm font-semibold"
+        id="export-check-warning"
+      >
+        Peringatan (1)
+      </h4>
+      <ul
+        class="m-0 flex list-none flex-col p-0"
+      >
+        <li>
+          <span
+            class="flex items-start gap-2 p-1.5 text-sm"
+          >
+            <svg
+              aria-hidden="true"
+              class="mt-0.5 shrink-0 text-warning-strong"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+              />
+              <line
+                x1="12"
+                x2="12"
+                y1="9"
+                y2="13"
+              />
+              <line
+                x1="12"
+                x2="12.01"
+                y1="17"
+                y2="17"
+              />
+            </svg>
+            <span>
+              <span
+                class="sr-only"
+              >
+                Peringatan: 
+              </span>
+              Ukuran dokumen 16.0 MB, di atas batas 15.0 MB.
+            </span>
+          </span>
+        </li>
+      </ul>
+    </section>
+  </section>
+</DocumentFragment>
+`;

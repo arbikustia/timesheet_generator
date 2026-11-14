@@ -6,4 +6,5 @@ export const BUILDER_TAB_LABELS: Record<BuilderTab, string> = {
   evidence: "Evidence",
   days: "Hari khusus",
   settings: "Pengaturan",
+  check: "Cek export",
 };

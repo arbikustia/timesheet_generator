@@ -2,6 +2,7 @@ import {
   _formatIssues,
   createEmptyDoc,
   getDefaultDocFileName,
+  getPdfFileTitle,
   migrateDoc,
   parseTimesheetDoc,
   serializeTimesheetDoc,
@@ -128,5 +129,19 @@ describe("_formatIssues", () => {
     const result = TimesheetDocSchema.safeParse(null);
 
     expect(result.success ? [] : _formatIssues(result.error)).toEqual([expect.stringMatching(/^\(root\): /)]);
+  });
+});
+
+describe("getPdfFileTitle", () => {
+  it("should combine the prefix with the English month name", () => {
+    const doc = createEmptyDoc({ year: 2026, month: 10 });
+
+    expect(getPdfFileTitle(doc)).toBe("BHN II - Timesheet October");
+
+    doc.profile.pdfFilePrefix = "  ";
+    expect(getPdfFileTitle(doc)).toBe("October");
+
+    doc.profile.pdfFilePrefix = "A/B: Timesheet";
+    expect(getPdfFileTitle(doc)).toBe("AB Timesheet October");
   });
 });

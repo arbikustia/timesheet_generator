@@ -53,7 +53,7 @@ const FileMenuComponent = (props: FileMenuProps): React.ReactElement => {
       {_renderButtons(props, lastFileName)}
       <span className="text-sm" data-testid="file-status">
         <span className="font-medium">{props.fileLabel}</span>
-        <span className={props.isDirty ? "text-warning" : "text-text-secondary"}>{` · ${props.statusText}`}</span>
+        <span className={props.isDirty ? "text-warning-strong" : "text-text-secondary"}>{` · ${props.statusText}`}</span>
       </span>
       {notice && renderNotice(notice, props.onDismissNotice)}
       <input ref={fileInputRef} type="file" accept={ACCEPTED_DOCUMENT_TYPES} hidden aria-label="Pilih file dokumen" onChange={props.onFileInputChange} />

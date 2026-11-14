@@ -1,5 +1,6 @@
 import type { ZodError } from "zod";
 
+import { MONTH_NAMES_EN } from "@/constants/timesheet.constant";
 import {
   CURRENT_SCHEMA_VERSION,
   type DocMigration,
@@ -159,4 +160,17 @@ export const getDefaultDocFileName = (doc: TimesheetDoc): string => {
   const suffix = consultant ? `-${consultant}` : "";
 
   return `Timesheet-${doc.period.year}-${month}${suffix}.json`;
+};
+
+/**
+ * PDF file name without extension, e.g. `BHN II - Timesheet October` (PROMPT §6). Browsers use the page
+ * title as the default name when printing to PDF.
+ * @param {TimesheetDoc} doc - Document
+ * @returns {string} - File name
+ */
+export const getPdfFileTitle = (doc: TimesheetDoc): string => {
+  const month = MONTH_NAMES_EN[doc.period.month - 1];
+  const prefix = doc.profile.pdfFilePrefix.trim().replace(/[\\/:*?"<>|]/g, "");
+
+  return prefix ? `${prefix} ${month}` : month;
 };

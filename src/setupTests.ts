@@ -17,6 +17,11 @@ Object.defineProperty(globalThis, 'ResizeObserver', {
   })),
 });
 
+// jsdom has no scrolling; navigation from the export check calls scrollIntoView (node-env tests have no DOM).
+if (typeof Element !== 'undefined') {
+  Object.defineProperty(Element.prototype, 'scrollIntoView', { configurable: true, writable: true, value: jest.fn() });
+}
+
 jest.mock('./store/theme.hook', () => ({
   useTheme: () => ({
     theme: 'light',

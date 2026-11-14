@@ -16,8 +16,12 @@ const makeProps = (overrides?: Partial<TimesheetBuilderProps>): TimesheetBuilder
   periodLabel: "Oktober 2026",
   consultantName: "Arbi Kustia",
   theme: "light",
+  errorCount: 0,
+  warningCount: 0,
   onTabChange: jest.fn(),
   onToggleTheme: jest.fn(),
+  onNavigate: jest.fn(),
+  onShowCheck: jest.fn(),
   ...overrides,
 });
 
@@ -44,5 +48,19 @@ describe("TimesheetBuilderComponent", () => {
     expect(screen.getByText("Oktober 2026")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Mode terang" })).toBeInTheDocument();
     expect(screen.getByRole("form", { name: "Tandai hari khusus" })).toBeInTheDocument();
+  });
+
+  it("should badge the check tab with errors, else warnings", () => {
+    const { result } = renderWithStore(<TimesheetBuilderComponent {...makeProps({ errorCount: 2, warningCount: 5 })} />);
+
+    expect(screen.getByRole("tab", { name: "Cek export 2 error" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Export PDF" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Urungkan" })).toBeDisabled();
+
+    result.rerender(<TimesheetBuilderComponent {...makeProps({ warningCount: 5 })} />);
+    expect(screen.getByRole("tab", { name: "Cek export 5 peringatan" })).toBeInTheDocument();
+
+    result.rerender(<TimesheetBuilderComponent {...makeProps()} />);
+    expect(screen.getByRole("tab", { name: "Cek export" })).toBeInTheDocument();
   });
 });

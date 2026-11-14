@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ExportPdfComponent Snapshot Test ExportPdfComponent Snapshots should render the export button 1`] = `
+<DocumentFragment>
+  <button
+    aria-keyshortcuts="Control+P Meta+P"
+    class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined"
+    type="button"
+  >
+    <span
+      class="ant-btn-icon"
+    >
+      <svg
+        aria-hidden="true"
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <polyline
+          points="6 9 6 2 18 2 18 9"
+        />
+        <path
+          d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+        />
+        <rect
+          height="8"
+          width="12"
+          x="6"
+          y="14"
+        />
+      </svg>
+    </span>
+    <span>
+      Export PDF
+    </span>
+  </button>
+</DocumentFragment>
+`;

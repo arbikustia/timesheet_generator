@@ -2,6 +2,8 @@ import * as React from "react";
 import { FiTrash2 } from "react-icons/fi";
 import { Button, Input } from "antd";
 
+import { getProfileFieldAnchorId, getSignatureAnchorId } from "@/libs/utils/anchor.util";
+
 import type { Profile } from "@/types/timesheet.type";
 
 import { ACCEPTED_SIGNATURE_TYPES } from "./ProfileSettings.config";
@@ -21,7 +23,7 @@ export const renderTextField = (
 ): React.ReactElement => (
   <label key={config.field} className="flex flex-col gap-1 text-sm font-medium">
     {config.label}
-    <Input aria-label={config.label} value={profile[config.field]} data-field={config.field} onChange={onTextChange} />
+    <Input id={getProfileFieldAnchorId(config.field)} aria-label={config.label} value={profile[config.field]} data-field={config.field} onChange={onTextChange} />
     {config.hint && <span className="text-xs font-normal text-text-secondary">{config.hint}</span>}
   </label>
 );
@@ -36,7 +38,7 @@ export const renderSignatureSlot = (slot: SignatureSlotConfig, props: ProfileSet
   const src = props.profile.signatures[slot.key];
 
   return (
-    <div key={slot.key} className="flex flex-col gap-2 rounded-lg border border-border-default p-2 text-sm">
+    <div key={slot.key} id={getSignatureAnchorId(slot.key)} tabIndex={-1} className="flex flex-col gap-2 rounded-lg border border-border-default p-2 text-sm">
       <span className="font-medium">{slot.label}</span>
       <div className="flex h-20 items-center justify-center rounded bg-white">
         {src ? <img src={src} alt={`Tanda tangan ${slot.label}`} className="max-h-20 max-w-full object-contain" /> : <span className="text-xs text-neutral-500">Belum ada</span>}

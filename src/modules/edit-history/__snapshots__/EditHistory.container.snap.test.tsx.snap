@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`EditHistoryContainer Snapshot Test EditHistoryContainer Snapshots should render disabled controls without history 1`] = `
+<DocumentFragment>
+  <div
+    class="ant-space-compact css-dev-only-do-not-override-eofgey"
+  >
+    <button
+      aria-keyshortcuts="Control+Z Meta+Z"
+      aria-label="Urungkan"
+      class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only ant-btn-compact-item ant-btn-compact-first-item"
+      disabled=""
+      type="button"
+    >
+      <span
+        class="ant-btn-icon"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polyline
+            points="1 4 1 10 7 10"
+          />
+          <path
+            d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"
+          />
+        </svg>
+      </span>
+    </button>
+    <button
+      aria-keyshortcuts="Control+Shift+Z Meta+Shift+Z Control+Y"
+      aria-label="Ulangi"
+      class="ant-btn css-dev-only-do-not-override-eofgey css-var-root ant-btn-default ant-btn-color-default ant-btn-variant-outlined ant-btn-icon-only ant-btn-compact-item ant-btn-compact-last-item"
+      disabled=""
+      type="button"
+    >
+      <span
+        class="ant-btn-icon"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polyline
+            points="23 4 23 10 17 10"
+          />
+          <path
+            d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;

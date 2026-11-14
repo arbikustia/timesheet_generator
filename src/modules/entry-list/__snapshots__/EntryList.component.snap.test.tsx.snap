@@ -30,6 +30,8 @@ exports[`EntryListComponent Snapshot Test EntryListComponent Snapshots should re
         class="flex flex-col gap-2 rounded-lg border p-2  border-border-default"
         data-index="0"
         draggable="true"
+        id="entry-e1"
+        tabindex="-1"
       >
         <div
           class="flex flex-wrap items-center gap-2"
@@ -273,6 +275,8 @@ exports[`EntryListComponent Snapshot Test EntryListComponent Snapshots should re
         class="flex flex-col gap-2 rounded-lg border p-2  border-border-default"
         data-index="1"
         draggable="true"
+        id="entry-e2"
+        tabindex="-1"
       >
         <div
           class="flex flex-wrap items-center gap-2"

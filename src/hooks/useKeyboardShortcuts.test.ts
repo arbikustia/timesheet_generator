@@ -21,7 +21,9 @@ describe("toShortcutCombo", () => {
     expect(toShortcutCombo(new KeyboardEvent("keydown", { key: "S", metaKey: true, shiftKey: true }))).toBe("mod+shift+s");
     expect(toShortcutCombo(new KeyboardEvent("keydown", { key: "s" }))).toBeNull();
     expect(toShortcutCombo(new KeyboardEvent("keydown", { key: "s", ctrlKey: true, altKey: true }))).toBeNull();
-    expect(toShortcutCombo(new KeyboardEvent("keydown", { key: "p", ctrlKey: true }))).toBeNull();
+    expect(toShortcutCombo(new KeyboardEvent("keydown", { key: "p", ctrlKey: true }))).toBe("mod+p");
+    expect(toShortcutCombo(new KeyboardEvent("keydown", { key: "Z", ctrlKey: true, shiftKey: true }))).toBe("mod+shift+z");
+    expect(toShortcutCombo(new KeyboardEvent("keydown", { key: "k", ctrlKey: true }))).toBeNull();
   });
 });
 

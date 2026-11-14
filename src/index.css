@@ -280,6 +280,44 @@
   overflow: hidden;
 }
 
+/* Print-only copy of the A4 document (modules/export-pdf). Same <Page> tree as the preview. */
+.print-root {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html,
+  body {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    background: #FFFFFF !important;
+  }
+
+  /* Only the document is printed: hide the app root and every other portal (modals, tooltips). */
+  body > :not(.print-root) {
+    display: none !important;
+  }
+
+  .print-root {
+    display: block;
+  }
+
+  .print-root .timesheet-document {
+    display: block !important;
+    gap: 0 !important;
+  }
+
+  .print-root [data-page-kind]:last-child {
+    break-after: auto !important;
+  }
+}
+
 .login-page-viewport {
   height: 100%;
   min-height: 100%;

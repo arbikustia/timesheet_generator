@@ -54,6 +54,7 @@ exports[`EvidencePanelComponent Snapshot Test EvidencePanelComponent Snapshots s
         aria-label="Evidence Kam, 01/10/2026"
         class="flex flex-col gap-2 rounded-lg border p-2 outline-none border-primary-500 ring-2 ring-primary-200"
         data-date="2026-10-01"
+        id="evidence-2026-10-01"
         tabindex="0"
       >
         <div

@@ -154,7 +154,7 @@ exports[`DayOverridesComponent Snapshot Test DayOverridesComponent Snapshots sho
           Cuti
         </span>
         <span
-          class="text-xs text-warning"
+          class="text-xs text-warning-strong"
         >
           Ada aktivitas — baris tetap tampil sebagai aktivitas
         </span>

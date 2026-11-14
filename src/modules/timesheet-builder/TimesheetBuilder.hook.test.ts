@@ -15,6 +15,13 @@ describe("useTimesheetBuilder", () => {
 
     act(() => result.current.onTabChange("unknown"));
     expect(result.current.activeTab).toBe("settings");
+
+    act(() => result.current.onShowCheck());
+    expect(result.current.activeTab).toBe("check");
+    expect(result.current.errorCount).toBe(3);
+
+    act(() => result.current.onNavigate({ kind: "evidence", date: "2026-10-01" }));
+    expect(result.current.activeTab).toBe("evidence");
   });
 
   it("should recognise builder tab keys", () => {

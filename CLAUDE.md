@@ -46,9 +46,12 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/main.tsx` | Root: Redux `Provider` → `ThemeProvider` → `App` |
 | `src/App.tsx` | Renders `modules/timesheet-builder` (single screen) |
 | `src/modules/<feature>/` | Feature logic using the module file pattern (below) |
-| `src/modules/timesheet-builder/` | Page shell: top bar, split view (input 2fr / preview 3fr), tabs Aktivitas · Hari khusus · Pengaturan |
+| `src/modules/timesheet-builder/` | Page shell: top bar, split view (input 2fr / preview 3fr), tabs Aktivitas · Evidence · Hari khusus · Pengaturan · Cek export; navigation from a check item to its tab/element (`getNavigationPlan`) |
 | `src/modules/{period-panel,entry-form,entry-list,day-overrides,profile-settings,document-preview}/` | Input panel sections and the fit-width live preview; each binds to the store through its `.hook.ts` |
 | `src/modules/evidence-panel/` | Evidence tab: per-date left/right slots, upload / drag & drop / paste (auto-blur), replace, swap, blur, remove, document size warning |
+| `src/modules/export-check/` | "Cek export" tab: month summary + clickable errors/warnings from `selectValidationReport` |
+| `src/modules/export-pdf/` | Export PDF button (+ Ctrl/Cmd+P), blocked-by-errors dialog, print-only `.print-root` portal of the same `<TimesheetDocument>`; print CSS in `src/index.css` |
+| `src/modules/edit-history/` | Undo/redo buttons + Ctrl/Cmd+Z, Ctrl/Cmd+Shift+Z, Ctrl/Cmd+Y |
 | `src/modules/file-menu/` | Word-like New / Open / Open last / Save / Save As, status indicator, autosave (file or IndexedDB draft), draft recovery, Ctrl/Cmd+S/O shortcuts, beforeunload |
 | `src/modules/timesheet-document/` | The A4 output (timesheet, signature, evidence cover, evidence pages). One tree for preview and PDF; geometry in pt in `TimesheetDocument.config.ts`, measured from the reference PDF |
 | `src/components/<Name>/` | Shared UI primitives (Button, Input, Select, Modal, ConfirmModal, Tabs, …) |
@@ -57,9 +60,9 @@ Project-specific decision: no lodash; fallbacks use Zod `.default()` / `.prefaul
 | `src/libs/utils/date.util.ts`, `timesheet-engine.util.ts` | Pure engine: month dates, weekend, formatters, table rows, evidence pagination (3 then 4) and `Evidence Page N` numbering |
 | `src/libs/utils/timesheet-document.util.ts` | `parseTimesheetDoc` (the single upstream fallback), `migrateDoc`, `serializeTimesheetDoc`, `createEmptyDoc`, `getDefaultDocFileName` |
 | `src/libs/unit-test.ts` | The only allowed test import: re-exports RTL (+ `within`), `renderWithStore`, `createStoreWrapper`, `test.assertSnapshots(Component, configs, { wrapper })` |
-| `src/store/` | `makeStore()` (theme + `timesheet` + `file` slices), typed hooks, `ThemeProvider`. `timesheet.slice.ts` holds the whole document, `savedDoc` (dirty = `doc !== savedDoc`) and every edit action; `file.slice.ts` holds file name/handle status |
-| `src/libs/utils/` | Shared logic: `date`, `date-option`, `timesheet-engine`, `timesheet-mutation`, `timesheet-document`, `entry-validation`, `file`, `file-system` (FS Access + download fallback), `draft-storage` (idb-keyval), `file-handle.registry` (current handle, outside Redux), `image` (resize, full blur, JPEG), `document-size` |
-| `src/hooks/` | `useElementWidth` (preview zoom), `useKeyboardShortcuts`, `useBeforeUnload` |
+| `src/store/` | `makeStore()` (theme + `timesheet` + `file` slices), typed hooks, `ThemeProvider`. `timesheet.slice.ts` holds the whole document, `savedDoc` (dirty = `doc !== savedDoc`), every edit action, undo/redo history (`timesheet.history.ts`, edits recorded by the wrapped default-export reducer) and `selectValidationReport`; `file.slice.ts` holds file name/handle status |
+| `src/libs/utils/` | Shared logic: `date`, `date-option`, `timesheet-engine`, `timesheet-mutation`, `timesheet-document`, `entry-validation`, `file`, `file-system` (FS Access + download fallback), `draft-storage` (idb-keyval), `file-handle.registry` (current handle, outside Redux), `image` (resize, full blur, JPEG), `document-size`, `timesheet-validation` (export check + month summary), `anchor` (DOM ids the check navigates to) |
+| `src/hooks/` | `useElementWidth` (preview zoom), `useKeyboardShortcuts`, `useBeforeUnload`, `usePrintTitle` (PDF file name) |
 | `src/fixture/timesheet-2026-10.sample.json` | October 2026 real data for seed & golden test |
 | `src/fixture/canvas.fixture.ts` | `installFakeCanvas()` — fake 2D canvas + `createImageBitmap` for jsdom |
 | `src/fixture/file-handle.fixture.ts` | `makeFileHandle()` fake `DocumentFileHandle` |
@@ -89,7 +92,10 @@ index.ts          # exports the entry (wrapper or container)
   Indonesian, document language English; never send data or images to any server; original (unblurred)
   `code` evidence must never be written to the `.json` file — `code` images are blurred on canvas pixels in
   `processEvidenceImage` before they reach the store.
-- One `<Page>` implementation serves both preview and PDF export; never fork the layout.
+- One `<Page>` implementation serves both preview and PDF export; never fork the layout. The print copy is a
+  second mount of the same component, so whole-page tests find two `timesheet-document`s — scope queries with
+  `within(region "Pratinjau dokumen")` or `within(getByTestId("print-root"))`.
+- New edit actions in `timesheet.slice.ts` must be added to `isUndoableAction`, or they bypass undo history.
 - Do not run plain `eslint --fix` on strict files: `jsdoc/require-jsdoc` auto-inserts empty JSDoc stubs. Use
   `npx eslint --fix --rule '{"jsdoc/require-jsdoc":"off"}' <path>` to sort imports, then `npx eslint <path>`.
 - Per-row handlers read `data-*` attributes (`data-entry-id`, `data-field`, …) instead of inline arrows (§4.4).

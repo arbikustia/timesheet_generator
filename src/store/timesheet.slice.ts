@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, isAnyOf, type PayloadAction, type UnknownAction } from "@reduxjs/toolkit";
 
 import { getCurrentPeriod } from "@/libs/utils/date.util";
 import { createEmptyDoc } from "@/libs/utils/timesheet-document.util";
@@ -10,6 +10,7 @@ import {
   resetDocToPeriod,
   shiftDocToPeriod,
 } from "@/libs/utils/timesheet-mutation.util";
+import { validateDoc } from "@/libs/utils/timesheet-validation.util";
 
 import { EVIDENCE_MAX_PER_DATE } from "@/constants/timesheet.constant";
 import type { Entry, TimesheetDoc } from "@/types/timesheet.type";
@@ -18,6 +19,7 @@ import type {
   ChangePeriodPayload,
   DayOverridePayload,
   DefaultHoursChanges,
+  EntryChanges,
   EvidenceRefPayload,
   MoveEntryPayload,
   NewEntryInput,
@@ -26,7 +28,9 @@ import type {
   SignaturePayload,
   UpdateEntryPayload,
 } from "@/types/timesheet-edit.type";
+import type { ValidationReport } from "@/types/timesheet-validation.type";
 
+import { recordHistory, redoHistory, undoHistory } from "./timesheet.history";
 import type { TimesheetState } from "./timesheet.type";
 
 /**
@@ -44,7 +48,7 @@ export const createInitialTimesheetState = (now: Date = new Date()): TimesheetSt
  * @returns {TimesheetState} - State with no unsaved changes
  */
 export const createTimesheetState = (doc: TimesheetDoc): TimesheetState => {
-  return { doc, savedDoc: doc };
+  return { doc, savedDoc: doc, past: [], future: [], mergeKey: null };
 };
 
 /**
@@ -60,13 +64,13 @@ const timesheetSlice = createSlice({
   name: "timesheet",
   initialState: createInitialTimesheetState,
   reducers: {
-    loadDoc: (state, action: PayloadAction<TimesheetDoc>): void => {
-      state.doc = action.payload;
-      state.savedDoc = action.payload;
-    },
-    restoreDraft: (state, action: PayloadAction<TimesheetDoc>): void => {
-      state.doc = action.payload;
-    },
+    loadDoc: (_state, action: PayloadAction<TimesheetDoc>): TimesheetState => createTimesheetState(action.payload),
+    restoreDraft: (state, action: PayloadAction<TimesheetDoc>): TimesheetState => ({
+      ...createTimesheetState(action.payload),
+      savedDoc: state.savedDoc,
+    }),
+    undo: (state): TimesheetState => undoHistory(state),
+    redo: (state): TimesheetState => redoHistory(state),
     markSaved: (state, action: PayloadAction<TimesheetDoc>): void => {
       state.savedDoc = action.payload;
     },
@@ -92,7 +96,11 @@ const timesheetSlice = createSlice({
       }
     },
     removeEntry: (state, action: PayloadAction<string>): void => {
-      state.doc.entries = state.doc.entries.filter((entry) => entry.id !== action.payload);
+      const index = state.doc.entries.findIndex((entry) => entry.id === action.payload);
+
+      if (index >= 0) {
+        state.doc.entries.splice(index, 1);
+      }
     },
     duplicateEntry: {
       reducer: (state, action: PayloadAction<{ id: string; newId: string }>): void => {
@@ -168,6 +176,8 @@ const timesheetSlice = createSlice({
 export const {
   loadDoc,
   restoreDraft,
+  undo,
+  redo,
   markSaved,
   changePeriod,
   startNextMonth,
@@ -201,6 +211,93 @@ export const selectDoc = (state: { timesheet: TimesheetState }): TimesheetDoc =>
 export const selectIsDirty = (state: { timesheet: TimesheetState }): boolean =>
   state.timesheet.doc !== state.timesheet.savedDoc;
 
+/**
+ * Whether an undo step is available.
+ * @param {{ timesheet: TimesheetState }} state - Root state
+ * @returns {boolean} - True when the undo stack is not empty
+ */
+export const selectCanUndo = (state: { timesheet: TimesheetState }): boolean => state.timesheet.past.length > 0;
+
+/**
+ * Whether a redo step is available.
+ * @param {{ timesheet: TimesheetState }} state - Root state
+ * @returns {boolean} - True when the redo stack is not empty
+ */
+export const selectCanRedo = (state: { timesheet: TimesheetState }): boolean => state.timesheet.future.length > 0;
+
+/** Validation report and month summary of the current document, recomputed only when it changes. */
+export const selectValidationReport: (state: { timesheet: TimesheetState }) => ValidationReport = createSelector(
+  [selectDoc],
+  (doc: TimesheetDoc): ValidationReport => validateDoc(doc),
+);
+
+/** Document edits that can be undone; loading, saving and undo/redo themselves are not recorded. */
+const isUndoableAction = isAnyOf(
+  changePeriod,
+  startNextMonth,
+  addEntry,
+  updateEntry,
+  removeEntry,
+  duplicateEntry,
+  moveEntry,
+  setDayOverride,
+  updateProfile,
+  updateDefaultHours,
+  setSignature,
+  addEvidence,
+  replaceEvidence,
+  removeEvidence,
+  swapEvidence,
+);
+
+/**
+ * Sorted, comma-joined keys of a change object.
+ * @param {object} changes - Changed fields
+ * @returns {string} - Key list
+ */
+const _joinKeys = (changes: ProfileChanges | EntryChanges | DefaultHoursChanges): string => {
+  return Object.keys(changes)
+    .sort((a, b) => a.localeCompare(b))
+    .join(",");
+};
+
+/**
+ * Merge key of an edit: typing in the same field forms one undo step; other edits never merge.
+ * @param {UnknownAction} action - Dispatched action
+ * @returns {string | null} - Merge key, or null for a standalone step
+ */
+export const getHistoryMergeKey = (action: UnknownAction): string | null => {
+  if (updateEntry.match(action)) {
+    return `entry:${action.payload.id}:${_joinKeys(action.payload.changes)}`;
+  }
+
+  if (updateProfile.match(action)) {
+    return `profile:${_joinKeys(action.payload)}`;
+  }
+
+  if (updateDefaultHours.match(action)) {
+    return `defaults:${_joinKeys(action.payload)}`;
+  }
+
+  return null;
+};
+
+/**
+ * Slice reducer with undo/redo history: every undoable edit that changes the document is recorded.
+ * @param {TimesheetState | undefined} state - Current state
+ * @param {UnknownAction} action - Dispatched action
+ * @returns {TimesheetState} - Next state
+ */
+const timesheetReducer = (state: TimesheetState | undefined, action: UnknownAction): TimesheetState => {
+  const next = timesheetSlice.reducer(state, action);
+
+  if (!state || next.doc === state.doc || !isUndoableAction(action)) {
+    return next;
+  }
+
+  return recordHistory(state, next, getHistoryMergeKey(action));
+};
+
 export { timesheetSlice };
 
-export default timesheetSlice.reducer;
+export default timesheetReducer;

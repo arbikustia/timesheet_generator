@@ -5,13 +5,17 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
   <section
     aria-label="Pratinjau dokumen"
     class="h-full overflow-auto bg-neutral-300 py-4 dark:bg-neutral-800"
+    data-preview="true"
+    tabindex="0"
   >
     <div
       data-testid="preview-zoom"
       data-zoom="1.000"
     >
       <div
+        class="timesheet-document"
         data-testid="timesheet-document"
+        lang="en"
         style="display: flex; flex-direction: column; align-items: center; gap: 16px;"
       >
         <section
@@ -231,6 +235,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
             </thead>
             <tbody>
               <tr
+                data-date="2026-10-01"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -257,6 +262,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-02"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -283,6 +289,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-03"
                 data-row-kind="off"
                 style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
               >
@@ -311,6 +318,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-04"
                 data-row-kind="off"
                 style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
               >
@@ -339,6 +347,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-05"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -365,6 +374,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-06"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -391,6 +401,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-07"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -417,6 +428,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-08"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -443,6 +455,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-09"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -469,6 +482,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-10"
                 data-row-kind="off"
                 style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
               >
@@ -497,6 +511,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-11"
                 data-row-kind="off"
                 style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
               >
@@ -525,6 +540,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-12"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -551,6 +567,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-13"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -577,6 +594,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-14"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -603,6 +621,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-15"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -629,6 +648,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-16"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -655,6 +675,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-17"
                 data-row-kind="off"
                 style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
               >
@@ -717,6 +738,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
             </colgroup>
             <tbody>
               <tr
+                data-date="2026-10-18"
                 data-row-kind="off"
                 style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
               >
@@ -745,6 +767,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-19"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -771,6 +794,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-20"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -797,6 +821,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-21"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -823,6 +848,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-22"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -849,6 +875,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-23"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -875,6 +902,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-24"
                 data-row-kind="off"
                 style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
               >
@@ -903,6 +931,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-25"
                 data-row-kind="off"
                 style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
               >
@@ -931,6 +960,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-26"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -957,6 +987,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-27"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -983,6 +1014,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-28"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -1009,6 +1041,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-29"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -1035,6 +1068,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-30"
                 data-row-kind="empty"
                 style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
               >
@@ -1061,6 +1095,7 @@ exports[`DocumentPreviewContainer Snapshot Test DocumentPreviewContainer Snapsho
                 </td>
               </tr>
               <tr
+                data-date="2026-10-31"
                 data-row-kind="off"
                 style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
               >

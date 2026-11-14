@@ -165,7 +165,7 @@ exports[`FileMenuComponent Snapshot Test FileMenuComponent Snapshots should rend
         Timesheet-2026-10-Arbi-Kustia.json
       </span>
       <span
-        class="text-warning"
+        class="text-warning-strong"
       >
          · Belum disimpan ●
       </span>

@@ -19,7 +19,7 @@ const TimesheetDocumentComponent = (props: TimesheetDocumentProps): React.ReactE
   const { view } = props;
 
   return (
-    <div style={styles.document} data-testid="timesheet-document">
+    <div className="timesheet-document" lang="en" style={styles.document} data-testid="timesheet-document">
       {view.sheetPages.map((page) => renderSheetPage(page, view))}
       {renderSignaturePage(view.signature)}
       {renderEvidenceCover(view.cover)}

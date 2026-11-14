@@ -11,7 +11,7 @@ Sumber: `docs/PROMPT.md` §9. Setiap fase ditutup dengan `npm run lint`, `npx ts
 | 3 — Input | ✅ | Split view, panel periode/aktivitas/daftar/hari khusus/settings, live preview |
 | 4 — File | ✅ | New/Open/Save/Save As (File System Access + fallback), autosave, draft IndexedDB, buka terakhir |
 | 5 — Evidence | ✅ | Dropzone + paste, kompresi canvas, layout evidence |
-| 6 — Export & polish | ⏳ | Print CSS → PDF, panel validasi, ringkasan, shortcut, undo/redo, a11y |
+| 6 — Export & polish | ✅ | Print CSS → PDF, panel validasi, ringkasan, shortcut, undo/redo, a11y |
 | 7 — Blur & Import | ⏳ | Editor blur/pixelate, CLI `snapshot`/`import`, panel Import & Review |
 | 8 — Collectors | ⏳ | Scheduler, VS Code, hook Claude Code, skill `/timesheet`, auto-evidence |
 

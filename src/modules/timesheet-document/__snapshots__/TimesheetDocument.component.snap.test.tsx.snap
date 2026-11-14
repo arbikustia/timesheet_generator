@@ -3,7 +3,9 @@
 exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Snapshots should render an empty February 2026 document 1`] = `
 <DocumentFragment>
   <div
+    class="timesheet-document"
     data-testid="timesheet-document"
+    lang="en"
     style="display: flex; flex-direction: column; align-items: center; gap: 16px;"
   >
     <section
@@ -223,6 +225,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
         </thead>
         <tbody>
           <tr
+            data-date="2026-02-01"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -251,6 +254,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-02"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -277,6 +281,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-03"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -303,6 +308,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-04"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -329,6 +335,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-05"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -355,6 +362,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-06"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -381,6 +389,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-07"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -409,6 +418,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-08"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -437,6 +447,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-09"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -463,6 +474,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-10"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -489,6 +501,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-11"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -515,6 +528,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-12"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -541,6 +555,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-13"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -567,6 +582,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-14"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -595,6 +611,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-15"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -623,6 +640,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-16"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -649,6 +667,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-17"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -709,6 +728,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
         </colgroup>
         <tbody>
           <tr
+            data-date="2026-02-18"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -735,6 +755,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-19"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -761,6 +782,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-20"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -787,6 +809,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-21"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -815,6 +838,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-22"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -843,6 +867,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-23"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -869,6 +894,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-24"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -895,6 +921,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-25"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -921,6 +948,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-26"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -947,6 +975,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-27"
             data-row-kind="empty"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -973,6 +1002,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-02-28"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -1117,7 +1147,9 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
 exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Snapshots should render the October 2026 document with evidence 1`] = `
 <DocumentFragment>
   <div
+    class="timesheet-document"
     data-testid="timesheet-document"
+    lang="en"
     style="display: flex; flex-direction: column; align-items: center; gap: 16px;"
   >
     <section
@@ -1349,6 +1381,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
         </thead>
         <tbody>
           <tr
+            data-date="2026-10-01"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1388,6 +1421,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-02"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1427,6 +1461,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-03"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -1455,6 +1490,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-04"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -1483,6 +1519,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-05"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1522,6 +1559,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-06"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1561,6 +1599,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-07"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1600,6 +1639,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-07"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1639,6 +1679,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-08"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1678,6 +1719,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-09"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1717,6 +1759,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-10"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -1745,6 +1788,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-11"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -1773,6 +1817,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-12"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1812,6 +1857,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-13"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1851,6 +1897,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-14"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1890,6 +1937,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-15"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -1929,6 +1977,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-16"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2002,6 +2051,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
         </colgroup>
         <tbody>
           <tr
+            data-date="2026-10-17"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -2030,6 +2080,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-18"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -2058,6 +2109,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-19"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2097,6 +2149,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-20"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2136,6 +2189,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-21"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2175,6 +2229,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-22"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2214,6 +2269,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-23"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2253,6 +2309,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-24"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -2281,6 +2338,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-25"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
@@ -2309,6 +2367,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-26"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2348,6 +2407,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-27"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2387,6 +2447,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-28"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2426,6 +2487,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-29"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2465,6 +2527,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-30"
             data-row-kind="work"
             style="background: rgb(255, 255, 255); color: rgb(0, 0, 0); height: 39pt;"
           >
@@ -2504,6 +2567,7 @@ exports[`TimesheetDocumentComponent Snapshot Test TimesheetDocumentComponent Sna
             </td>
           </tr>
           <tr
+            data-date="2026-10-31"
             data-row-kind="off"
             style="background: rgb(192, 0, 0); color: rgb(255, 255, 255); height: 22pt;"
           >
